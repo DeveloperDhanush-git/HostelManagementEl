@@ -137,7 +137,7 @@ const PropertyDashboard = () => {
         </div>
       )}
 
-     
+
       <style>
         {`
         @keyframes slideUp {
