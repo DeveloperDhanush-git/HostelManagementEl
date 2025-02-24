@@ -3,7 +3,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{ fontFamily: 'Montserrat' }}>
+    
       <div className="flex items-center space-x-2 py-4">
        
         <FaArrowLeft className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200" />
@@ -12,7 +12,7 @@ const Header = () => {
           <span className="text-2xl font-semibold">Maha Hostel</span>
         </div>
       </div>
-    </div>
+   
   );
 }
 
