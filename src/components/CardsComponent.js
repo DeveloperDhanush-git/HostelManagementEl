@@ -1,6 +1,6 @@
 const CardsComponent = ({ imageSrc, title, count }) => {
     return (
-      <div className="flex flex-col justify-between bg-gray-200 p-4 rounded-lg shadow w-full h-[140px]">
+      <div className="flex flex-col justify-between bg-[#DFDFDF] p-4 rounded-lg shadow w-full h-[140px]">
         {/* Card Title with > Icon */}
         <h3 className="font-bold text-lg flex items-center">
           {title} <span className="ml-1 text-gray-500">&gt;</span>

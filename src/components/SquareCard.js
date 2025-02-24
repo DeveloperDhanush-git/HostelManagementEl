@@ -4,7 +4,7 @@ const SquareCard = ({ imageSrc, title,  }) => {
   const [selectedMonth, setSelectedMonth] = useState("December");
 
   return (
-    <div className="bg-gray-200 p-4 rounded-lg shadow-md w-full">
+    <div className="bg-[rgba(124,157,179,0.2)] p-4 rounded-lg shadow-md w-full">
       {/* Header (Collection & Dropdown) */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
