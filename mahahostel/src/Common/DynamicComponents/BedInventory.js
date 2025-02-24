@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH } from "react-icons/fa";
+import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell } from "react-icons/fa";
 import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Button from "./Button";
+import { motion } from "framer-motion"; 
 import "react-datepicker/dist/react-datepicker.css";
 
 const floors = [
@@ -12,17 +16,29 @@ const floors = [
 ];
 
 const occupiedSpaces = [];
+
 const PropertyDashboard = () => {
   const [selectedFloor, setSelectedFloor] = useState(floors[0]);
   const [selectedSpace, setSelectedSpace] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDateOpen, setIsDateOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("Pending dues");
+  const [isVacancyDropdownOpen, setIsVacancyDropdownOpen] = useState(false);
+  const [selectedVacancy, setSelectedVacancy] = useState("Vacant, Occupied");
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isBedDetailsOpen, setIsBedDetailsOpen] = useState(false); 
 
- 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".date-picker-dropdown")) {
         setIsDateOpen(false);
+      }
+      if (!event.target.closest(".dropdown")) {
+        setIsDropdownOpen(false);
+      }
+      if (!event.target.closest(".vacancy-dropdown")) {
+        setIsVacancyDropdownOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -30,36 +46,35 @@ const PropertyDashboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{fontFamily: 'Montserrat' }}>
-     
-      <div className="flex items-center space-x-2 py-4 ">
-        <FaArrowLeft className="text-xl cursor-pointer text-black" />
-        <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16 ">
-          <span className="text-2xl font-semibold">Maha Hostel</span>
-          <div className="flex space-x-3">
-            <FaPencilAlt className="text-xl cursor-pointer" />      
-            <FaBed className="text-xl cursor-pointer" />
-            <FaSlidersH className="text-xl cursor-pointer" />
-          </div>
+    <div className="min-h-screen flex flex-col p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
+      <Header title="Maha Hostel" icons={["pencil", "bed", "sliders"]} />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-4">
+        <div className="relative dropdown">
+          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full " onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            {selectedOption} ▼
+          </button>
+          {isDropdownOpen && (
+            <div className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-10">
+              {["Pending dues", "Off-boarding", "Move-in", "Token pending"].map((option) => (
+                <button key={option} className="w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => {
+                  setSelectedOption(option);
+                  setIsDropdownOpen(false);
+                }}>
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
 
-     
-      <div className="flex flex-wrap md:flex-nowrap md:justify-between gap-2 py-4">
-        <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm flex-1">
-          Pending dues ▼
-        </button>
-
-        
-        <div className=" relative flex-1 date-picker-dropdown  ">
-          <button
-            className="bg-[#D8E0E6] text-black  rounded-lg text-sm w-full py-2 px-4"
-            onClick={() => setIsDateOpen(!isDateOpen)}
-          >
+        <div className="relative date-picker-dropdown">
+          <button className="bg-[#D8E0E6] text-black rounded-lg text-sm w-full py-2 px-4" onClick={() => setIsDateOpen(!isDateOpen)}>
             {selectedDate.toDateString()} ▼
           </button>
+
           {isDateOpen && (
-            <div className="absolute -left-20 rounded-lg overflow-hidden flex justify-normal">
+            <div className="absolute left-0 right-0 md:left-auto md:right-auto overflow-hidden flex justify-center z-50">
               <DatePicker
                 selected={selectedDate}
                 onChange={(date) => {
@@ -72,21 +87,30 @@ const PropertyDashboard = () => {
           )}
         </div>
 
-        <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm flex-1">
-          Vacant, Occupied ▼
-        </button>
+        <div className="relative vacancy-dropdown">
+          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full " onClick={() => setIsVacancyDropdownOpen(!isVacancyDropdownOpen)}>
+            {selectedVacancy} ▼
+          </button>
+          {isVacancyDropdownOpen && (
+            <div className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-10">
+              {["Vacant", "Occupied", "Both"].map((option) => (
+                <button key={option} className="w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => {
+                  setSelectedVacancy(option);
+                  setIsVacancyDropdownOpen(false);
+                }}>
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
+
       <div className="flex md:justify-between py-4">
         {floors.map((floor) => (
-          <button
-            key={floor.name }
-            className={`px-3 py-2 mr-1 rounded-lg  font-semibold cursor-pointer transition whitespace-nowrap ${
-              selectedFloor.name === floor.name
-                ? "bg-[#69205D] text-white"
-                : "text-black"
-            }`}
-            onClick={() => setSelectedFloor(floor)}
-          >
+          <button key={floor.name} className={`px-3 py-2 mr-1 rounded-lg font-semibold cursor-pointer transition whitespace-nowrap ${
+            selectedFloor.name === floor.name ? "bg-[#69205D] text-white" : "text-black"
+          }`} onClick={() => setSelectedFloor(floor)}>
             {floor.name}
           </button>
         ))}
@@ -95,23 +119,18 @@ const PropertyDashboard = () => {
       <div className="py-4 space-y-4">
         {selectedFloor.rooms.map((roomId) => (
           <div key={roomId} className="flex items-center space-x-4">
-            <button className="bg-[#69205D] text-white px-10 py-3 rounded-lg font-bold">
-              {roomId}
-            </button>
+            <button className="bg-[#69205D] text-white px-10 py-3 rounded-lg font-bold">{roomId}</button>
             <div className="grid grid-cols-4 gap-2">
               {[1, 2, 3, 4].map((space) => (
-                <button
-                  key={`${roomId}-${space}`}
-                  className={`w-12 h-12 rounded-lg transition duration-300 ${
-                    occupiedSpaces.includes(`${roomId}-${space}`)
-                      ? "bg-[#69205D]"
-                      : "bg-gray-300"
-                  }`}
-                  onClick={() =>
-                    !occupiedSpaces.includes(`${roomId}-${space}`) &&
-                    setSelectedSpace({ room: roomId, space })
+                <button key={`${roomId}-${space}`} className={`w-12 h-12 rounded-lg transition duration-300 ${
+                  occupiedSpaces.includes(`${roomId}-${space}`) ? "bg-[#69205D]" : "bg-gray-300"
+                }`} onClick={() => {
+                  if (!occupiedSpaces.includes(`${roomId}-${space}`)) {
+                    setSelectedSpace({ room: roomId, space });
+                    setIsBedDetailsOpen(true); 
                   }
-                ></button>
+                }}>
+                </button>
               ))}
             </div>
           </div>
@@ -119,42 +138,42 @@ const PropertyDashboard = () => {
       </div>
 
       
-      {selectedSpace && (
-        <div className="fixed inset-0 flex justify-center items-end bg-black bg-opacity-50 transition-opacity duration-300">
-          <div className="bg-white p-6 rounded-t-lg shadow-lg w-full max-w-md animate-slide-up">
-            <h2 className="text-lg font-bold">Room Details</h2>
-            <p className="mt-2">
-              Room: {selectedSpace.room} - Space: {selectedSpace.space}
-            </p>
-            <p className="text-[#69205D]">Rent: ₹5000</p>
-            <button
-              className="mt-4 w-full bg-[#69205D] text-white py-2 rounded-lg"
-              onClick={() => setSelectedSpace(null)}
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
+
+    
+
+    
+{isBedDetailsOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-center">
+    <motion.div
+      initial={{ y: 300, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 300, opacity: 0 }}
+      className="bg-white p-5 rounded-xl shadow-lg w-80"
+    >
+      <h2 className="text-lg font-semibold">Bed Details</h2>
+      <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
+        <span>🛏 {selectedSpace?.room}</span>
+        <span>👤 1</span>
+        <span className="bg-gray-300 text-xs px-2 py-1 rounded-md">VACANT</span>
+      </div>
+      <h3 className="text-green-600 font-bold text-xl mt-2">SINGLE</h3>
+      <ul className="mt-3 text-gray-600">
+        <li>✔ Attached Balcony</li>
+        <li>✔ Attached Washroom</li>
+        <li>✔ Air Conditioner</li>
+        <li>✔ Geyser</li>
+      </ul>
+      <p className="text-xl font-bold mt-4">₹ 5000/-</p>
+      <p className="text-gray-500 text-sm">Security - ₹ 2500</p>
+      <div className="flex gap-10 mt-4 ml-2">
+        <Button variant="outline" className="w-1/2" size="md" button="/*Link Tenant" onClick={() => setIsBedDetailsOpen(false)} />
+        <Button className="md:w-1/2" size="md" button="Add Tenant" onClick={() => setIsBedDetailsOpen(false)} route="/test" defaultColor="#69205D"/>
+      </div>
+    </motion.div>
+  </div>
+)}
 
 
-      <style>
-        {`
-        @keyframes slideUp {
-          from {
-            transform: translateY(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-        .animate-slide-up {
-          animation: slideUp 0.3s ease-in-out;
-        }
-      `}
-      </style>
     </div>
   );
 };
