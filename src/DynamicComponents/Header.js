@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell, FaSearch, FaPlus, FaCog } from "react-icons/fa";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
 const iconsMap = {
   arrowLeft: FaArrowLeft,
