@@ -1,25 +1,22 @@
+import { FaChevronRight } from "react-icons/fa";
+
 const UpdateCard = ({ image, title, count }) => {
-    return (
-      <div className="flex justify-between items-center bg-[#DFDFDF] p-3 rounded-lg shadow-md">
-        {/* Left Side: Image, Title, and Count */}
-        <div className="flex items-center gap-3">
-          <img src={image} alt={title} className="w-8 h-8 object-contain" />
-          <div>
-            <h4 className="text-gray-800 font-medium text-sm">{title}</h4>
-            <p className="text-black-800 text-[16px] font-semibold">{count}</p>
-          </div>
-          
-        </div>
-  
-        {/* Right Side: Arrow Icon */}
-        <img 
-          src="/assets/🦆 icon _chevron right arrow_.png" 
-          alt="Arrow" 
-          className="w-4 h-4" 
-        />
+  return (
+    <button 
+      className="flex justify-between items-center bg-[rgba(0,0,0,0.1)] p-3 rounded-lg shadow-md focus:outline-none cursor-pointer w-full"
+      type="button"
+    >
+      <div className="flex items-center gap-3">
+        <img src={image} alt={title} className="w-8 h-8 object-contain" />
+        <p className="text-black-800 font-medium text-[16px]">{title}</p>
       </div>
-    );
-  };
-  
-  export default UpdateCard;
-  
+
+      <div className="flex items-center gap-2 p-2 rounded-lg">
+        <p className="text-black-800 text-[16px] font-semibold">{count}</p>
+        <FaChevronRight className="text-black w-4 h-4" />
+      </div>
+    </button>
+  );
+};
+
+export default UpdateCard;

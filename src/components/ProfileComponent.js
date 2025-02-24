@@ -1,17 +1,26 @@
-const ProfileComponent = () => {
+/*------------dynamic components-----------------*/
+
+// name="Praveen" 
+// hostelName="SREE MAHA HOSTEL" 
+// profileImage="/assets/man_7122917-removebg-preview (1) 1.png"
+
+/*-----------------------------------------------*/
+
+const ProfileComponent = ({ name, hostelName, profileImage }) => {
   return (
     <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
       <div>
-        <h2 className="text-gray-600 text-[18px]">Praveen</h2>
-        <p className="text-gray-900 text-lg font-bold ">SREE MAHA HOSTEL</p>
+        <p className="text-black-800 text-[18px]">{name}</p>
+        <p className="text-black-800 text-lg font-bold">{hostelName}</p>
       </div>
-       {/* Profile Image */}
-       <img
-          src="/assets/man_7122917-removebg-preview (1) 1.png"
+
+      <button className="cursor-pointer">
+        <img
+          src={profileImage}
           alt="Profile"
           className="w-15 h-15 rounded-full object-cover mr-5"
         />
-      
+      </button>
     </div>
   );
 };

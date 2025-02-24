@@ -1,17 +1,25 @@
+/*------------dynamic components-----------------*/
+// image="/assets/icon.png" label="Moving-In" count="2" 
+/*-----------------------------------------------*/
+
+import { FaChevronRight } from "react-icons/fa";
 const StatusCard = ({ image, label, count }) => {
-    return (
-        <div className="p-3 rounded-lg shadow-md text-center bg-[rgba(124,157,179,0.2)]">
-        <img src={image} alt={label} className="w-6 h-6 mx-auto mb-2" />
-        <p className="text-xs sm:text-sm text-gray-600">{label}</p>
-      
-        {/* Horizontal Line */}
-        <hr className="my-2 border-1 border-white w-4/4 mx-auto rounded-lg" />
-      
-        <p className="text-sm sm:text-lg font-bold text-gray-800">{count}</p>
+  return (
+    <button className="p-3 rounded-lg shadow-md text-center bg-[rgba(124,157,179,0.3)] cursor-pointer">
+  
+      <img src={image} alt={label} className="w-6 h-6 mx-auto mb-2" />
+      <p className="text-[11px] sm:text-sm">{label}</p>
+
+      <hr className="my-2 border-1 border-white w-4/4 mx-auto rounded-lg" />
+
+      <div
+        className="flex justify-around items-center w-full p-2"
+      >
+        <p className="text-sm sm:text-lg font-bold">{count}</p>
+        <FaChevronRight className="text-black w-4 h-4" />
       </div>
-      
-    );
-  };
-  
-  export default StatusCard;
-  
+    </button>
+  );
+};
+
+export default StatusCard;
