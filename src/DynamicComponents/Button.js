@@ -1,14 +1,19 @@
+import React from 'react';
+import { useNavigate } from "react-router-dom";
 
-import React from 'react'
+const Button = ({ button, route }) => {
+  const navigate = useNavigate();
 
-const Button = ({button}) => {
   return (
     <div>
-        <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base">
+      <button
+        className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base cursor-pointer"
+        onClick={() => navigate(route)} 
+      >
         {button}
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
