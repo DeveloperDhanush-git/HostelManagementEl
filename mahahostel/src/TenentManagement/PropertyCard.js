@@ -5,10 +5,9 @@ const PropertyCard = ({ name, address, image }) => {
         {/* Left Section - Hostel Name & Logo */}
         <div className="flex flex-col items-center w-20">
           <h2 className="font-bold text-md text-center whitespace-nowrap">Maha Hostel</h2>
-          <img src="src/assets/building icon/png" alt="Hostel Icon" className="w-14 h-14" />
+          <img src="asst/building icon.png" alt="Hostel Icon" className="w-14 h-14" />
         </div>
 
-        {/* Right Section - Address */}
            {/* Right Section - Address */}
            <div className="bg-[#F7F7F7] p-2 rounded-md text-sm text-gray-600 w-60">
         No. 03, ABC Road, ABC Street, ABC Colony, ABC City, ABC State,\n6xxxx6

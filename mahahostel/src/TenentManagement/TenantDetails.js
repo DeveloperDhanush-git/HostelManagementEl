@@ -1,28 +1,27 @@
 import { useState } from "react";
 
-
 const TenantDetails = () => {
   const [whoCanStay, setWhoCanStay] = useState(""); // State for "Who can stay"
   const [bestSuitedFor, setBestSuitedFor] = useState(""); // State for "Best suited for"
 
   return (
-    <div className="p-4">
+    <div className="p-4 ml-6">
       <h2 className="font-bold text-lg mb-2">Tenant Details</h2>
 
       {/* Who Can Stay Section */}
       <div className="bg-gray-200 p-2 rounded-md">
         Who can stay
       </div>
-      <div className="space-y-2 mt-2">
+      <div className="space-y-2 mt-2 ml-3">
         {["Male", "Female", "Others"].map((label) => (
           <label key={label} className="flex items-center justify-between cursor-pointer">
             <div className="flex items-center gap-2">
-              <img src="./assets/prop.png" alt={label} className="w-6 h-6" />
+              <img src="asst/prop.png" alt={label} className="w-6 h-6" />
               <span>{label}</span>
             </div>
             {/* Square Radio Button */}
             <div
-              className={`w-5 h-5 border-2 rounded-sm flex items-center justify-center cursor-pointer
+              className={`w-5 h-5 border-2 mr-3 rounded-sm flex items-center justify-center cursor-pointer
                 ${whoCanStay === label ? "bg-[#69205D] border-[#69205D]" : "border-gray-400"}
               `}
               onClick={() => setWhoCanStay(label)}
@@ -49,16 +48,16 @@ const TenantDetails = () => {
       <div className="bg-gray-200 p-2 mt-4 rounded-md">
         Best Suited for
       </div>
-      <div className="space-y-2 mt-2">
+      <div className="space-y-2 mt-2 ml-3">
         {["Student", "Working professional"].map((label) => (
           <label key={label} className="flex items-center justify-between cursor-pointer">
             <div className="flex items-center gap-2">
-              <img src="/src/assets/prop.png" alt={label} className="w-6 h-6" />
+              <img src="asst/prop.png" alt={label} className="w-6 h-6" />
               <span>{label}</span>
             </div>
             {/* Square Radio Button */}
             <div
-              className={`w-5 h-5 border-2 rounded-sm flex items-center justify-center cursor-pointer
+              className={`w-5 h-5 mr-3 border-2 rounded-sm flex items-center justify-center cursor-pointer
                 ${bestSuitedFor === label ? "bg-[#69205D] border-[#69205D]" : "border-gray-400"}
               `}
               onClick={() => setBestSuitedFor(label)}
