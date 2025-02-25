@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Attendance from "./pages/Attendance";
+import Outpass from "./pages/Outpass";
+import SaveAttendance from "./pages/SaveAttendance";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="space-y-4 max-w-4xl mx-auto p-6 rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/outpass" element={<Outpass />} />
+          <Route path="/save-attendance" element={<SaveAttendance />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
