@@ -59,7 +59,7 @@ const TenantDetails = () => {
           />
         </div>
         <h2 className="font-medium text-lg mt-6 mb-4">Room Features</h2>
-        <div className="space-y-6">
+        <div className="space-y-2">
           {featuresList.map((feature) => (
             <label
               key={feature.name}

@@ -4,6 +4,8 @@ import Showingprice from './Components/Showingprice';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Addrooms from './Components/Addrooms';
 import SingleRoomOption from './Components/SingleRoomoption';
+import Detailsfilling from './Components/Detailsfilling';
+import Details2page from "./Components/Details2page";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Addrooms />} />
+        <Route path="/" element={< Detailsfilling/>} />
+        <Route path='/Details2page' element={<Details2page/>}/>
+        <Route path="/Add" element={<Addrooms />} />
         <Route path="/SingleRoomchoosing" element={<Singleroomchoosing />} />
         <Route path="/single-room" element={<Showingprice  />} />
         <Route path="/options" element={<SingleRoomOption />} />

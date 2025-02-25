@@ -7,7 +7,7 @@ export default function SingleRoomOption() {
   const navigate = useNavigate();
 
   // Load stored data from localStorage
-  const storedEntries = JSON.parse(localStorage.getItem("Roms")) || [];
+  const storedEntries = JSON.parse(localStorage.getItem("Romd")) || [];
 
   // Extract values from location state (when navigating)
   const { selectedFeatures = [], totalPrice = 0 } = location.state || {};
@@ -29,14 +29,14 @@ export default function SingleRoomOption() {
       if (!isDuplicate) {
         const updatedEntries = [...storedEntries, newEntry];
         setRoomEntries(updatedEntries);
-        localStorage.setItem("Roms", JSON.stringify(updatedEntries));
+        localStorage.setItem("Romd", JSON.stringify(updatedEntries));
       }
     }
   }, [newEntry]);
 
   // Navigate back to TenantDetails while keeping old selections
   const handleAddOptions = () => {
-    navigate("/", { state: { selectedFeatures, totalPrice } });
+    navigate("/SingleRoomChoosing", { state: { selectedFeatures, totalPrice } });
   };
 
   return (
@@ -71,12 +71,13 @@ export default function SingleRoomOption() {
       </div>
 
       <div className="mt-auto p-4">
-        <button
-          onClick={() => navigate("/", { state: { rooms } })}
-          className="w-full bg-[#69205D] text-white py-3 rounded-md font-semibold"
-        >
-          Proceed
-        </button>
+      <button
+    onClick={() => navigate("/Add", { state: { rooms, totalOptions: rooms.length } })} 
+    className="w-full bg-[#69205D] text-white py-3 rounded-md font-semibold"
+>
+    Proceed
+    </button>
+
       </div>
     </div>
   );
