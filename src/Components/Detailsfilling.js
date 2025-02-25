@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Button from "./Button";
+import { FormDataContext } from "./PropertyContext";
 
 const AddProperty = () => {
   const navigate = useNavigate();
+  const { setFormData } = useContext(FormDataContext);
 
   // State for form fields
   const [propertyName, setPropertyName] = useState("");
@@ -30,18 +32,33 @@ const AddProperty = () => {
       address,
     };
 
-    // Navigate to the Details2page and pass propertyData in state
-    navigate("/Details2page", { state: { propertyData } });
+    // Save the property data into the global context
+    setFormData(propertyData);
+
+    // Navigate to the Details2page without having to pass the data explicitly
+    navigate("/Details2page ");
   };
 
   return (
-    <div className="bg-[#69205D] max-w-4xl mx-auto p-6 bg-white rounded-lg mt-1">
-      {/* Header Section */}
-      <div className="text-center">
-        <Header title="ADD Property" />
-      </div>
+    <>
+      {/* Inline CSS to remove spinner controls from number inputs */}
+      <style>{`
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        .no-spinner {
+          -moz-appearance: textfield;
+        }
+      `}</style>
+      
+      <div >
+        {/* Header Section */}
+        <div className="text-center">
+          <Header title="Add Property" />
+        </div>
 
-      <div className="max-w-3xl mx-auto bg-white p-6 mt-6 rounded-lg shadow-md relative">
         {/* Step Info */}
         <p className="text-blue-600 text-sm mt-2 text-left">STEP 1 of 6</p>
 
@@ -51,21 +68,21 @@ const AddProperty = () => {
           <input
             type="text"
             placeholder="Property Name"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={propertyName}
             onChange={(e) => setPropertyName(e.target.value)}
           />
           <input
             type="number"
             placeholder="Total Beds"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md no-spinner focus:outline-none focus:ring-0"
             value={totalBeds}
             onChange={(e) => setTotalBeds(e.target.value)}
           />
           <input
             type="number"
             placeholder="Vacant Beds"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md no-spinner focus:outline-none focus:ring-0"
             value={vacantBeds}
             onChange={(e) => setVacantBeds(e.target.value)}
           />
@@ -75,38 +92,42 @@ const AddProperty = () => {
           <input
             type="text"
             placeholder="Pincode"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
           />
-          <select
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+          {/* City input with datalist for suggestions */}
+          <input
+            type="text"
+            placeholder="City"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-          >
-            <option value="">Select City</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Chicago">Chicago</option>
-          </select>
+            list="cityOptions"
+          />
+          <datalist id="cityOptions">
+            <option value="New York" />
+            <option value="Los Angeles" />
+            <option value="Chicago" />
+          </datalist>
           <input
             type="text"
             placeholder="State"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={stateValue}
             onChange={(e) => setStateValue(e.target.value)}
           />
           <input
             type="text"
             placeholder="House/Flat/Block No."
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={houseNumber}
             onChange={(e) => setHouseNumber(e.target.value)}
           />
           <input
             type="text"
             placeholder="Locality"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full p-3 border rounded-md focus:outline-none focus:ring-0"
             value={locality}
             onChange={(e) => setLocality(e.target.value)}
           />
@@ -115,7 +136,7 @@ const AddProperty = () => {
           <Button button="next" defaultColor="#69205D" />
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
