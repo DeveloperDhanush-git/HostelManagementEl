@@ -1,12 +1,14 @@
-import React from 'react';
+// ServicesFeaturesFurnishings.js
+import React, { useContext } from 'react';
 import { IoIosAdd } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-
-const ServicesFeaturesFurnishings = ({ selectedRoom }) => {
-  const navigate = useNavigate(); // Initialize navigation
+import { SelectedRoomContext } from '../SelectedRoomContext';
+const ServicesFeaturesFurnishings = () => {
+  const { selectedRoom } = useContext(SelectedRoomContext);
+  const navigate = useNavigate();
 
   const handleAddClick = () => {
-    navigate('/property-card'); // Navigate to /property-card
+    navigate('/property-card');
   };
 
   return (
@@ -28,7 +30,9 @@ const ServicesFeaturesFurnishings = ({ selectedRoom }) => {
               Add
             </button>
           </div>
-          <div className="mt-2 text-m text-gray-600">{items?.join(', ')}</div>
+          <div className="mt-2 text-m text-gray-600">
+            {items.length ? items.join(', ') : 'No items selected'}
+          </div>
         </div>
       ))}
     </div>
