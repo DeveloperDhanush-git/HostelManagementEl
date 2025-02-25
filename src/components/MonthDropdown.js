@@ -9,10 +9,10 @@ const MonthDropdown = ({ selectedMonth, setSelectedMonth }) => {
   ];
 
   return (
-    <div className="relative w-40">
+    <div className="relative w-30 sm:w-48">
 
       <div
-        className="border p-2 rounded-[12px] text-sm bg-white w-full 
+        className="p-2 rounded-[12px] text-[12px] sm:text-[16px] bg-white w-full 
         cursor-pointer outline-none focus:ring-2 focus:ring-gray-300 flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >

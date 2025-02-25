@@ -30,8 +30,8 @@ const SquareCard = ({
     <div className="bg-[rgba(124,157,179,0.4)] p-4 rounded-lg shadow-md w-full">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <img src={collectionIcon} alt="Collection" className="w-8 h-8" />
-          <p className="text-[18px] font-semibold">{title}</p>
+          <img src={collectionIcon} alt="Collection" className="w-4 h-4 sm:w-8 h-8" />
+          <p className="text-[12px] sm:text-[16px] text-black-500 font-semibold">{title}</p>
         </div>
         <MonthDropdown selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />
       </div>
@@ -51,7 +51,7 @@ const SquareCard = ({
       </div>
       <hr className="border-1 border-white rounded-lg mt-4" />
 
-      <div className="p-4 mr-10 ml-10 mt-1 flex justify-between items-center">
+      <div className="p-4 mr-10 ml-10 mt-1 flex flex-col sm:flex-row justify-between items-center">
         <p className="text-[17px] font-semibold">Total Collection</p>
         <p className="font-semibold">₹ {totalCollection}</p>
       </div>

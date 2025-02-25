@@ -8,8 +8,8 @@ const RectangleMeterCard = ({ title, occupied, vacant, meterImage }) => {
     p-4 bg-[rgba(124,157,179,0.4)] rounded-lg shadow-md">
       
       <button 
-        className="absolute top-5 right-10 flex items-center gap-2 
-        text-[#69205D] font-bold text-sm cursor-pointer"
+        className="absolute top-5 right-5 flex items-center gap-2 
+        text-[#69205D] font-bold text-sm cursor-pointer "
       >
         <span>View</span>
         <FaChevronRight className="w-4 h-4" />

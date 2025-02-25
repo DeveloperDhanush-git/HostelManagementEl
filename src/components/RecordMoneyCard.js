@@ -5,7 +5,7 @@ const RecordMoneyCard = () => {
       role="button"
     >
       <img src="/assets/speech-bubble_4429060-removebg-preview 1.png" alt="Money" className="w-8 h-8" />
-      <p className="text-[14px] text-black-800 font-[500]">
+      <p className="text-[13px] sm:text-[16px] text-black-800 font-[500]">
         Record money received in cash, DD, Cheque or others
       </p>
     </div>
