@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaArrowLeft } from "react-icons/fa";
 import PropertyCard from "./PropertyCard";
+import Header from "./Header";
+import Button from "./Button";
 
-const SelectOption = ({ buttonName, nextButton }) => {
+const SelectOption = () => {
     const [selectedValues, setSelectedValues] = useState({});
     const [openIndex, setOpenIndex] = useState(null);
 
@@ -24,15 +26,7 @@ const SelectOption = ({ buttonName, nextButton }) => {
 
     return (
         <div className="bg-white">
-            {/* Header */}
-            <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{ fontFamily: 'Montserrat' }}>
-                <div className="flex items-center space-x-2 py-4">
-                    <FaArrowLeft className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200" />
-                    <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
-                        <span className="text-2xl font-semibold">{buttonName}</span>
-                    </div>
-                </div>
-            </div>
+            <Header title="Add Property" />
 
             <PropertyCard />
 
@@ -73,11 +67,7 @@ const SelectOption = ({ buttonName, nextButton }) => {
             </div>
 
             {/* Next Button */}
-            <div>
-                <button className="ml-14 bg-[#69205D] text-white py-2 mt-3 rounded-md w-194 text-sm md:text-base">
-                    {nextButton}
-                </button>
-            </div>
+            <Button button="NEXT" width="full" defaultColor="#69205D" />
         </div>
     );
 };
