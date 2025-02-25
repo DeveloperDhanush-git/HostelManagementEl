@@ -56,7 +56,7 @@ const MyComponent = () => {
             <p>{property.address}</p>
           </div>
         </div>
-        <div className="border-t-2 border-[#69205D] mt-2 pt-2 flex justify-between items-center">
+        <div className=" border-t-2 border-[#69205D] mt-2 pt-2 flex justify-between items-center">
           <p className="flex flex-row text-[#69205D] font-semibold text-lg"> <FiMoreHorizontal  className="mt-2 justify-end"size={24} />   {property.id}</p>
           <button className="flex items-center text-green-500 gap-2">
             <FaWhatsapp size={24} />
