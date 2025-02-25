@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "./Header";
+import Button from "./Button";
 
 export default function SingleRoomOption() {
   const location = useLocation();
   const navigate = useNavigate();
 
   // Load stored data from localStorage
-  const storedEntries = JSON.parse(localStorage.getItem("Romd")) || [];
+  const storedEntries = JSON.parse(localStorage.getItem("Rode")) || [];
 
   // Extract values from location state (when navigating)
   const { selectedFeatures = [], totalPrice = 0 } = location.state || {};
@@ -29,7 +30,7 @@ export default function SingleRoomOption() {
       if (!isDuplicate) {
         const updatedEntries = [...storedEntries, newEntry];
         setRoomEntries(updatedEntries);
-        localStorage.setItem("Romd", JSON.stringify(updatedEntries));
+        localStorage.setItem("Rode  ", JSON.stringify(updatedEntries));
       }
     }
   }, [newEntry]);
@@ -71,13 +72,15 @@ export default function SingleRoomOption() {
       </div>
 
       <div className="mt-auto p-4">
-      <button
-    onClick={() => navigate("/Add", { state: { rooms, totalOptions: rooms.length } })} 
-    className="w-full bg-[#69205D] text-white py-3 rounded-md font-semibold"
->
-    Proceed
-    </button>
-
+        {/* Dynamic Button for "Proceed" */}
+        <Button
+          button="Proceed"
+          route="/Add"
+          navState={{ rooms, totalOptions: rooms.length }}
+          size="md"
+          width="full"
+          defaultColor="#69205D"
+        />
       </div>
     </div>
   );

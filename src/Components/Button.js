@@ -33,7 +33,7 @@ const Button = ({
 
   return (
     <button
-      className={`mt-3 rounded-md cursor-pointer justify-center ${sizeClasses[size]} ${widthClasses[width]} ${
+      className={`mt-3 rounded-md cursor-pointer justify-center text-xl ${sizeClasses[size]} ${widthClasses[width]} ${
         isComment
           ? "border border-[#69205D] text-[#69205D] bg-transparent"
           : "text-white"

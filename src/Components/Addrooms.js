@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { FormDataContext } from "./PropertyContext";
 import PropertyCard from "./Propertycard";
 import Header from "./Header";
 import Button from "./Button";
 
 const RoomOption = ({ buttonName, nextButton }) => {
-  const location = useLocation();
+  const { formData } = useContext(FormDataContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Retrieve selected room options from state (if any)
-  const rooms = location.state?.rooms || [];
+  // Retrieve rooms either from navigation state or from context
+  const roomsFromState = location.state?.rooms;
+  const rooms = roomsFromState || formData.rooms || [];
 
-  // Room types available for selection
+  // Calculate total price from all room options (if needed)
+  const totalPrice = rooms.reduce((acc, room) => acc + room.totalPrice, 0);
+
   const roomTypes = [
     { label: "Single Sharing", icon: "single.png", key: "single" },
     { label: "Double Sharing", icon: "double.png", key: "double" },
@@ -20,14 +25,13 @@ const RoomOption = ({ buttonName, nextButton }) => {
     { label: "3+ Sharing", icon: "3-share.png", key: "multi" }
   ];
 
-  // Function to navigate to options page with selected room type
-  const handleAddRoom = (roomKey) => {
-    navigate("/options", { state: { selectedRoom: roomKey } });
+  // Navigate to the options page with dynamic header title
+  const handleAddRoom = (roomKey, roomLabel) => {
+    navigate("/options", { state: { selectedRoom: roomKey, headerTitle: roomLabel } });
   };
 
-  // Retrieve property data passed from the AddProperty page via navigation state.
-  // If not available, default values are used.
-  const propertyData = location.state?.propertyData || {
+  // Fallback property data if not provided in context
+  const propertyData = formData || {
     name: "Default Property Name",
     address: "Default Address",
     image: "assets/building icon.png",
@@ -35,20 +39,15 @@ const RoomOption = ({ buttonName, nextButton }) => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
-      {/* Header */}
       <Header title="Add property" />
-
-      {/* Content */}
       <div className="flex-grow p-4">
-        {/* Display the user-filled property details using PropertyCard */}
         <PropertyCard 
           name={propertyData.name} 
           address={propertyData.address} 
           image={propertyData.image} 
         />
+        <p className="text-[#0012B9] mt-2 ml-7">STEP 3 of 6</p>
 
-        <p className="text-[#0012B9] mt-2 ml-11">STEP 3 of 6</p>
-        
         <div className="ml-7">
           <h2 className="font-bold text-lg mb-2">Room Options</h2>
           <div className="space-y-6">
@@ -59,15 +58,13 @@ const RoomOption = ({ buttonName, nextButton }) => {
                     <img src={room.icon} alt={room.label} className="w-6 h-6" />
                     <span>{room.label}</span>
                   </div>
-                  {/* Clicking "Add room" navigates to another component/page */}
                   <button
                     className="text-[#69205D] flex items-center gap-1 cursor-pointer"
-                    onClick={() => handleAddRoom(room.key)}
+                    onClick={() => handleAddRoom(room.key, room.label)}
                   >
                     <FaPlus className="text-sm text-black" /> Add room
                   </button>
                 </div>
-                {/* Show total selections below Single Sharing */}
                 {room.key === "single" && rooms.length > 0 && (
                   <p className="mt-2 text-sm text-gray-700 ml-8">
                     {rooms.length} option{rooms.length > 1 ? "s" : ""}
@@ -77,11 +74,17 @@ const RoomOption = ({ buttonName, nextButton }) => {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Footer with Next Button */}
-      <div className="p-4 bg-white shadow-md">
-        <Button button="Next" defaultColor="#69205D" />
+        {/* Dynamic Button added below the room options */}
+        <div className="mt-20">
+          <Button 
+            button={buttonName || "Next"} 
+            route={nextButton || "/next-route"} 
+            size="lg" 
+            width="full" 
+            defaultColor="#69205D"
+          />
+        </div>
       </div>
     </div>
   );
