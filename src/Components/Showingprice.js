@@ -7,7 +7,7 @@ export default function SingleRoomOption() {
   const navigate = useNavigate();
 
   // Load stored data from localStorage
-  const storedEntries = JSON.parse(localStorage.getItem("Roo")) || [];
+  const storedEntries = JSON.parse(localStorage.getItem("Roms")) || [];
 
   // Extract values from location state (when navigating)
   const { selectedFeatures = [], totalPrice = 0 } = location.state || {};
@@ -29,7 +29,7 @@ export default function SingleRoomOption() {
       if (!isDuplicate) {
         const updatedEntries = [...storedEntries, newEntry];
         setRoomEntries(updatedEntries);
-        localStorage.setItem("Roo", JSON.stringify(updatedEntries));
+        localStorage.setItem("Roms", JSON.stringify(updatedEntries));
       }
     }
   }, [newEntry]);
@@ -72,7 +72,7 @@ export default function SingleRoomOption() {
 
       <div className="mt-auto p-4">
         <button
-          onClick={() => navigate("/multi", { state: { rooms } })}
+          onClick={() => navigate("/", { state: { rooms } })}
           className="w-full bg-[#69205D] text-white py-3 rounded-md font-semibold"
         >
           Proceed

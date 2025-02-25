@@ -99,7 +99,7 @@ const TenantDetails = () => {
       </div>
       <div className="mt-auto p-4 w-full bg-white shadow-md">
         <div onClick={handleNext}>
-          <Button button="Next" />
+          <Button button="Next" defaultColor="#69205D"  />
         </div>
       </div>
     </div>

@@ -1,12 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import Button from './Components/Button';
-import Page1 from './Components/page1'
-import Page5 from './Components/Page5'
-import Header from './Components/Header';
-import Page6 from './Components/Page6';
+import Singleroomchoosing from './Components/Singleroomchoosing'
+import Showingprice from './Components/Showingprice';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Page7 from './Components/Page7';
+import Addrooms from './Components/Addrooms';
+import SingleRoomOption from './Components/SingleRoomoption';
 
 function App() {
   return (
@@ -19,9 +16,10 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Page5 />} />
-        <Route path="/single-room" element={<Page6 />} />
-        <Route path="/multi" element={<Page7 />} />
+        <Route path="/" element={<Addrooms />} />
+        <Route path="/SingleRoomchoosing" element={<Singleroomchoosing />} />
+        <Route path="/single-room" element={<Showingprice  />} />
+        <Route path="/options" element={<SingleRoomOption />} />
       
 
       </Routes>
