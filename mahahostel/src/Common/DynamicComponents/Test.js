@@ -13,7 +13,7 @@ const Add = () => {
       className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1 h-auto flex flex-col md:p-6"
       style={{ fontFamily: "Montserrat" }}
     >
- \
+
 
       <Header title="Add Tenant" />
 
@@ -70,8 +70,8 @@ const Add = () => {
 
 
       <Button button="/*Add from contacts" />
-      <Button button="Continue" defaultColor="#69205D" route="/a"/>
-    </div>
+      <Button button="Continue" defaultColor="#69205D" route="/addtenant" size="md" />
+    </div>  
   );
 };
 

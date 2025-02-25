@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell } from "react-icons/fa";
+import { FaBed } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
@@ -26,10 +26,18 @@ const PropertyDashboard = () => {
   const [selectedOption, setSelectedOption] = useState("Pending dues");
   const [isVacancyDropdownOpen, setIsVacancyDropdownOpen] = useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState("Vacant, Occupied");
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isBedDetailsOpen, setIsBedDetailsOpen] = useState(false); 
 
-  useEffect(() => {
+  const navigate = useNavigate();
+
+  const handleIconClick = (iconKey) => {
+    if (iconKey === "pencil") {
+      navigate("/edit-hostel");
+    }
+
+  };
+
+  useEffect(() => { 
     const handleClickOutside = (event) => {
       if (!event.target.closest(".date-picker-dropdown")) {
         setIsDateOpen(false);
@@ -47,11 +55,17 @@ const PropertyDashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
-      <Header title="Maha Hostel" icons={["pencil", "bed", "sliders"]} />
+
+<Header title="Maha Hostel" icons={["pencil", "bed", "sliders"]} onIconClick={(icon) => {
+    if (icon === "pencil") {
+      navigate("/edit");
+    }   
+}} />
+
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-4">
         <div className="relative dropdown">
-          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full " onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             {selectedOption} ▼
           </button>
           {isDropdownOpen && (
@@ -88,7 +102,7 @@ const PropertyDashboard = () => {
         </div>
 
         <div className="relative vacancy-dropdown">
-          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full " onClick={() => setIsVacancyDropdownOpen(!isVacancyDropdownOpen)}>
+          <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full" onClick={() => setIsVacancyDropdownOpen(!isVacancyDropdownOpen)}>
             {selectedVacancy} ▼
           </button>
           {isVacancyDropdownOpen && (
@@ -135,46 +149,44 @@ const PropertyDashboard = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>       
 
-      
-
-    
-
-    
-{isBedDetailsOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-center">
-    <motion.div
-      initial={{ y: 300, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: 300, opacity: 0 }}
-      className="bg-white p-5 rounded-xl shadow-lg w-80"
+      {isBedDetailsOpen && (
+    <div 
+      className="fixed inset-0 bg-[#B2B2B2] bg-opacity-10 flex justify-center items-center transition-opacity duration-300"
+      onClick={() => setIsBedDetailsOpen(false)} // Close popup when clicking outside
     >
-      <h2 className="text-lg font-semibold">Bed Details</h2>
-      <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
-        <span>🛏 {selectedSpace?.room}</span>
-        <span>👤 1</span>
-        <span className="bg-gray-300 text-xs px-2 py-1 rounded-md">VACANT</span>
-      </div>
-      <h3 className="text-green-600 font-bold text-xl mt-2">SINGLE</h3>
-      <ul className="mt-3 text-gray-600">
-        <li>✔ Attached Balcony</li>
-        <li>✔ Attached Washroom</li>
-        <li>✔ Air Conditioner</li>
-        <li>✔ Geyser</li>
-      </ul>
-      <p className="text-xl font-bold mt-4">₹ 5000/-</p>
-      <p className="text-gray-500 text-sm">Security - ₹ 2500</p>
-      <div className="flex gap-10 mt-4 ml-2">
-        <Button variant="outline" className="w-1/2" size="md" button="/*Link Tenant" onClick={() => setIsBedDetailsOpen(false)} />
-        <Button className="md:w-1/2" size="md" button="Add Tenant" onClick={() => setIsBedDetailsOpen(false)} route="/test" defaultColor="#69205D"/>
-      </div>
-    </motion.div>
-  </div>
-)}
-
-
+      <motion.div
+        initial={{ y: 300, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 300, opacity: 0 }}
+        className="bg-white p-5 rounded-xl shadow-lg w-80 popup-container"
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+      >
+        <h2 className="text-lg font-semibold">Bed Details</h2>
+        <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
+          <span>🛏 {selectedSpace?.room}</span>
+          <span>👤 1</span>
+          <span className="bg-gray-300 text-xs px-2 py-1 rounded-md">VACANT</span>
+        </div>
+        <h3 className="text-green-600 font-bold text-xl mt-2">SINGLE</h3>
+        <ul className="mt-3 text-gray-600">
+          <li>✔ Attached Balcony</li>
+          <li>✔ Attached Washroom</li>
+          <li>✔ Air Conditioner</li>
+          <li>✔ Geyser</li>
+        </ul>
+        <p className="text-xl font-bold mt-4">₹ 5000/-</p>
+        <p className="text-gray-500 text-sm">Security - ₹ 2500</p>
+        <div className="flex gap-10 mt-4 ml-2">
+          <Button variant="outline" className="w-1/2" size="md" button="/*Link Tenant" onClick={() => setIsBedDetailsOpen(false)} />
+          <Button className="md:w-1/2" size="md" button="Add Tenant" onClick={() => setIsBedDetailsOpen(false)} route="/test" defaultColor="#69205D" />
+        </div>
+      </motion.div>
     </div>
+  )}
+</div>
+   
   );
 };
 
