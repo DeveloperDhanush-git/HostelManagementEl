@@ -1,3 +1,4 @@
+
 import React from "react";
 import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell, FaSearch, FaPlus, FaCog } from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
@@ -22,7 +23,7 @@ const Header = ({ title, icons }) => {
         onClick={() => navigate(-1)}/>
 
       <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
-        <span className="text-2xl font-semibold" >{title}</span>
+        <span className="text-xl font-semibold" >{title}</span>
 
         <div className="flex space-x-3 gap-1">
           {icons &&
