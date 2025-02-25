@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ManageStaff from "./Component/ManageStaff";
+import AddStaff from "./Component/AddStaff";
+import SelectRole from "./Component/SelectRole";
+import SelectProperty from "./Component/SelectProperty";
+// import { StaffProvider } from "./Component/StaffContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // <StaffProvider>
+    <div className="space-y-4 max-w-4xl mx-auto p-6 bg-[#F7F7F7] rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<ManageStaff />} />
+          <Route path="/add-staff" element={<AddStaff />} />
+          <Route path="/select-role" element={<SelectRole />} />
+          <Route path="/select-property" element={<SelectProperty />} />
+        </Routes>
+      </Router>
+
     </div>
+    // </StaffProvider>
   );
 }
 
