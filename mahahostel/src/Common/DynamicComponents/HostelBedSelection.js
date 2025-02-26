@@ -39,14 +39,16 @@ const HostelBedSelection = () => {
   return (
     <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1 h-auto flex flex-col md:p-6">
       <Header title="Maha Hostel" />
+
+      <div className="ml-6">
       <p className="text-purple-700 font-bold text-sm">STEP 3 of 3</p>
-      <h2 className="text-xl font-bold mb-4">Add Beds</h2>
+      <h2 className="text-xl font-bold mb-1">Add Beds</h2>
       {floors.map((floor, index) => (
-        <div key={index} className="bg-gray-100 p-4 rounded-lg mb-4">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">{floor.name}</h3>
+        <div key={index} className=" p-4 rounded-lg ">
+          <div className="flex justify-between items-center bg-[#DCE4EB] p-2 rounded-lg ">
+            <h3 className="text-lg font-semibold ">{floor.name}</h3>
             <button
-              className="bg-[#69205D] text-white px-3 py-1 rounded-md text-sm"
+              className="bg-[#69205D] text-white px-5 py-1 rounded-md text-sm "
               onClick={() => toggleSelectAll(floor)}
             >
               {floor.beds.every((bed) => selectedBeds[bed.id]) ? 'Unselect all' : 'Select all'}
@@ -61,15 +63,16 @@ const HostelBedSelection = () => {
                   type="checkbox"
                   checked={selectedBeds[bed.id] || false}
                   onChange={() => toggleBedSelection(bed.id)}
-                  className="w-5 h-5"
+                  className="w-5 h-5 mr-3"
                 />
               </div>
             ))}
           </div>
         </div>
       ))}
-      <Button button="Add Beds" defaultColor="#69205D" route="/"/>
+      <Button button="Add Beds" defaultColor="#69205D" route="/bedInventory"/>
     </div>
+  </div>  
   );
 };
 

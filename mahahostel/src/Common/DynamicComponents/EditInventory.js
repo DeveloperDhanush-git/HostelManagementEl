@@ -24,21 +24,25 @@ export default function EditInventory() {
     }));
   };
 
-  // Select All / Unselect All
+  // Reverse select/unselect logic
   const toggleSelectAll = () => {
-    const allSelected = Object.values(selectedUnits).every(Boolean);
+    const allDeselected = Object.values(selectedUnits).every((val) => val === false || val === undefined);
     const newSelection = {};
     units.forEach((unit) => {
-      newSelection[unit.id] = !allSelected;
+      newSelection[unit.id] = allDeselected;
     });
     setSelectedUnits(newSelection);
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1 h-auto flex flex-col md:p-6">
+    <div className="min-h-screen flex flex-col bg-white rounded-lg mt-1">
+
+<div className="flex-grow p-4">
       <Header title="Edit Inventory" />
 
-      <div className="flex text-sm font-medium ">
+      <div className="ml-6">
+
+      <div className="flex text-sm font-medium">
         {floors.map((floor) => (
           <button
             key={floor}
@@ -55,17 +59,18 @@ export default function EditInventory() {
         ))}
       </div>
 
-    
-      <div className="p-4 bg-white rounded shadow-md mt-2 mb-20 ">
-        <div className="flex justify-between text-sm font-bold text-gray-700">
-          <span>{selectedFloor} Floor</span>
-          <button className="text-blue-500 cursor-pointer" onClick={toggleSelectAll}>
-            {Object.values(selectedUnits).every(Boolean) ? "Unselect All" : "Select All"}
-          </button>
-        </div>
+      <div className="flex justify-between text-sm font-bold text-gray-700 bg-[#F5F5F5] p-3 mt-2">
+        <span>{selectedFloor} Floor</span>
+        <button className="text-blue-500 cursor-pointer" onClick={toggleSelectAll}>
+          {Object.values(selectedUnits).every((val) => val === false || val === undefined)
+            ? "Select All"
+            : "Unselect All"}
+        </button>
+      </div>
 
+      <div className="p-4 bg-white rounded  mt-2 mb-20">
         {units.map((unit) => (
-          <div key={unit.id} className="flex items-center justify-between py-2 border-b last:border-none">
+          <div key={unit.id} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-none">
             <div className="flex items-center space-x-2">
               <span className="text-gray-700 font-medium w-10">{unit.id}</span>
               <div className="flex space-x-1">
@@ -84,7 +89,9 @@ export default function EditInventory() {
         ))}
       </div>
 
-      <Button button="Edit Units" defaultColor="#69205D" route="/roomselect"/>
+      <Button button="Edit Units" defaultColor="#69205D" route="/roomselect" />
     </div>
+    </div>
+  </div>  
   );
 }
