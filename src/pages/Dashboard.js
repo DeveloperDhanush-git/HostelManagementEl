@@ -13,31 +13,50 @@ import BedsComponent from "../components/BedsComponent";
 import MonthDropdown from "../components/MonthDropdown";
 import { FaChevronRight } from "react-icons/fa";
 
+import manimage from "../assets/man_7122917-removebg-preview (1) 1.png";
+import propertiesImg from "../assets/image.png";
+import bedsImg from "../assets/image (1).png";
+import tenantsImg from "../assets/avatar-male__8_-removebg-preview 1.png";
+import staffsImg from "../assets/bb-removebg-preview 2.png";
+import profileCompletedImg from "../assets/image (2).png";
+import reminderImg from "../assets/image (3).png";
+import collectionIcon from "../assets/image (4).png";
+import pendingIcon from "../assets/image (5).png";
+import receivedIcon from "../assets/image (6).png";
+import meterImage from "../assets/meters-removebg-preview.png";
+import bedImg from "../assets/bed.png";
+import movingInIcon from "../assets/icon.png";
+import movingOutIcon from "../assets/icon (1).png";
+import agreementEndIcon from "../assets/agreement-end.png";
+import salesImg from "../assets/image (7).png";
+import complaintsImg from "../assets/image (8).png";
+import requestsImg from "../assets/image (9).png";
+import attendanceImg from "../assets/image (10).png";
+import tenantsIcon from "../assets/avatar-male__8_-removebg-preview 1.png";
+import staffIcon from "../assets/bb-removebg-preview 2.png";
+import communityImg from "../assets/community-removebg-preview 1.png";
+import supportImg from "../assets/image (11).png";
 
 const Dashboard = () => {
   const [selectedMonth, setSelectedMonth] = useState("December");
   return (
     <div className="space-y-4  mx-auto p-4 sm:p-6 bg-[#F7F7F7] rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
-
-
       <ProfileComponent
         name="Praveen"
         hostelName="SREE MAHA HOSTEL"
-        profileImage="/assets/man_7122917-removebg-preview (1) 1.png"
+        profileImage={manimage}
       />
 
-
       <div className="flex flex-wrap lg:flex-nowrap gap-4 justify-center">
-        <CardsComponent imageSrc="/assets/image.png" title="Properties" count={1} />
-        <CardsComponent imageSrc="/assets/image (1).png" title="Beds" count={12} />
-        <CardsComponent imageSrc="/assets/avatar-male__8_-removebg-preview 1.png" title="Tenants" count={0} />
-        <CardsComponent imageSrc="/assets/bb-removebg-preview 2.png" title="Staffs" count={0} />
+        <CardsComponent imageSrc={propertiesImg} title="Properties" count={1} />
+        <CardsComponent imageSrc={bedsImg} title="Beds" count={12} />
+        <CardsComponent imageSrc={tenantsImg} title="Tenants" count={0} />
+        <CardsComponent imageSrc={staffsImg} title="Staffs" count={0} />
       </div>
-
 
       <div className="flex gap-4">
         <RectangleCard
-          imageSrc="/assets/image (2).png"
+          imageSrc={profileCompletedImg}
           title="Profile Completed"
           description="Add tenant to start your business"
           buttonText="75%"
@@ -46,7 +65,7 @@ const Dashboard = () => {
         />
 
         <RectangleCard
-          imageSrc="/assets/image (3).png"
+          imageSrc={reminderImg}
           title="Reminder!"
           description="Bank account not linked for this property"
           buttonText="Link"
@@ -54,7 +73,6 @@ const Dashboard = () => {
           textcolor={"text-red-500"}
         />
       </div>
-
 
       <SquareCard
         title="Collection"
@@ -64,20 +82,20 @@ const Dashboard = () => {
         receivedAmount={15000}
         totalCollection={20000}
         statusMessage="All dues have been Paid"
-        collectionIcon="/assets/image (4).png"
-        pendingIcon="/assets/image (5).png"
-        receivedIcon="/assets/image (6).png"
+        collectionIcon={collectionIcon}
+        pendingIcon={pendingIcon}
+        receivedIcon={receivedIcon}
       />
-
 
       <RectangleMeter
         title="Inventory"
         occupied="10"
         vacant="5"
-        meterImage="/assets/meters-removebg-preview.png"
+        meterImage={meterImage}
       />
+
       <BedsComponent
-        imageSrc="/assets/bed.png"
+        imageSrc={bedImg}
         title="Manage Beds"
         description="Track every bed status and manage tenant move-in, move-out."
         buttonText="ADD"
@@ -89,9 +107,9 @@ const Dashboard = () => {
         </div>
 
         <div className="grid grid-cols-3 gap-2 mb-4">
-          <StatusCard image="/assets/icon.png" label="Moving-In" count="2" />
-          <StatusCard image="/assets/icon (1).png" label="Moving-Out" count="6" />
-          <StatusCard image="/assets/agreement-end.png" label="Agreement End" count="2" />
+          <StatusCard image={movingInIcon} label="Moving-In" count="2" />
+          <StatusCard image={movingOutIcon} label="Moving-Out" count="6" />
+          <StatusCard image={agreementEndIcon} label="Agreement End" count="2" />
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow-md mb-4">
@@ -104,17 +122,17 @@ const Dashboard = () => {
           </div>
 
           <div className="space-y-2 mb-4">
-            <UpdatesCard image="/assets/image (7).png" title="Sales" count="0" />
-            <UpdatesCard image="/assets/image (8).png" title="Complaints" count="0" />
-            <UpdatesCard image="/assets/image (9).png" title="Requests by Tenants" count="2" />
-            <UpdatesCard image="/assets/image (10).png" title="Outpasses and Attendance" count="2" />
+            <UpdatesCard image={salesImg} title="Sales" count="0" />
+            <UpdatesCard image={complaintsImg} title="Complaints" count="0" />
+            <UpdatesCard image={requestsImg} title="Requests by Tenants" count="2" />
+            <UpdatesCard image={attendanceImg} title="Outpasses and Attendance" count="2" />
           </div>
         </div>
 
         <TenantStaffCard
-          tenantsImage="/assets/avatar-male__8_-removebg-preview 1.png"
+          tenantsImage={tenantsIcon}
           tenantsTitle="Tenants"
-          staffImage="/assets/bb-removebg-preview 2.png"
+          staffImage={staffIcon}
           staffTitle="Staff"
         />
 
@@ -129,20 +147,18 @@ const Dashboard = () => {
 
         <div className="mb-4 bg-[rgba(124,157,179,0.2)] rounded-[15px]">
           <CommunityCard
-            image="/assets/community-removebg-preview 1.png"
+            image={communityImg}
             text="Communication with your tenants and staff by sharing content to groups."
           />
         </div>
 
         <div className="mb-4 bg-[rgba(124,157,179,0.2)] rounded-[15px]">
           <CommunityCard
-            image="/assets/image (11).png"
+            image={supportImg}
             text="Facing any issue with this app? Call support available 24x7."
           />
         </div>
-
       </div>
-
     </div>
   );
 };
