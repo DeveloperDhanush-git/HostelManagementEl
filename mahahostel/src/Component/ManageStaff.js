@@ -209,7 +209,7 @@ const ManageStaff = () => {
                           {staff.subRoles.length > 0 ? staff.subRoles.join(", ") : "No Sub-Role Assigned"}
                         </p>
                       </div>
-                      <button
+                      {/* <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleEditClick(index);
@@ -217,7 +217,7 @@ const ManageStaff = () => {
                         className="text-blue-500 cursor-pointer ml-auto"
                       >
                         ✏️ Edit
-                      </button>
+                      </button> */}
                     </div>
                   )}
                 </div>
