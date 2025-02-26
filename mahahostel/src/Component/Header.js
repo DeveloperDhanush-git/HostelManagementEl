@@ -17,7 +17,7 @@ const Header = ({ title, icons }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center space-x-2 py-4">
+    <div className="flex items-center space-x-2 py-4 pr-4">
       <FaArrowLeft
         className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200"
         onClick={() => navigate(-1)}
