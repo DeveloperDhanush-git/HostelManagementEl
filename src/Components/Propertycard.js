@@ -9,12 +9,17 @@ const PropertyCard = ({ name, address, image }) => {
           <h2 className="font-bold text-md text-center whitespace-nowrap">
             {name || "EL codamics"}
           </h2>
-          <img src={image || "assets/building icon.png"} alt="Property Icon" className="w-14 h-14" />
+          <img src={image || "assets/building icon.png"} alt="Property Icon" className="w-20 h-20" />
         </div>
 
         {/* Right Section - Address */}
         <div className="bg-[#F7F7F7] p-2 rounded-md text-sm text-gray-600 w-70">
-          {address || "EL codamics"}
+          {(address || "EL codamics").split(",,").map((line, index) => (
+            <span key={index}>
+              {line.trim()}
+              <br />
+            </span>
+          ))}
         </div>
       </div>
     </div>
