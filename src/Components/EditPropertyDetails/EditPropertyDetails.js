@@ -12,3 +12,4 @@ const EditPropertyDetails = ({ buttonName = "Edit Property", nextButton = "Updat
 };
 
 export default EditPropertyDetails;
+

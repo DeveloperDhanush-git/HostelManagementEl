@@ -16,11 +16,12 @@ const SelectedRoomDetails = ({ selectedRoom }) => {
         ))}
       </div>
 
+      {/* Rent Section */}
       <div className="flex items-center p-4 mt-4 mb-2 bg-[#69205D] rounded-xl w-max h-12">
-        <div className="font-semibold text-lg text-black bg-white rounded w-20 text-center">
+        <div className="font-semibold text-lg text-black bg-white rounded-xl w-20 text-center py-1">
           Rent
         </div>
-        <div className="text-2xl font-bold text-white  px-8 py-2">
+        <div className="text-2xl font-bold text-white px-8 py-2">
           ₹{selectedRoom.rent}
         </div>
       </div>

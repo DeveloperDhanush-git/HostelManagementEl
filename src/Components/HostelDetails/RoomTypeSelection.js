@@ -1,6 +1,5 @@
 // RoomTypeSelection.js
 import React from 'react';
-
 const RoomTypeSelection = ({ roomType, handleRoomTypeClick }) => {
   return (
     <div className="flex justify-between p-4  mr-6 mt-1 ml-6">
@@ -19,5 +18,4 @@ const RoomTypeSelection = ({ roomType, handleRoomTypeClick }) => {
     </div>
   );
 };
-
 export default RoomTypeSelection;

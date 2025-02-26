@@ -13,11 +13,18 @@ const TermsOfAgreement = () => {
             { label: 'Lock-in period', value: '0.5 Months' },
             { label: 'Notice period', value: '0.5 Months' },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-[#D9D9D9] p-1 rounded-lg flex justify-between">
+            <div key={label} className="bg-[#D9D9D9] p-2 rounded-lg flex justify-between">
               <div className="text-sm text-gray-600">{label}:</div>
               <div className="text-sm text-gray-600">{value}</div>
             </div>
           ))}
+        </div>
+
+        {/* Button below Terms of Agreement */}
+        <div className="mt-4">
+          <button className="bg-[#69205D] text-white py-2 rounded-md w-full text-sm md:text-base">
+            Done
+          </button>
         </div>
       </div>
     </div>
