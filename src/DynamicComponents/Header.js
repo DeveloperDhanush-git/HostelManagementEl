@@ -28,7 +28,7 @@ const Header = ({ title, icons, onIconClick }) => {
       <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
         <span className="text-xl font-semibold">{title}</span>
 
-        <div className="flex space-x-3">
+        <div className="flex ">
           {icons &&
             icons.map((iconKey, index) => {
               const IconComponent = iconsMap[iconKey];
