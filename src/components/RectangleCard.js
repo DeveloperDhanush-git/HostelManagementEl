@@ -1,5 +1,4 @@
 /*------------dynamic components-----------------*/
-// imageSrc = "/assets/image (3).png"
 // title = "Reminder!"
 // description = "Bank account not linked for this property"
 // buttonText = "Link"
