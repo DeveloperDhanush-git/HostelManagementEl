@@ -1,31 +1,57 @@
+import { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import buildingIcon from "../assets/building_icon.png";
 import Staircase from "../assets/staircase.png";
-import Button from "../Components/Button";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
-const BedInventory_3 = ({ buttonName = "Add Bed Inventory", totalFloors = 10 }) => {
+const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Continue" }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { floors, hasGroundFloor } = location.state || { floors: 1, hasGroundFloor: false };
+  const { outFloors, groundFloor } = location.state || { outFloors: null, groundFloor: null };
+
+  const [rooms, setRooms] = useState({}); // State to store the number of rooms for each floor
+  const [isEditing, setIsEditing] = useState({}); 
 
   useEffect(() => {
-    if (floors === undefined || hasGroundFloor === undefined) {
-      navigate("/step1");
+    if (outFloors === null || groundFloor === null) {
+      navigate("/step1"); // Redirect to step1 if data is missing
     }
-  }, [floors, hasGroundFloor, navigate]);
+  }, [outFloors, groundFloor, navigate]);
 
-  if (floors === undefined || hasGroundFloor === undefined) {
-    return null;
+  if (outFloors === null || groundFloor === null) {
+    return null; // Show nothing while data is being loaded
   }
 
-  // Generate correct floor output
-  const floorList = [];
-  const floorStart = hasGroundFloor ? 0 : 1;
-  for (let i = floorStart; i < floors + (hasGroundFloor ? 0 : 1); i++) {
-    floorList.push(i === 0 ? "Ground Floor" : `Floor ${i}`);
-  }
+
+  
+  // Prepare the floor list to display
+const floorList = [];
+
+if (groundFloor) {
+  floorList.push("Ground Floor");
+}
+
+for (let i = groundFloor ? 1 : 0; i < outFloors.length; i++) {
+  floorList.push(`${i } Floor`);
+}
+
+// Handle change of room number
+const handleRoomChange = (floor, event) => {
+  const value = event.target.value;
+  setRooms((prev) => ({
+    ...prev,
+    [floor]: value, // Update the number of rooms for the specific floor
+  }));
+};
+
+// Toggle edit mode for floors
+const handleEditClick = (floor) => {
+  setIsEditing((prev) => ({
+    ...prev,
+    [floor]: !prev[floor], // Toggle edit state for the clicked floor
+  }));
+};
+
 
   return (
     <div className="flex flex-col items-center">
@@ -56,23 +82,47 @@ const BedInventory_3 = ({ buttonName = "Add Bed Inventory", totalFloors = 10 }) 
         <h3 className="text-lg font-semibold">Add floors</h3>
       </div>
 
+
+      {/* Floor List Section */}
       <div className="w-full max-w-4xl mt-4 space-y-4">
-        {floorList.map((floor, index) => (
-          <div key={index} className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md border">
-            <div className="flex items-center gap-2">
-              <img src={Staircase} alt="Staircase Icon" className="w-6 h-6" />
-              <span className="text-md font-medium">{floor}</span>
+        {floorList.length > 0 ? (
+          floorList.map((floor, index) => (
+            <div key={index} className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md border">
+              <div className="flex items-center gap-2">
+                <img src={Staircase} alt="Staircase Icon" className="w-6 h-6" />
+                <span className="text-md font-medium">{floor}</span>
+              </div>
+            
+              {/* Conditionally render button or input */}
+              {isEditing[floor] ? (
+                <input
+                  type="number"
+                  value={rooms[floor] || ""}
+                  onChange={(event) => handleRoomChange(floor, event)}
+                  className="px-2 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D]"
+                />
+              ) : (
+                <button
+                  onClick={() => handleEditClick(floor)}
+                  className="px-4 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D]"
+                >
+                  Rooms
+                </button>
+              )}
             </div>
-            <button className="px-4 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D]">
-              Rooms
-            </button>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-gray-500 text-center mt-4">No floors selected</p>
+        )}
       </div>
 
-      <Button button="Continue" route="/next-page" />
+      <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base">
+        <span className="text-2xl">{nextButton}</span>
+      </button>
     </div>
   );
 };
 
 export default BedInventory_3;
+
+
