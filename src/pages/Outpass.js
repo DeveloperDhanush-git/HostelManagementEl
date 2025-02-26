@@ -35,7 +35,7 @@ const OutPass = () => {
       <Tabs tabs={tabs} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
 
       {/* OutPass List */}
-      <div className="mt-4 space-y-4 pb-20 px-2 sm:px-4">
+      <div className="mt-4 space-y-4 pb-20 px-2 sm:px-4 ml-4">
         {filteredOutpassData.length > 0 ? (
           filteredOutpassData.map((request) => (
             <div

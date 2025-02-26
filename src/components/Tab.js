@@ -2,7 +2,7 @@ import React from "react";
 
 const Tabs = ({ tabs, selectedTab, setSelectedTab }) => {
   return (
-    <div className="flex overflow-x-auto space-x-2 px-2 sm:justify-around">
+    <div className="flex overflow-x-auto space-x-2 px-2 sm:justify-around scrollbar-hide">
       {tabs.map((tab) => (
         <button
           key={tab}
@@ -14,6 +14,18 @@ const Tabs = ({ tabs, selectedTab, setSelectedTab }) => {
           {tab}
         </button>
       ))}
+      
+      {/* Custom CSS to Hide Scrollbar */}
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none; 
+        }
+
+        .scrollbar-hide {
+          -ms-overflow-style: none; 
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };

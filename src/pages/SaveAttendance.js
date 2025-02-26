@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import Header from "../components/Header";
-import TabComponent from "../components/Tab"; // Import the TabComponent
-import Calendar from "../components/Calender"; // Import the Calendar
+import TabComponent from "../components/Tab"; 
+import Calendar from "../components/Calender";
 
 const floors = ["GROUND", "FIRST", "SECOND", "THIRD", "FOURTH"];
 
@@ -34,6 +34,8 @@ const SaveAttendance = () => {
   const [selectedFloor, setSelectedFloor] = useState("GROUND");
   const [attendance, setAttendance] = useState(initialAttendanceData);
   const [selectedDate, setSelectedDate] = useState(new Date()); // Added state for calendar
+  const [searchQuery, setSearchQuery] = useState(""); // Search state
+  const [showSearch, setShowSearch] = useState(false); // Search toggle
 
   // Function to toggle student attendance status
   function toggleStatus(floor, id) {
@@ -49,17 +51,28 @@ const SaveAttendance = () => {
     });
   }
 
+  // Filter attendance based on search query
+  const filteredAttendance = attendance[selectedFloor].filter(
+    (student) =>
+      student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.room.includes(searchQuery)
+  );
+
   return (
     <div className="w-full">
-      {/* Header with Attendance Title & Calendar */}
-      <Header 
+      {/* Header with Search Bar Inside */}
+      <Header
         title={
           <div className="flex flex-col mt-4">
-            <span className="text-[14px] sm:text-[18px] font-semibold mb-2">Attendance</span>
+            <span className="text-[16px] sm:text-[18px] font-semibold mb-2">Attendance</span>
             <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
           </div>
-        } 
+        }
         icons={["search", "sliders"]}
+        onSearchClick={() => setShowSearch(!showSearch)}
+        showSearch={showSearch}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
       />
 
       {/* Floor Tabs with Horizontal Scroll */}
@@ -68,8 +81,8 @@ const SaveAttendance = () => {
       </div>
 
       {/* Attendance List */}
-      <div className="mt-4 space-y-4 pb-20">
-        {attendance[selectedFloor].map((student) => (
+      <div className="mt-4 space-y-4 pb-20 px-2 sm:px-4 ml-4">
+        {filteredAttendance.map((student) => (
           <div
             key={student.id}
             className="flex flex-col sm:flex-row justify-between items-center border border-[#69205D] border-2 rounded-lg p-4 shadow-md"

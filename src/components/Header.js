@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell, FaSearch, FaPlus, FaCog } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import FilterModal from "./FilterModal"; // Import the Filter Modal
 
 const iconsMap = {
   arrowLeft: FaArrowLeft,
@@ -10,45 +11,88 @@ const iconsMap = {
   bell: FaBell,
   search: FaSearch,
   plus: FaPlus,
-  cog: FaCog,
+  cog: FaCog
 };
 
-const Header = ({ title, icons, onSearchClick, onFilterClick }) => {
+const Header = ({ title, icons = [], onIconClick, searchQuery, setSearchQuery }) => {
   const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   return (
-    <div className="flex items-center space-x-2 py-4">
-      {/* Back Button */}
-      <FaArrowLeft
-        className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200"
-        onClick={() => navigate(-1)}
-      />
-
+    <>
       {/* Main Header */}
-      <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-20">
-        <span className="text-[14px] sm:text-[18px] font-semibold">{title}</span>
+      <div className="flex items-center space-x-2 py-4">
+        {/* Back Button */}
+        <button onClick={() => navigate(-1)} className="bg-transparent text-black rounded-lg cursor-pointer">
+          <FaArrowLeft className="text-xl" />
+        </button>
 
-        {/* Icons */}
-        <div className="flex space-x-3 gap-1">
-          {icons &&
-            icons.map((iconKey, index) => {
-              const IconComponent = iconsMap[iconKey];
-              if (!IconComponent) return null;
+        <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-20">
+          {/* Title */}
+          <span className="text-2xl  font-semibold">{title}</span>
 
-              return (
-                <IconComponent
-                  key={index}
-                  className="text-xl cursor-pointer"
-                  onClick={() => {
-                    if (iconKey === "search" && onSearchClick) onSearchClick();
-                    if (iconKey === "sliders" && onFilterClick) onFilterClick();
-                  }}
+          {/* Right Side - Icons & Search Bar */}
+          <div className="flex items-center space-x-3">
+            {/* Large Screen Search Bar - Toggled with Icon */}
+            {(icons || []).includes("search") && showSearch && (
+              <div className="hidden sm:flex items-center bg-white rounded-md px-3 py-2 border border-gray-300">
+                <FaSearch className="text-gray-600 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="bg-transparent text-black focus:outline-none"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
-              );
+              </div>
+            )}
+
+            {/* Search Icon - Click to Toggle Search Bar */}
+            {(icons || []).includes("search") && (
+              <button onClick={() => setShowSearch(!showSearch)} className="bg-transparent text-white p-2 rounded-lg cursor-pointer">
+                <FaSearch className="text-xl" />
+              </button>
+            )}
+
+            {/* Filter Icon */}
+            {(icons || []).includes("sliders") && (
+              <button onClick={() => setIsFilterOpen(true)} className="bg-transparent text-white p-2 rounded-lg cursor-pointer">
+                <FaSlidersH className="text-xl" />
+              </button>
+            )}
+
+            {/* Dynamic Icons */}
+            {(icons || []).map((iconKey, index) => {
+              if (iconKey === "search" || iconKey === "sliders") return null; // Skip already added icons
+              const IconComponent = iconsMap[iconKey];
+              return IconComponent ? (
+                <button key={index} className="bg-transparent text-white p-2 rounded-lg cursor-pointer" onClick={() => onIconClick && onIconClick(iconKey)}>
+                  <IconComponent className="text-xl" />
+                </button>
+              ) : null;
             })}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Search Bar - Visible BELOW the header on mobile screens */}
+      {showSearch && (icons || []).includes("search") && (
+        <div className="w-full px-4 mt-2 block sm:hidden mb-5 ml-5">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full px-3 py-2 bg-white text-black border border-gray-300 rounded-md focus:outline-none"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            autoFocus
+          />
+        </div>
+      )}
+
+      {/* Filter Modal */}
+      <FilterModal isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
+    </>
   );
 };
 

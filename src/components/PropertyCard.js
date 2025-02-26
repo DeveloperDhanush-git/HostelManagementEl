@@ -1,4 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import TotalTenantsImg from "../Assets/all_5619329-removebg-preview 1.png";
+import PendingImg from "../Assets/folder_2570388-removebg-preview 1.png";
+import PresentImg from "../Assets/calendar_17645758-removebg-preview 1.png";
+import AbsentImg from "../Assets/absent-removebg-preview 1.png";
 
 const PropertyCard = ({ name, image, address, totalTenants, pending, present, absent }) => {
   const navigate = useNavigate();
@@ -11,7 +15,7 @@ const PropertyCard = ({ name, image, address, totalTenants, pending, present, ab
         onClick={() => navigate("/save-attendance")}
       >
         {/* Top Section - Hostel Name & Address */}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
           {/* Left Section - Hostel Name & Icon */}
           <div className="flex flex-col items-center md:items-start w-full md:w-48">
             <h2 className="font-bold text-lg mb-2">{name}</h2>
@@ -27,12 +31,12 @@ const PropertyCard = ({ name, image, address, totalTenants, pending, present, ab
         </div>
 
         {/* Attendance Stats Section */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 p-3">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-4 p-3">
           {[
-            { label: "Total tenants", value: totalTenants, imgSrc: "/assets/all_5619329-removebg-preview 1.png" },
-            { label: "Pending", value: pending, imgSrc: "/assets/folder_2570388-removebg-preview 1.png" },
-            { label: "Present", value: present, imgSrc: "/assets/calendar_17645758-removebg-preview 1.png" },
-            { label: "Absent", value: absent, imgSrc: "/assets/absent-removebg-preview 1.png" },
+            { label: "Total tenants", value: totalTenants, imgSrc: TotalTenantsImg },
+            { label: "Pending", value: pending, imgSrc: PendingImg },
+            { label: "Present", value: present, imgSrc: PresentImg },
+            { label: "Absent", value: absent, imgSrc: AbsentImg },
           ].map((item, index) => (
             <div 
               key={index} 
