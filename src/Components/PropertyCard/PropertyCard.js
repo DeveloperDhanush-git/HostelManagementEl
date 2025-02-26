@@ -56,7 +56,7 @@ const PropertyCard = ({ buttonName = "Add Property" }) => {
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1" style={{ fontFamily: 'Montserrat' }}>
+    <div className="p-4 max-w-4xl mx-auto bg-#F7F7F7 rounded-lg mt-1" style={{ fontFamily: 'Montserrat' }}>
       <PropertyHeader buttonName={buttonName} />
       <PropertyDetails />
 
