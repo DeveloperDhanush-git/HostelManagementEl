@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import buildingIcon from "../assets/building_icon.png";
 import Staircase from "../assets/staircase.png";
@@ -10,7 +10,7 @@ const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Contin
   const { outFloors, groundFloor } = location.state || { outFloors: null, groundFloor: null };
 
   const [rooms, setRooms] = useState({}); // State to store the number of rooms for each floor
-  const [isEditing, setIsEditing] = useState({}); 
+  const [isEditing, setIsEditing] = useState({}); // State to track which floor is being edited
 
   useEffect(() => {
     if (outFloors === null || groundFloor === null) {
@@ -22,36 +22,33 @@ const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Contin
     return null; // Show nothing while data is being loaded
   }
 
-
-  
   // Prepare the floor list to display
-const floorList = [];
+  const floorList = [];
 
-if (groundFloor) {
-  floorList.push("Ground Floor");
-}
+  if (groundFloor) {
+    floorList.push("Ground Floor");
+  }
 
-for (let i = groundFloor ? 1 : 0; i < outFloors.length; i++) {
-  floorList.push(`${i } Floor`);
-}
+  for (let i = groundFloor ? 1 : 1; i < outFloors.length; i++) {
+    floorList.push(`${i} Floor`);
+  }
 
-// Handle change of room number
-const handleRoomChange = (floor, event) => {
-  const value = event.target.value;
-  setRooms((prev) => ({
-    ...prev,
-    [floor]: value, // Update the number of rooms for the specific floor
-  }));
-};
+  // Handle change of room number
+  const handleRoomChange = (floor, event) => {
+    const value = event.target.value;
+    setRooms((prev) => ({
+      ...prev,
+      [floor]: value, // Update the number of rooms for the specific floor
+    }));
+  };
 
-// Toggle edit mode for floors
-const handleEditClick = (floor) => {
-  setIsEditing((prev) => ({
-    ...prev,
-    [floor]: !prev[floor], // Toggle edit state for the clicked floor
-  }));
-};
-
+  // Toggle edit mode for floors
+  const handleEditClick = (floor) => {
+    setIsEditing((prev) => ({
+      ...prev,
+      [floor]: !prev[floor], // Toggle edit state for the clicked floor
+    }));
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -63,6 +60,7 @@ const handleEditClick = (floor) => {
           </div>
         </div>
       </div>
+
       {/* Property Selection Section */}
       <div className="w-full max-w-md mt-6">
         <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
@@ -82,7 +80,6 @@ const handleEditClick = (floor) => {
         <h3 className="text-lg font-semibold">Add floors</h3>
       </div>
 
-
       {/* Floor List Section */}
       <div className="w-full max-w-4xl mt-4 space-y-4">
         {floorList.length > 0 ? (
@@ -92,23 +89,26 @@ const handleEditClick = (floor) => {
                 <img src={Staircase} alt="Staircase Icon" className="w-6 h-6" />
                 <span className="text-md font-medium">{floor}</span>
               </div>
-            
-              {/* Conditionally render button or input */}
-              {isEditing[floor] ? (
-                <input
-                  type="number"
-                  value={rooms[floor] || ""}
-                  onChange={(event) => handleRoomChange(floor, event)}
-                  className="px-2 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D]"
-                />
-              ) : (
-                <button
-                  onClick={() => handleEditClick(floor)}
-                  className="px-4 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D]"
-                >
-                  Rooms
-                </button>
-              )}
+
+              <div className="flex items-center gap-4">
+               
+
+                {isEditing[floor] ? (
+                  <input
+                    type="text"
+                    value={rooms[floor] || ""}
+                    onChange={(event) => handleRoomChange(floor, event)}
+                    className="p-2 border rounded-md text-[#69205D] font-medium border-[#69205D] w-20"
+                  />
+                ) : (
+                  <button
+                    onClick={() => handleEditClick(floor)}
+                    className="px-3 py-2 border rounded-md text-[#69205D] font-medium border-[#69205D] w-20"
+                  >
+                    {rooms[floor] ? rooms[floor] : "Rooms"}
+                  </button>
+                )}
+              </div>
             </div>
           ))
         ) : (
@@ -116,13 +116,15 @@ const handleEditClick = (floor) => {
         )}
       </div>
 
-      <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base">
-        <span className="text-2xl">{nextButton}</span>
-      </button>
+      <button
+  className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base cursor-pointer"
+  onClick={() => navigate("/step3", { state: { outFloors, groundFloor, rooms } })}
+>
+  <span className="text-xl">{nextButton}</span>
+</button>
+
     </div>
   );
 };
 
 export default BedInventory_3;
-
-

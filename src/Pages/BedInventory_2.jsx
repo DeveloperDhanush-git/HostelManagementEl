@@ -121,7 +121,7 @@ const BedInventory_2 = ({ buttonName = "Add Bed Inventory",nextButton="Continue"
       </div>
 
       <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base" onClick={handleContinue} route='/step2'>
-          <span className="text-2xl">{nextButton}</span>
+          <span className="text-xl">{nextButton}</span>
         </button>
 
     </div>
