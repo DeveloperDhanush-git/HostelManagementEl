@@ -82,7 +82,7 @@ const SelectRole = () => {
 
                             {/* Sub-role Selection (Checkboxes) */}
                             {selectedRole === role && (
-                                <div className="p-4 bg-white rounded-md">
+                                <div className="p-4 bg-[#F7F7F7] rounded-md">
                                     {roles[role].subRoles.map((subRole) => (
                                         <div key={subRole} className="flex justify-between items-center my-2">
                                             <label className="text-gray-700">{subRole}</label>

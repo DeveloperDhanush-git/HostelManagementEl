@@ -8,7 +8,7 @@ import SelectProperty from "./Component/SelectProperty";
 function App() {
   return (
     
-    <div className="space-y-4 max-w-4xl mx-auto bg-[#F7F7F7] rounded-lg mt-1" style={{ fontFamily: "Montserrat" }}>
+    <div className="container mx-auto bg-white min-h-screen rounded-lg max-w-4xl flex flex-col" style={{ fontFamily: "Montserrat" }}>
 
       <Router>
         <Routes>
