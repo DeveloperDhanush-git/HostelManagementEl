@@ -2,7 +2,7 @@ import React from 'react';
 
 const BasicDetails = () => {
   return (
-    <div className="mb-4">
+    <div className="mb-4 ml-7">
       <h3 className="text-lg font-semibold mb-2">Basic Details</h3>
       <input
         type="text"

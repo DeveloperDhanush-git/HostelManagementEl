@@ -14,14 +14,14 @@ const AddressDetails = () => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 ml-7 ">
       <h3 className="text-lg font-semibold mb-2">Address</h3>
       <input
         type="text"
         name="pincode"
         value={address.pincode}
         onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-4 "
+        className="w-full p-2 border rounded-xl mb-4"
       />
       <input
         type="text"
