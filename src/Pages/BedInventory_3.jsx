@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import Header from "../Components/Header";
 import buildingIcon from "../assets/building_icon.png";
 import Staircase from "../assets/staircase.png";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Continue" }) => {
+const BedInventory_3 = ({ nextButton = "Next" }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { outFloors, groundFloor } = location.state || { outFloors: null, groundFloor: null };
@@ -51,40 +51,50 @@ const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Contin
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="p-4 max-w-4xl w-full bg-white rounded-lg mt-1">
-        <div className="flex items-center space-x-2 py-4">
-          <FaArrowLeft className="text-xl cursor-pointer" onClick={() => navigate(-1)} />
-          <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
-            <span className="text-xl font-semibold">{buttonName}</span>
-          </div>
-        </div>
+    <div className="container bg-white min-h-screen rounded-lg flex flex-col">
+    {/* Add Property Button */}
+    <div className="flex-grow p-4">
+    
+        <Header buttonName = "Add Bed Inventory"/>
+
+     {/* Center the Property Selection Section */}
+     <div className="w-full flex justify-center mt-6">
+  <div className="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+    
+    
+    {/* Property Card */}
+    <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
+      {/* Left Section - Name & Icon */}
+      <div className="flex flex-col items-center w-20">
+        <h2 className="font-bold text-md text-center whitespace-nowrap">
+          Maha Hostel
+        </h2>
+        <img src={buildingIcon} alt="Hostel Icon" className="w-14 h-14 mt-2" />
       </div>
 
-      {/* Property Selection Section */}
-      <div className="w-full max-w-md mt-6">
-        <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
-          <div className="flex flex-col items-center w-20">
-            <h2 className="font-bold text-md text-center whitespace-nowrap">Maha Hostel</h2>
-            <img src={buildingIcon} alt="Hostel Icon" className="w-14 h-14" />
-          </div>
-          <div className="bg-gray-200 p-3 rounded-md text-sm text-gray-600 flex-1">
-            No. 03, ABC Road, ABC Street, ABC Colony, ABC City, ABC <br /> State, <br /> 6xxxx6
-          </div>
-        </div>
+      {/* Right Section - Address */}
+      <div className="bg-gray-200 p-3 rounded-md text-sm text-gray-600 flex-1">
+        No. 03, ABC Road, ABC Street, ABC Colony, ABC City, ABC State,
+        <br /> 6xxxx6
       </div>
+
+     
+    </div>
+  </div>
+</div>
+
 
       {/* Step Progress */}
-      <div className="w-full max-w-4xl px-4 mt-6 text-left">
+      <div className="w-full max-w-4xl px-4 mt-6 text-left ml-6">
         <p className="text-sm text-blue-600 font-medium mb-1">STEP 2 of 3</p>
         <h3 className="text-lg font-semibold">Add floors</h3>
       </div>
 
       {/* Floor List Section */}
-      <div className="w-full max-w-4xl mt-4 space-y-4">
+      <div className=" mt-4 space-y-4 ml-4 p-4">
         {floorList.length > 0 ? (
           floorList.map((floor, index) => (
-            <div key={index} className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md border">
+            <div key={index} className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md border ">
               <div className="flex items-center gap-2">
                 <img src={Staircase} alt="Staircase Icon" className="w-6 h-6" />
                 <span className="text-md font-medium">{floor}</span>
@@ -116,13 +126,16 @@ const BedInventory_3 = ({ buttonName = "Add Bed Inventory", nextButton = "Contin
         )}
       </div>
 
+      <div className="p-4 ml-6">
       <button
   className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base cursor-pointer"
   onClick={() => navigate("/step3", { state: { outFloors, groundFloor, rooms } })}
 >
   <span className="text-xl">{nextButton}</span>
 </button>
+</div>
 
+    </div>
     </div>
   );
 };

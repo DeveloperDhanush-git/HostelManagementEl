@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
 import buildingIcon from "../assets/building_icon.png";
 import { useNavigate } from "react-router-dom";
+import Header from "../Components/Header";
 
-const BedInventory_2 = ({ buttonName = "Add Bed Inventory",nextButton="Continue"}) => {
+
+const BedInventory_2 = ({nextButton="Next"}) => {
   const navigate = useNavigate();
   const [floorCount, setFloorCount] = useState("");
   const [groundFloor, setGroundFloor] = useState(null);
@@ -49,41 +50,50 @@ const BedInventory_2 = ({ buttonName = "Add Bed Inventory",nextButton="Continue"
 
 
   return (
-    <div className="flex flex-col items-center">
-      {/* Navigation Header */}
-      <div className="p-4 max-w-4xl w-full bg-white rounded-lg mt-1">
-        <div className="flex items-center space-x-2 py-4">
-          <FaArrowLeft
-            className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200"
-            onClick={() => navigate(-1)}
-          />
-          <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
-            <span className="text-xl font-semibold">{buttonName}</span>
-          </div>
-        </div>
+    <div className="container bg-white min-h-screen rounded-lg flex flex-col">
+    {/* Add Property Button */}
+    <div className="flex-grow p-4">
+    
+        <Header buttonName="Add Property"/>
+    
+     
+
+      {/* Center the Property Selection Section */}
+      <div className="w-full flex justify-center mt-6">
+  <div className="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+    
+    
+    {/* Property Card */}
+    <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
+      {/* Left Section - Name & Icon */}
+      <div className="flex flex-col items-center w-20">
+        <h2 className="font-bold text-md text-center whitespace-nowrap">
+          Maha Hostel
+        </h2>
+        <img src={buildingIcon} alt="Hostel Icon" className="w-14 h-14 mt-2" />
       </div>
 
-      {/* Property Selection Section */}
-      <div className="w-full max-w-md mt-6">
-        <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
-          <div className="flex flex-col items-center w-20">
-            <h2 className="font-bold text-md text-center whitespace-nowrap">Maha Hostel</h2>
-            <img src={buildingIcon} alt="Hostel Icon" className="w-14 h-14" />
-          </div>
-          <div className="bg-gray-200 p-3 rounded-md text-sm text-gray-600 flex-1">
-            No. 03, ABC Road, ABC Street, ABC Colony, ABC City, ABC <br /> State, <br /> 6xxxx6
-          </div>
-        </div>
+      {/* Right Section - Address */}
+      <div className="bg-gray-200 p-3 rounded-md text-sm text-gray-600 flex-1">
+        No. 03, ABC Road, ABC Street, ABC Colony, ABC City, ABC State,
+        <br /> 6xxxx6
       </div>
 
-      {/* Step Progress */}
-      <div className="w-full max-w-4xl px-4 mt-6 text-left">
+     
+    </div>
+  </div>
+</div>
+
+
+     
+        {/* Step Progress */}
+      <div className="w-full max-w-4xl px-4 mt-6 text-left ml-6">
         <p className="text-sm text-blue-600 font-medium mb-1">STEP 1 of 3</p>
         <h3 className="text-lg font-semibold">Add floors</h3>
       </div>
 
       {/* Total Floors Input */}
-      <div className="w-full max-w-4xl px-4 mt-3">
+      <div className="w-full px-4 mt-3 ml-6">
         <label className="block text-gray-700 text-sm font-semibold mb-1">
           Total no. of floors:
         </label>
@@ -98,7 +108,7 @@ const BedInventory_2 = ({ buttonName = "Add Bed Inventory",nextButton="Continue"
       </div>
 
       {/* Ground Floor Selection */}
-      <div className="w-full max-w-4xl px-4 mt-4">
+      <div className="w-full px-4 mt-4 ml-6">
         <p className="text-sm text-gray-700 font-semibold mb-2">Is ground floor included?</p>
         <div className="flex gap-4">
           <button
@@ -120,11 +130,16 @@ const BedInventory_2 = ({ buttonName = "Add Bed Inventory",nextButton="Continue"
         </div>
       </div>
 
+        
+      </div>
+      <div className="p-4 ml-6">
       <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base" onClick={handleContinue} route='/step2'>
           <span className="text-xl">{nextButton}</span>
         </button>
-
-    </div>
+      </div>
+          
+      </div>
+    
   );
 };
 

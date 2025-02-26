@@ -11,8 +11,7 @@ import BedInventory_6 from './Pages/BedInventory_6';
 
 function App() {
   return (
-    <div className="space-y-4 max-w-4xl mx-auto p-6 bg-[#F7F7F7] shadow-xl 
-    rounded-lg mt-1 ">
+    <div>
     <Routes>
       <Route path='/' element={<BedInventory_1 />}/>
       <Route path='/step1' element={<BedInventory_2 />}/>
@@ -22,15 +21,15 @@ function App() {
       <Route path='/step5' element={<BedInventory_6 />}/>
     </Routes>
 
-    {/* <>
+     {/* <>
     <BedInventory_1 />
     <BedInventory_2 />
     <BedInventory_3 />
     <BedInventory_4 />
     <BedInventory_5 />
     <BedInventory_6 />
-    </> */}
-     
+    </>  */}
+      
      
     </div>
   );
