@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import buildingIcon from "../assets/building_icon.png";
+import buildingIcon from "../assets/buildingicon.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
 

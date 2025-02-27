@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
-import buildingIcon from "../assets/building_icon.png";
+import buildingIcon from "../assets/buildingicon.png";
 import Staircase from "../assets/staircase.png";
 import { useNavigate, useLocation } from "react-router-dom";
 

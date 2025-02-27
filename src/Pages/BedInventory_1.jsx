@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { FaArrowLeft } from "react-icons/fa";
-import buildingIcon from "../assets/building_icon.png";
+import buildingIcon from "../assets/buildingicon.png";
 import Button from "../Components/Button";
 import Header from "../Components/Header";
 

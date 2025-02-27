@@ -1,41 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const Button = ({
-  button = "Continue", // Provide default value to avoid undefined error
-  route = "/", // Default to home route if not provided
+  button,
+  route,
   size = "md",
   width = "full",
   defaultColor = "#69205D",
+  onClick, // Accept a custom click handler
 }) => {
   const navigate = useNavigate();
   const [color, setColor] = useState(defaultColor);
-
   const sizeClasses = {
     sm: "py-1 px-3 text-xs",
-    md: "py-2 px-4 text-xl",
-    lg: "py-3 px-5 text-xl",
+    md: "py-2 px-4 text-sm",
+    lg: "py-3 px-5 text-base",
   };
-
   const widthClasses = {
     full: "w-full",
     half: "w-1/2",
   };
-
-  const isComment = typeof button === "string" && button.includes("/*"); // Ensure button is a string before using includes()
-
-  const handleClick = () => {
-    if (!isComment) {
+  const isComment = button.includes("/*");
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e); // Trigger form submission if provided
+    } else if (route) {
       setColor("#69205D");
-    }
-    if (route) {
-      navigate(route); // Only navigate if route is valid
+      navigate(route);
     }
   };
-
   return (
     <button
-      className={`mt-3 rounded-md cursor-pointer justify-center ${sizeClasses[size]} ${widthClasses[width]} ${
+      className={`mt-3 rounded-md cursor-pointer justify-center text-xl ${sizeClasses[size]} ${widthClasses[width]} ${
         isComment
           ? "border border-[#69205D] text-[#69205D] bg-transparent"
           : "text-white"
@@ -47,5 +42,10 @@ const Button = ({
     </button>
   );
 };
-
 export default Button;
+
+
+
+
+
+
