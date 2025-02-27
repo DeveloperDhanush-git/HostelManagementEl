@@ -61,11 +61,11 @@ const PropertyCard = ({ buttonName = "Add Property" }) => {
       <PropertyDetails />
 
       <div className="p-4">
-        <h2 className="font- text-3xl ml-7 mb-2">Select those options which apply or are allowed.</h2>
+        <h2 className="font-semi-bold text-2xl ml-7 mb-2">Select those options which apply or are allowed.</h2>
 
 
         {/* Services Included in Rent */}
-        <div className="p-2 ml-7 rounded-md text-2xl flex justify-between items-center">
+        <div className="p-2 ml-7 rounded-md text-xl flex justify-between items-center">
           <span>Services Included in Rent</span>
           <button
             className="text-[#69205D] text-sm ml -7 font-semibold"
@@ -79,7 +79,7 @@ const PropertyCard = ({ buttonName = "Add Property" }) => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col text-1xl gap-3">
           {["WIFI", "Laundry", "Housekeeping", "Food", "Electricity"].map((service) => (
             <div key={service} className={`ml-13 ${service.toLowerCase()}`}>
               {renderOptions([service], whoCanStay, setWhoCanStay)}

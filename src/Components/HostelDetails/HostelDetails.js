@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation for retrieving passed data
+import React, { useState,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import RoomTypeSelection from './RoomTypeSelection';
 import SelectedRoomDetails from './SelectedRoomDetails';
 import ServicesFeaturesFurnishings from './ServicesFeaturesFurnishings';
@@ -8,11 +8,25 @@ import TermsOfAgreement from './TermsOfAgreement';
 import { FaArrowLeft, FaPen } from 'react-icons/fa';
 
 const HostelDetails = () => {
+  
   const navigate = useNavigate(); // Initialize navigate function
-  const { state } = useLocation(); // Retrieve state passed from EditPropertyDetails
-  const address = state ? state.address : {}; // Fallback to an empty object if no state is passed
 
-  // Initial state for room details (the state will be dynamically updated later)
+  const [address, setAddress] = useState({
+    propertyName: "",
+    pincode: "",
+    city: "",
+    state: "",
+    house: "",
+    locality: "",
+  });
+
+  // Fetch address from localStorage
+  useEffect(() => {
+    const savedAddress = JSON.parse(localStorage.getItem("propertyData"));
+    if (savedAddress) {
+      setAddress(savedAddress);
+    }
+  }, []);
   const [roomType, setRoomType] = useState('Single');
   const [selectedRoom, setSelectedRoom] = useState({
     type: 'Single Sharing Bed',
@@ -26,17 +40,6 @@ const HostelDetails = () => {
     propertyHouseRules: ['Non veg food is not allowed.', 'Smoking is not allowed.']
   });
 
-  // Effect to update the room details based on address changes (if needed)
-  useEffect(() => {
-    if (address.propertyName) {
-      setSelectedRoom((prevState) => ({
-        ...prevState,
-        propertyAddress: `${address.house}, ${address.locality}, ${address.city}, ${address.state} - ${address.pincode}`,
-      }));
-    }
-  }, [address]);
-
-  // Handle room type selection
   const handleRoomTypeClick = (type) => {
     setRoomType(type);
     
@@ -61,7 +64,7 @@ const HostelDetails = () => {
         rent: 5500,
         features: ['Attached Bathroom', 'Fan', 'Table'],
       },
-    };
+    }; 
 
     // Update selected room
     setSelectedRoom(roomData[type]);
@@ -82,7 +85,7 @@ const HostelDetails = () => {
         <div className="absolute top-10 right-4 z-10">
           <div
             className="w-10 h-10 flex mr-8 -12 items-center justify-center bg-white rounded-full shadow-md border border-gray-300 cursor-pointer"
-            onClick={() => navigate('/edit-property', { state: { address } })} // Pass address data when navigating to edit
+            onClick={() => navigate('/edit-property')} // Navigate on click
           >
             <FaPen className="text-xl text-black hover:text-gray-700 transition duration-200" />
           </div>
@@ -99,9 +102,13 @@ const HostelDetails = () => {
 
         {/* Hostel Details */}
         <div className="p-6 rounded-t-lg mr-6 mt-6 ml-6">
-          <div className="text-sm text-gray-600">CRIB005679</div>
-          <div className="text-2xl font-semibold">{address.propertyName || 'srii hostel Hostel'}</div>
-          <div className="text-sm text-gray-600">{`${address.house || 'NO.3'}, ${address.locality || 'sri Hostel'}, ${address.city || 'Cbe'}, ${address.state || 'Tamil Nadu'} - ${address.pincode || 'CRI005679'}`}</div>
+        <div className="text-sm text-gray-600">{address.pincode || "Enter Pincode"}</div>
+          <div className="text-2xl font-semibold">
+            {address.propertyName || "Enter Property Name"}
+          </div>
+          <div className="text-sm text-gray-600">
+            {`${address.house || "Enter House No"}, ${address.locality || "Enter Locality"}, ${address.city || "Enter City"}, ${address.state || "Enter State"} - ${address.pincode || "Enter Pincode"}`}
+          </div>
           <div className="text-xl text-gray-600 mt-4">Select Room Type</div>
         </div>
 
@@ -119,14 +126,18 @@ const HostelDetails = () => {
           <div className="mt-1">
             <div className="font-semibold text-lg">House Rules</div>
             <ul className="mt-2 text-sm text-gray-600 list-decimal list-inside space-y-2">
-              {selectedRoom.propertyHouseRules.map((rule, index) => (
-                <li key={index}>{rule}</li>
-              ))}
+              <li>Non veg food is not allowed.</li>
+              <li>Smoking is not allowed.</li>
+              <li>Drinking is not allowed.</li>
+              <li>Guardian is not allowed.</li>
+              <li>Visitors are not allowed.</li>
+              <li>Guests of opposite gender are not allowed.</li>
+              <li>Pets are not allowed.</li>
             </ul>
           </div>
         </div>
 
-        {/* Collection Details */}
+        {/* Collection */}
         <CollectionDetails selectedRoom={selectedRoom} />
 
         {/* Terms of Agreement */}

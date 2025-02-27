@@ -1,57 +1,26 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
-// AddressDetails Component
 const AddressDetails = ({ address, handleChange }) => {
   return (
     <div className="mb-4 ml-7">
       <h3 className="text-lg font-semibold mb-2">Address</h3>
-      <input
-        type="text"
-        name="pincode"
-        value={address.pincode}
-        onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-4"
-        placeholder="Enter pincode"
-      />
-      <input
-        type="text"
-        name="city"
-        value={address.city}
-        onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-4"
-        placeholder="Enter city"
-      />
-      <input
-        type="text"
-        name="state"
-        value={address.state}
-        onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-4"
-        placeholder="Enter state"
-      />
-      <input
-        type="text"
-        name="house"
-        value={address.house}
-        onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-4"
-        placeholder="Enter house details"
-      />
-      <input
-        type="text"
-        name="locality"
-        value={address.locality}
-        onChange={handleChange}
-        className="w-full p-2 border rounded-xl mb-12"
-        placeholder="Enter locality"
-      />
+      {["pincode", "city", "state", "house", "locality"].map((field) => (
+        <input
+          key={field}
+          type="text"
+          name={field}
+          value={address[field] || ""}
+          onChange={handleChange}
+          className="w-full p-2 border rounded-xl mb-4"
+          placeholder={`Enter ${field}`}
+        />
+      ))}
     </div>
   );
 };
 
-// BasicDetails Component
 const BasicDetails = ({ address, handleChange }) => {
   return (
     <div className="mb-4 ml-7">
@@ -59,7 +28,7 @@ const BasicDetails = ({ address, handleChange }) => {
       <input
         type="text"
         name="propertyName"
-        value={address.propertyName}
+        value={address.propertyName || ""}
         onChange={handleChange}
         className="w-full p-2 border rounded-xl mb-4"
         placeholder="Enter property name"
@@ -68,55 +37,62 @@ const BasicDetails = ({ address, handleChange }) => {
   );
 };
 
-// EditPropertyDetails Component
 const EditPropertyDetails = ({ buttonName = "Edit Property", nextButton = "Update Properties" }) => {
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
-  // State for address details
-  const [address, setAddress] = useState({
-    propertyName: "riya", // You can set default values if you want
-    pincode: "CRIB005679",
-    city: "Coimbatore",
-    state: "Tamil Nadu",
-    house: "No.03",
-    locality: "Ganapathy",
-  });
-
-  // Handle change in input fields
-  const handleChange = (e) => {
-    setAddress({ ...address, [e.target.name]: e.target.value });
+  // Retrieve stored data from localStorage (if available)
+  const initialData = JSON.parse(localStorage.getItem("propertyData")) || {
+    propertyName: "",
+    pincode: "",
+    city: "",
+    state: "",
+    house: "",
+    locality: "",
   };
 
-  // Function to handle the button click and navigate to the HostelDetails page
+  // State for form data
+  const [address, setAddress] = useState(initialData);
+
+  // Save data to local storage whenever the address state changes
+  useEffect(() => {
+    localStorage.setItem("propertyData", JSON.stringify(address));
+  }, [address]);
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAddress((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Handle Update Button Click (Patch values dynamically)
   const handleUpdateClick = () => {
-    navigate('/', { state: { address } }); // Passing address data to HostelDetails
+    navigate("/", { state: { address } });
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1 font-[Montserrat]" style={{ fontFamily: 'Montserrat' }}>
-      {/* Header Component */}
+    <div className="p-4 max-w-4xl mx-auto bg-white rounded-lg mt-1 font-[Montserrat]">
+      {/* Header */}
       <div className="flex items-center space-x-2 py-4">
         <FaTimes
           className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200"
-          onClick={() => navigate('/')} // Navigate on click
+          onClick={() => navigate("/")}
         />
         <div className="flex-grow bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
           <span className="text-2xl font-semibold">{buttonName}</span>
         </div>
       </div>
 
-      {/* Form Content */}
-      <div className="p-4 flex-grow">
-        {/* Basic Details */}
-        <BasicDetails address={address} handleChange={handleChange} />
+     
 
-        {/* Address Details */}
+      {/* Form Section */}
+      <div className="p-4 flex-grow">
+        <BasicDetails address={address} handleChange={handleChange} />
         <AddressDetails address={address} handleChange={handleChange} />
 
-        {/* Only Update Button */}
-        <div className="flex flex-col space-y-4">
+        {/* Update Button */}
+        <div className="flex flex-col space-y-4 mt-4">
           <button
-            onClick={handleUpdateClick} // Add the click handler here
+            onClick={handleUpdateClick}
             className="bg-[#69205D] text-white py-2 rounded-md w-full text-sm md:text-base"
           >
             {nextButton}
