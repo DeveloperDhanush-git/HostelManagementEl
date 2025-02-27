@@ -15,7 +15,7 @@ const TenantDetails = () => {
   const propertyData = formData || {
     name: "Default Property Name",
     address: "Default Address",
-    image: "assets/building icon.png",
+    image: "/assets/building icon.png",
   };
 
   // Local states for Tenant Details selections
@@ -40,6 +40,7 @@ const TenantDetails = () => {
       />
 
       <div className="mt-4 w-full flex-grow space-y-6">
+        <p className="text-[#0012B9] mt-2 ml-6">STEP 2 of 6</p>    
         <h2 className="font-bold text-lg mb-2 ml-6">Tenant Details</h2>
 
         {/* Who Can Stay Section */}

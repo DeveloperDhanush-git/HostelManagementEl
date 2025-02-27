@@ -7,13 +7,13 @@ import Header from "./Header";
 import Button from "./Button";
 
 const ROOM_TYPES = [
-  { label: "Single Sharing", icon: "single.png", key: "single", route: "/Page4" },
-  { label: "Double Sharing", icon: "double.png", key: "double", route: "/Page4" },
-  { label: "Triple Sharing", icon: "triple.png", key: "triple", route: "/Page4" },
-  { label: "3+ Sharing", icon: "3-share.png", key: "multi", route: "/Page4" },
+  { label: "Single Sharing", icon: "single.png", key: "Single", route: "/Page4" },
+  { label: "Double Sharing", icon: "double.png", key: "Double", route: "/Page4" },
+  { label: "Triple Sharing", icon: "triple.png", key: "Triple", route: "/Page4" },
+  { label: "3+ Sharing", icon: "3-share.png", key: "Multi", route: "/Page4" },
 ];
 
-const RoomOption = ({ buttonName = "Next", nextButton = "/next-route" }) => {
+const RoomOption = ({ buttonName = "Next", nextButton = "/Page7" }) => {
   const { formData } = useContext(FormDataContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +26,7 @@ const RoomOption = ({ buttonName = "Next", nextButton = "/next-route" }) => {
 
   // Compute room data dynamically
   const roomData = rooms.reduce((acc, room) => {
-    const key = room.type || "single";
+    const key = room.type || "Single";
     if (!acc[key]) {
       acc[key] = { count: 0, totalPrice: 0 };
     }
@@ -69,7 +69,7 @@ const RoomOption = ({ buttonName = "Next", nextButton = "/next-route" }) => {
         />
 
         <div className="ml-6 flex-grow">
-          <p className="text-[#0012B9] mt-2 ml-7">STEP 3 of 6</p>    
+          <p className="text-[#0012B9] mt-2 ">STEP 3 of 6</p>    
           <h2 className="font-bold text-lg mb-2">Room Options</h2>
 
           <div className="space-y-6 mt-4">

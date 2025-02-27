@@ -8,7 +8,7 @@ const TenantDetails = () => {
   const location = useLocation();
 
   // Get room type and previous state
-  const selectedRoom = location.state?.selectedRoom || "single";
+  const selectedRoom = location.state?.selectedRoom || "Single";
   const rooms = location.state?.rooms || [];
   const headerTitle = location.state?.headerTitle || ` ${selectedRoom} room option`; 
 

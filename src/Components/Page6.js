@@ -53,7 +53,7 @@ export default function SingleRoomOption() {
   );
 
   return (
-    <div className="mx-auto p-6 bg-white rounded-lg min-h-screen">
+    <div className="  bg-white min-h-screen rounded-lg  flex flex-col">
       <div className="flex-grow p-4">
       <Header title={headerTitle} />
         <div className="ml-6">
@@ -99,7 +99,7 @@ export default function SingleRoomOption() {
           </div>
         </div>
       </div>
-      <div className="p-4 ml-6 mt-113">
+      <div className="p-4 ml-6 ">
         <Button
           button="Proceed"
           route="/Add"

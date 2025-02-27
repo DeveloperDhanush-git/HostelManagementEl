@@ -8,13 +8,13 @@ const SingleRoomOption = ({ buttonName = "Next", nextButton = "/Page5" }) => {
     const location = useLocation();
 
     // Handle state safely
-    const selectedRoom = location.state?.selectedRoom ?? "single"; 
+    const selectedRoom = location.state?.selectedRoom ?? "Single"; 
     const rooms = location.state?.rooms ?? [];
 
     console.log("SingleRoomOption - Received state:", { selectedRoom, rooms });
 
     return (
-        <div className="min-h-screen p-6 bg-white  rounded-lg  flex flex-col">
+        <div className="  bg-white min-h-screen rounded-lg  flex flex-col">
             <div className="flex-grow p-4">
             {/* Header */}
             <Header title="Add Property" />

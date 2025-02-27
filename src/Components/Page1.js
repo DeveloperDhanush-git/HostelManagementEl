@@ -51,7 +51,7 @@ const AddProperty = () => {
       <div className="flex-grow p-4">
         <Header title="Add Property" />
         <div className="ml-6">
-          <p className="text-blue-600 text-sm mt-2 text-left">STEP 1 of 6</p>
+          <p className="text-[#0012B9]  text-sm mt-2 text-left">STEP 1 of 6</p>
           <h3 className="text-lg font-semibold mt-4 text-left">Basic Details</h3>
 
           <form ref={formRef} className="mt-4 space-y-4" onSubmit={handleSubmit}>
