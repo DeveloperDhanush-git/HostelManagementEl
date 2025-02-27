@@ -5,12 +5,16 @@ import { FormDataContext } from "./PropertyContext";
 import PropertyCard from "./Propertycard";
 import Header from "./Header";
 import Button from "./Button";
+import Single from "../assets/single.png";
+import Double from "../assets/double.png";
+import Triple from "../assets/triple.png";
+import Multi from "../assets/3-share.png"; 
 
 const ROOM_TYPES = [
-  { label: "Single Sharing", icon: "single.png", key: "Single", route: "/Page4" },
-  { label: "Double Sharing", icon: "double.png", key: "Double", route: "/Page4" },
-  { label: "Triple Sharing", icon: "triple.png", key: "Triple", route: "/Page4" },
-  { label: "3+ Sharing", icon: "3-share.png", key: "Multi", route: "/Page4" },
+  { label: "Single Sharing", icon: Single, key: "Single", route: "/Page4" },
+  { label: "Double Sharing", icon: Double, key: "Double", route: "/Page4" },
+  { label: "Triple Sharing", icon: Triple, key: "Triple", route: "/Page4" },
+  { label: "3+ Sharing", icon: Multi, key: "Multi", route: "/Page4" },
 ];
 
 const RoomOption = ({ buttonName = "Next", nextButton = "/Page7" }) => {
@@ -85,7 +89,8 @@ const RoomOption = ({ buttonName = "Next", nextButton = "/Page7" }) => {
                       </p>
                     ) : (
                       <p className="text-sm text-gray-700 mt-1">Total options in rent: {totalOptions}</p>
-                    )}
+                    )
+                    }
                   </div>
                 </div>
 

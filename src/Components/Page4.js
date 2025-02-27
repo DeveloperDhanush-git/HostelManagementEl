@@ -9,9 +9,9 @@ const SingleRoomOption = ({ buttonName = "Next", nextButton = "/Page5" }) => {
 
     // Handle state safely
     const selectedRoom = location.state?.selectedRoom ?? "Single"; 
-    const rooms = location.state?.rooms ?? [];
+    const room = location.state?.room ?? [];
 
-    console.log("SingleRoomOption - Received state:", { selectedRoom, rooms });
+    console.log("SingleRoomOption - Received state:", { selectedRoom, room });
 
     return (
         <div className="  bg-white min-h-screen rounded-lg  flex flex-col">
@@ -25,7 +25,7 @@ const SingleRoomOption = ({ buttonName = "Next", nextButton = "/Page5" }) => {
                         <span>Add Options</span>
                         <button 
                             className="text-[#69205D] flex items-center gap-1 cursor-pointer"
-                            onClick={() => navigate("/Page5", { state: { selectedRoom, rooms } })} 
+                            onClick={() => navigate("/Page5", { state: { selectedRoom, room } })} 
                         >
                             <FaPlus className="text-sm text-black" /> Add
                         </button>

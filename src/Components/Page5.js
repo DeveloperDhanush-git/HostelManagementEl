@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Button from "./Button";
+import Prop from '../assets/prop.png'
 
 const TenantDetails = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const TenantDetails = () => {
 
   // Get room type and previous state
   const selectedRoom = location.state?.selectedRoom || "Single";
-  const rooms = location.state?.rooms || [];
+  const room = location.state?.room || [];
   const headerTitle = location.state?.headerTitle || ` ${selectedRoom} room option`; 
 
   const featuresList = [
@@ -47,7 +48,7 @@ const TenantDetails = () => {
 
     const handleNext = () => {
       const newEntry = { features: selectedFeatures, totalPrice, manualAmount };
-      const updatedRooms = [...rooms, newEntry];
+      const updatedRooms = [...room, newEntry];
     
       console.log("Final state before navigation:", {
         selectedFeatures,
@@ -97,7 +98,7 @@ const TenantDetails = () => {
               >
                 <div className="flex items-center gap-3">
                   <img
-                    src="./assets/prop.png"
+                    src={Prop}
                     alt={feature.name}
                     className="w-7 h-7"
                   />

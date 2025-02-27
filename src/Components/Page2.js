@@ -4,6 +4,9 @@ import PropertyCard from "./Propertycard";
 import Button from "./Button";
 import Header from "./Header";
 import { FormDataContext } from "./PropertyContext";
+import Buildingicon from '../assets/buildingicon.png'; 
+import Prop from '../assets/prop.png';
+// Adjust according to folder structure
 
 
 
@@ -15,7 +18,7 @@ const TenantDetails = () => {
   const propertyData = formData || {
     name: "Default Property Name",
     address: "Default Address",
-    image: "/assets/building icon.png",
+    image: {Buildingicon}
   };
 
   // Local states for Tenant Details selections
@@ -49,7 +52,7 @@ const TenantDetails = () => {
           {["Male", "Female", "Others"].map((label) => (
             <label key={label} className="flex items-center justify-between cursor-pointer">
               <div className="flex items-center gap-2">
-                <img src="prop.png" alt={label} className="w-6 h-6" />
+                <img src={Prop} alt={label} className="w-6 h-6" />
                 <span>{label}</span>
               </div>
               <div
@@ -80,7 +83,7 @@ const TenantDetails = () => {
           {["Student", "Working professional"].map((label) => (
             <label key={label} className="flex items-center justify-between cursor-pointer">
               <div className="flex items-center gap-2">
-                <img src="prop.png" alt={label} className="w-6 h-6" />
+                <img src={Prop} alt={label} className="w-6 h-6" />
                 <span>{label}</span>
               </div>
               <div

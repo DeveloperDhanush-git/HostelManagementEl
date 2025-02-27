@@ -1,12 +1,12 @@
 import React from "react";
-// import SuccessIcon from "../assets/success.png";
+import SuccessIcon from "../assets/successimage.png";
 
 const SuccessScreen = ({name}) => {
   return (
     <div className="flex flex-col justify-between h-screen bg-[#F8F5F4] px-6">
       {/* Centered Content */}
       <div className="flex flex-col items-center justify-center flex-grow">
-        <img src="/assets/successimage.png" alt="Success Icon" />
+        <img src={SuccessIcon} alt="Success Icon" />
 
         <p className="text-gray-600 mt-2 text-lg font-medium">
           {name} added successfully

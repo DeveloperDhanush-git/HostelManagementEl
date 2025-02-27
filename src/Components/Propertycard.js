@@ -1,20 +1,21 @@
 import React, { useContext } from "react";
 import { FormDataContext } from "./PropertyContext";
+import BuildingIcon from "../assets/buildingicon.png"; 
 
 const PropertyCard = () => {
-  const { formData } = useContext(FormDataContext); // Get data from context
+  const { formData } = useContext(FormDataContext);
 
-  console.log("🔹 Rendering PropertyCard with formData:", formData); // Debugging log
+  console.log("🔹 Rendering PropertyCard with formData:", formData);
 
   return (
-    <div className="flex justify-center items-center  p-4">
+    <div className="flex justify-center items-center p-4">
       <div className="border-2 border-[#69205D] rounded-lg p-6 flex flex-col sm:flex-row items-center gap-8 shadow-md bg-white max-w-md w-full sm:max-w-md lg:max-w-lg">
         
-        {/* Left Section - Property Name & Logo */}
+       
         <div className="flex flex-col items-center gap-5 w-full sm:w-auto">
           <h2 className="font-bold text-md text-center">{formData?.name || "EL Codamics"}</h2>
           <img 
-            src={formData?.image || "assets/building icon.png"} 
+            src={formData?.image || BuildingIcon} 
             alt="Property Icon" 
             className="w-20 h-20"
           />
