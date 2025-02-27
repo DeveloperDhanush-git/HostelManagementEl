@@ -5,6 +5,8 @@ import Button from "./Button";
 import Header from "./Header";
 import { FormDataContext } from "./PropertyContext";
 
+
+
 const TenantDetails = () => {
   const { formData } = useContext(FormDataContext);
   const navigate = useNavigate();
@@ -106,7 +108,7 @@ const TenantDetails = () => {
 
       {/* Footer Button at the bottom */}
      </div>
-     <div  className="p-4">
+     <div  className="p-4 ml-6">
         <Button button="Next" route="/Add" onClick={handleSubmit} />
       </div>
     </div>

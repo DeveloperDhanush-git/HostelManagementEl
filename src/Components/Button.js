@@ -7,7 +7,7 @@ const Button = ({
   size = "md",
   width = "full",
   defaultColor = "#69205D",
-  onClick, // Accept a custom click handler (for form submission)
+  onClick, // Accept a custom click handler
 }) => {
   const navigate = useNavigate();
   const [color, setColor] = useState(defaultColor);
@@ -28,9 +28,7 @@ const Button = ({
   const handleClick = (e) => {
     if (onClick) {
       onClick(e); // Trigger form submission if provided
-    }
-
-    if (!isComment) {
+    } else if (route) {
       setColor("#69205D");
       navigate(route);
     }

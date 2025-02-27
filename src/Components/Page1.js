@@ -7,7 +7,7 @@ import { FormDataContext } from "./PropertyContext";
 const AddProperty = () => {
   const navigate = useNavigate();
   const { setFormData } = useContext(FormDataContext);
-  const formRef = useRef(null); // Create a form reference
+  const formRef = useRef(null);
 
   const [propertyName, setPropertyName] = useState("");
   const [totalBeds, setTotalBeds] = useState("");
@@ -19,20 +19,26 @@ const AddProperty = () => {
   const [locality, setLocality] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const address = `${houseNumber}, ${locality}, ${city}, ${stateValue}, ${pincode}`;
-    const propertyData = {
-      name: propertyName,
-      totalBeds,
-      vacantBeds,
-      address,
-    };
-
-    setFormData(propertyData);
-    navigate("/Details2page");
+  e.preventDefault();
+  
+  // Store address fields separately
+  const propertyData = {
+    name: propertyName,
+    totalBeds,
+    vacantBeds,
+    houseNumber,
+    locality,
+    city,
+    stateValue,
+    pincode,
   };
 
-  // Function to manually submit the form
+  console.log("Submitting form data:", propertyData); // Debugging log
+  setFormData(propertyData);
+  navigate("/Details2page");
+};
+
+
   const handleNextClick = (e) => {
     e.preventDefault();
     if (formRef.current) {
@@ -41,14 +47,13 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="  bg-white min-h-screen rounded-lg  flex flex-col">
+    <div className="bg-white min-h-screen rounded-lg flex flex-col">
       <div className="flex-grow p-4">
         <Header title="Add Property" />
         <div className="ml-6">
           <p className="text-blue-600 text-sm mt-2 text-left">STEP 1 of 6</p>
           <h3 className="text-lg font-semibold mt-4 text-left">Basic Details</h3>
 
-          {/* Form with ref */}
           <form ref={formRef} className="mt-4 space-y-4" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -80,13 +85,13 @@ const AddProperty = () => {
               value={pincode}
               onChange={(e) => setPincode(e.target.value)}
             />
-            <input
+             <input
               type="text"
               placeholder="City"
               className="w-full p-3 border rounded-md focus:outline-none text-sm"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-            />
+            />         
             <input
               type="text"
               placeholder="State"
@@ -94,25 +99,25 @@ const AddProperty = () => {
               value={stateValue}
               onChange={(e) => setStateValue(e.target.value)}
             />
-            <input
+             <input
               type="text"
               placeholder="House/Flat/Block No."
               className="w-full p-3 border rounded-md focus:outline-none text-sm"
               value={houseNumber}
               onChange={(e) => setHouseNumber(e.target.value)}
             />
-            <input
+                 <input
               type="text"
               placeholder="Locality"
               className="w-full p-3 border rounded-md focus:outline-none text-sm"
               value={locality}
               onChange={(e) => setLocality(e.target.value)}
             />
+            
           </form>
         </div>
       </div>
 
-      {/* Button outside the form that triggers form submission */}
       <div className="p-4 ml-6">
         <Button button="Next" route="/Details2page" onClick={handleNextClick} defaultColor="#69205D" />
       </div>

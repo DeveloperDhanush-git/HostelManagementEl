@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FormDataContext } from "./PropertyContext";
 
-const PropertyCard = ({ name, address, image }) => {
+const PropertyCard = () => {
+  const { formData } = useContext(FormDataContext); // Get data from context
+
+  console.log("🔹 Rendering PropertyCard with formData:", formData); // Debugging log
+
   return (
-    <div className="flex justify-center items-center h-full p-9">
-      <div className="border-2 border-[#69205D] rounded-md p-9 flex items-center gap-4 shadow-md bg-white max-w-md flex-shrink-0">
+    <div className="flex justify-center items-center  p-4">
+      <div className="border-2 border-[#69205D] rounded-lg p-6 flex flex-col sm:flex-row items-center gap-8 shadow-md bg-white max-w-md w-full sm:max-w-md lg:max-w-lg">
+        
         {/* Left Section - Property Name & Logo */}
-        <div className="flex flex-col items-center w-30">
-          <h2 className="font-bold text-md text-center whitespace-nowrap">
-            {name || "EL codamics"}
-          </h2>
-          <img src={image || "assets/building icon.png"} alt="Property Icon" className="w-20 h-20" />
+        <div className="flex flex-col items-center gap-5 w-full sm:w-auto">
+          <h2 className="font-bold text-md text-center">{formData?.name || "EL Codamics"}</h2>
+          <img 
+            src={formData?.image || "assets/building icon.png"} 
+            alt="Property Icon" 
+            className="w-20 h-20"
+          />
         </div>
 
         {/* Right Section - Address */}
-        <div className="bg-[#F7F7F7] p-2 rounded-md text-sm text-gray-600 w-70">
-          {(address || "EL codamics").split(",,").map((line, index) => (
-            <span key={index}>
-              {line.trim()}
-              <br />
-            </span>
-          ))}
+        <div className="bg-[#F7F7F7] p-3 rounded-md text-sm text-gray-600 w-full sm:w-2/3">
+          <p>{formData?.houseNumber || "N/A"}</p>
+          <p>{formData?.locality || "N/A"}</p>
+          <p>{formData?.city || "N/A"}</p>
+          <p>{formData?.stateValue || "N/A"}</p>
+          <p>{formData?.pincode || "N/A"}</p>
         </div>
       </div>
     </div>

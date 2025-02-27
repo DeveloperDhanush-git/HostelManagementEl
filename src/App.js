@@ -1,29 +1,29 @@
 // src/App.js
 import "./App.css";
-import Singleroomchoosing from "./Components/Singleroomchoosing";
-import Showingprice from "./Components/Showingprice";
+import Page5 from "./Components/Page5";
+import Page6 from "./Components/Page6";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Addrooms from "./Components/Addrooms";
-import SingleRoomOption from "./Components/SingleRoomoption";
-import Detailsfilling from "./Components/Detailsfilling";
-import Details2page from "./Components/Details2page";
+import Page3 from "./Components/Page3";
+import Page4 from "./Components/Page4";
+import Page1 from "./Components/Page1";
+import Page2 from "./Components/Page2";
 import { FormDataProvider } from "./Components/PropertyContext";
+import Home from "./Components/Home";
 
 function App() {
   return (
     <FormDataProvider>
-      <div className="space-y-4 max-w-4xl mx-auto p-6 rounded-lg mt-1 font-[Montserrat]">
+      
         <Router>
           <Routes>
-            <Route path="/" element={<Detailsfilling />} />
-            <Route path="/Details2page" element={<Details2page />} />
-            <Route path="/Add" element={<Addrooms />} />
-            <Route path="/SingleRoomchoosing" element={<Singleroomchoosing />} />
-            <Route path="/single-room" element={<Showingprice />} />
-            <Route path="/options" element={<SingleRoomOption />} />
+            <Route path="/" element={<Page1 />} />
+            <Route path="/Details2page" element={<Page2 />} />
+            <Route path="/Add" element={<Page3 />} />
+            <Route path="/Page4" element={<Page4 />} />
+            <Route path="/Page5" element={<Page5 />} />
+            <Route path="/page6" element={<Page6 />} />
           </Routes>
         </Router>
-      </div>
     </FormDataProvider>
   );
 }
