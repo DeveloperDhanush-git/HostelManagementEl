@@ -111,7 +111,7 @@ const AddTenant = () => {
 
       </div>
       </div>
-      <div className="ml-6">
+      <div className="ml-6 p-4 ">
 
         <Button button="Add Tenant" defaultColor="#69205D" route="/success" />
       </div>

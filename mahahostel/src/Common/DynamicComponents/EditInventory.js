@@ -68,7 +68,7 @@ export default function EditInventory() {
         </button>
       </div>
 
-      <div className="p-4 bg-white rounded  mt-2 mb-20">
+      <div className="p-4 bg-white rounded  mt-2 mb-30">
         {units.map((unit) => (
           <div key={unit.id} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-none">
             <div className="flex items-center space-x-2">

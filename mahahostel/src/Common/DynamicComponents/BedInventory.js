@@ -25,15 +25,27 @@ const PropertyDashboard = () => {
   const [selectedOption, setSelectedOption] = useState("Pending dues");
   const [isVacancyDropdownOpen, setIsVacancyDropdownOpen] = useState(false);
   const [selectedVacancy, setSelectedVacancy] = useState("Vacant, Occupied");
-  const [isBedDetailsOpen, setIsBedDetailsOpen] = useState(false); 
+  const [isBedDetailsOpen, setIsBedDetailsOpen] = useState(null); 
   const [occupiedSpaces, setOccupiedSpaces] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleIconClick = (iconKey) => {
     if (iconKey === "pencil") {
       navigate("/edit-hostel");
+    } else if (iconKey === "bed") {
+      setIsOpen(true);
     }
-
+  };
+  
+  const LegendItem = ({ bgColor, border, label }) => {
+    return (
+      <div className="flex flex-col items-center justify-between">
+        <div className={`w-16 h-23 rounded-md ${bgColor || ""} ${border || ""}`} />
+        <span className="text-sm mt-2">{label}</span>
+      </div>
+    );
   };
 
   useEffect(() => { 
@@ -64,6 +76,11 @@ const PropertyDashboard = () => {
     }
   };
 
+  const closePopup = () => {
+    setIsBedDetailsOpen(false);
+    setSelectedSpace(null);
+    setOccupiedSpaces([]); // Reset occupied spaces when popup closes
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-white rounded-lg mt-1"
@@ -73,7 +90,9 @@ const PropertyDashboard = () => {
 <Header title="Maha Hostel" icons={["pencil", "bed", "sliders"]} route="/" onIconClick={(icon) => {
     if (icon === "pencil") {
       navigate("/edit");
-    }   
+    } else if (icon === "bed") {
+      setIsOpen(true);
+    }
 }} />
 
       <div className="ml-6">
@@ -119,7 +138,7 @@ const PropertyDashboard = () => {
           <button className="bg-[#D8E0E6] text-black px-4 py-2 rounded-lg text-sm w-full" onClick={() => setIsVacancyDropdownOpen(!isVacancyDropdownOpen)}>
             {selectedVacancy} ▼
           </button>
-          {isVacancyDropdownOpen && (
+          {isVacancyDropdownOpen && ( 
             <div className="absolute bg-white shadow-md rounded-lg mt-1 w-full z-10">
               {["Vacant", "Occupied", "Both"].map((option) => (
                 <button key={option} className="w-full text-left px-4 py-2 hover:bg-gray-200" onClick={() => {
@@ -151,26 +170,29 @@ const PropertyDashboard = () => {
 </div>
 
 <div className="py-4 space-y-4">
-        {selectedFloor.rooms.map((roomId) => (
-          <div key={roomId} className="flex items-center space-x-6">
-            <button className="bg-[#69205D] text-white px-10 py-3 rounded-lg font-bold text-center">
-              {roomId}
-            </button>
-            <div className="grid grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((space) => (
-                <button
-                  key={`${roomId}-${space}`}
-                  className={`w-9 h-13 rounded-lg transition duration-300 flex items-center justify-center ${
-                    occupiedSpaces.includes(`${roomId}-${space}`) ? "bg-[#69205D]" : "bg-gray-300"
-                  }`}
-                  onClick={() => handleSpaceClick(roomId, space)}
-                >
-                </button>
-              ))}
+      {selectedFloor.rooms.map((roomId) => (
+        <div key={roomId} className="flex items-center space-x-6">
+          <button className="bg-[#69205D] text-white px-10 py-3 rounded-lg font-bold text-center">
+            {roomId}
+          </button>
+          <div className="grid grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((space) => (
+              <button
+                key={`${roomId}-${space}`}
+                className={`w-9 h-13 rounded-lg transition duration-300 flex items-center justify-center ${
+                  occupiedSpaces.includes(`${roomId}-${space}`) ? "bg-[#69205D]" : "bg-gray-300"
+                }`}
+                onClick={() => handleSpaceClick(roomId, space)}
+              >
+              </button>
+            ))}
+
             </div>
           </div>
-        ))}
-      </div>
+      ))}
+         </div> 
+      
+    
 
 {isBedDetailsOpen && selectedSpace && (
         <div 
@@ -186,13 +208,15 @@ transition-opacity duration-300 p-4"
             className="bg-white p-5 rounded-xl shadow-lg w-full max-w-sm popup-container"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="flex justify-between">
             <h2 className="text-lg font-semibold">Bed Details</h2>
-            <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
+            <div className="flex justify-between gap-2  text-sm mt-1 ">
               <span>🛏 {selectedSpace.room}</span>
               <span>👤 1</span>
-              <span className="bg-gray-300 text-xs px-2 py-1 rounded-md">VACANT</span>
+              <span className="bg-[#E0E0E0] text-xs font-bold px-2 py-1 ml-8 rounded-md">VACANT</span>
             </div>
-            <h3 className="text-green-600 font-bold text-xl mt-2">SINGLE</h3>
+            </div>
+            <h3 className="text-green-600 font-bold text-xl mt-4 flex justify-center">SINGLE</h3>
             <ul className="mt-3 text-gray-600">
               <li>✔ Attached Balcony</li>
               <li>✔ Attached Washroom</li>
@@ -208,9 +232,43 @@ transition-opacity duration-300 p-4"
           </motion.div>
         </div>
       )}
+
+
+      {/* Popup Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)]  flex items-center justify-center transition-opacity duration-300">
+          <motion.div
+            initial={{ y: 200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 200, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="bg-white p-6 rounded-lg shadow-lg  relative"
+          >
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              onClick={() => setIsOpen(false)}
+            >
+              ✖
+            </button>
+                {/* Bed Inventory Legend UI */}
+
+                <div className="p-4 text-center">
+      <h2 className="text-lg font-semibold mb-4">Bed Status Legend</h2>
+      <div className="flex flex-row gap-6">
+        <LegendItem border="border border-black" label="Vacant" />
+        <LegendItem bgColor="bg-[#C3E6CB] " label="Occupied" />
+        <LegendItem bgColor="bg-[#FFEB99]" label="Booked" />
+        <LegendItem bgColor="bg-[#D6A6B1]" label="Ending" />
       </div>
     </div>
+
+          </motion.div>
+        </div>
+      )}
     </div>
+      </div>
+    </div>
+   
   );
 }
 

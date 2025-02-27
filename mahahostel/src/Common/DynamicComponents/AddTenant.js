@@ -105,7 +105,7 @@ const AddTenant = () => {
       </select>
       
       <select
-        className="w-full border rounded-md p-2 mb-4"
+        className="w-full border rounded-md p-2 "
         value={noticePeriod}
         onChange={(e) => setNoticePeriod(e.target.value)}
       >
@@ -114,10 +114,12 @@ const AddTenant = () => {
           <option key={index} value={option}>{option}</option>
         ))}
       </select>
+
+    
       
     </div>
     </div>
-    <div className="ml-6">
+    <div className="ml-6 p-2 ">
 
       <Button button="Continue" defaultColor="#69205D" route="/addtenant2" />
     </div>

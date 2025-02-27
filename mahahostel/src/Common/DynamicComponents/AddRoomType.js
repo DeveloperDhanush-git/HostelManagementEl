@@ -75,7 +75,7 @@ const AddRoomType = () => {
          
         </div>
       </div>
-      <div className="p-4">
+      <div className="ml-6 p-4">
       <Button button="Save" defaultColor="#69205D" route="/roomselect" />
       </div>
     </div>

@@ -18,9 +18,11 @@ const RoomSelection = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white rounded-lg mt-1">
+
+     <div className="flex-grow p-4">
       <Header title="Add Units" />
 
-      <div className="flex-grow p-4">
+     
         <div className="ml-6">
           {/* Hostel Info */}
           <div className="bg-gray-200 p-4 rounded-lg flex justify-between items-center">
@@ -71,6 +73,7 @@ const RoomSelection = () => {
             </ul>
           </div>
         </div>
+      
       </div>
       <div className="flex justify-between gap-4 items-center mt-4 ml-6 p-4">
   <Button button="Rent ₹2500" width="half" defaultColor="#69205D" />
@@ -81,6 +84,7 @@ const RoomSelection = () => {
     route="/edit"
   />
 </div>
+
     </div>
   );
 };
