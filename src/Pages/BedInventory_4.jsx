@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Header from "../Components/Header";
+import Button from "../Components/Button";
 import Floor from "../assets/floor.png";
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const BedInventory_4 = ({ buttonName = "Maha Hostel", addButton = "Add Beds" }) => {
+const BedInventory_4 = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { rooms = {} } = location.state || {};
@@ -74,12 +75,10 @@ const BedInventory_4 = ({ buttonName = "Maha Hostel", addButton = "Add Beds" }) 
       </div>
 
       <div className="p-4 ml-6">
-      <button
-        className="bg-[#69205D] text-white py-2 mt-6 rounded-md w-full text-sm md:text-base cursor-pointer"
+      <Button button="Add Beds"
         onClick={() => navigate('/step4', { state: { selectedBeds } })}
-      >
-        <span className="text-lg">{addButton}</span>
-      </button>
+      />
+       
       </div>
     </div>
     </div>

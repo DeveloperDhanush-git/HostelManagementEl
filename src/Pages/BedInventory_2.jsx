@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import buildingIcon from "../assets/buildingicon.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
+import Button from "../Components/Button";
 
 
-const BedInventory_2 = ({nextButton="Next"}) => {
+const BedInventory_2 = () => {
   const navigate = useNavigate();
   const [floorCount, setFloorCount] = useState("");
   const [groundFloor, setGroundFloor] = useState(null);
@@ -133,9 +134,8 @@ const BedInventory_2 = ({nextButton="Next"}) => {
         
       </div>
       <div className="p-4 ml-6">
-      <button className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base" onClick={handleContinue} route='/step2'>
-          <span className="text-xl">{nextButton}</span>
-        </button>
+      <Button button="Next" onClick={handleContinue} route='/step2'/>
+         
       </div>
           
       </div>

@@ -3,8 +3,9 @@ import Header from "../Components/Header";
 import buildingIcon from "../assets/buildingicon.png";
 import Staircase from "../assets/staircase.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import Button from "../Components/Button";
 
-const BedInventory_3 = ({ nextButton = "Next" }) => {
+const BedInventory_3 = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { outFloors, groundFloor } = location.state || { outFloors: null, groundFloor: null };
@@ -127,12 +128,10 @@ const BedInventory_3 = ({ nextButton = "Next" }) => {
       </div>
 
       <div className="p-4 ml-6">
-      <button
-  className="bg-[#69205D] text-white py-2 mt-3 rounded-md w-full text-sm md:text-base cursor-pointer"
+      <Button button="Next"
   onClick={() => navigate("/step3", { state: { outFloors, groundFloor, rooms } })}
->
-  <span className="text-xl">{nextButton}</span>
-</button>
+/>
+  
 </div>
 
     </div>
