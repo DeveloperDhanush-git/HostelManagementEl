@@ -197,7 +197,7 @@ const ManageStaff = () => {
                     </div>
                   ) : (
                     // 📌 Display Staff Details
-                    <div className="flex items-center w-full">
+                    <div className="flex items-center w-full bg-gray-50 p-1 rounded-lg">
                       <img
                         src="/Assest/contact-pic.png"
                         alt="Staff Icon"
@@ -205,7 +205,7 @@ const ManageStaff = () => {
                       />
                       <div>
                         <h3 className="font-semibold">{staff.name || "Unnamed Staff"}</h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-500">
                           {staff.subRoles.length > 0 ? staff.subRoles.join(", ") : "No Sub-Role Assigned"}
                         </p>
                       </div>
