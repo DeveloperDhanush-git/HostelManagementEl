@@ -46,7 +46,7 @@ const SelectRole = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen" onClick={() => setSelectedRole("")}>
+        <div className="container mx-auto bg-white min-h-screen rounded-lg  flex flex-col" style={{ fontFamily: "Montserrat" }} onClick={() => setSelectedRole("")}>
             {/* Header */}
             <Header title="Add Staff" />
 

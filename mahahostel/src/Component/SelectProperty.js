@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import PropertyCard from "./PropertyCard";
+import Hostel from "../Assest/hostel.png";
 
 const SelectProperty = () => {
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -12,13 +13,13 @@ const SelectProperty = () => {
     {
       id: 1,
       name: "Maha Hostel",
-      image: "/Assest/hostel.png",
+      image: Hostel,
       address: "No. 03, ABC Road\nABC Street, ABC Colony,\nABC City, ABC State-123456\n6xxxx6",
     },
     {
       id: 2,
       name: "Chennai Hostel",
-      image: "/Assest/hostel.png",
+      image: Hostel,
       address: "No. 03, XYZ Road\nXYZ Street, XYZ Colony,\nXYZ City, XYZ State-654321\n6xxxx6",
     },
   ];
@@ -58,7 +59,7 @@ const SelectProperty = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen" onClick={handleOutsideClick}>
+    <div className="container mx-auto bg-white min-h-screen rounded-lg  flex flex-col" style={{ fontFamily: "Montserrat" }} onClick={handleOutsideClick}>
       {/* Header */}
       <Header title="Add Staff" />
 

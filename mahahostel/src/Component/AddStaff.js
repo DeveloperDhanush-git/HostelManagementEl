@@ -33,7 +33,7 @@ const AddStaff = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen" onClick={handleOutsideClick}>
+    <div className="container mx-auto bg-white min-h-screen rounded-lg  flex flex-col" style={{ fontFamily: "Montserrat" }} onClick={handleOutsideClick}>
       {/* Header */}
       <Header title="Add Staff" />
 

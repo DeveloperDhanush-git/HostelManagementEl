@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
+import ContactPic from "../Assest/contact-pic.png";
 
 const ManageStaff = () => {
   const [staffList, setStaffList] = useState([]);
@@ -77,7 +78,7 @@ const ManageStaff = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen" onClick={() => setEditIndex(null)}>
+    <div className="container mx-auto bg-white min-h-screen rounded-lg  flex flex-col" style={{ fontFamily: "Montserrat" }} onClick={() => setEditIndex(null)}>
       <Header title="Manage Staff" icons={["search", "plus"]} />
 
       <div className="ml-4">
@@ -199,7 +200,7 @@ const ManageStaff = () => {
                     // 📌 Display Staff Details
                     <div className="flex items-center w-full bg-gray-50 p-1 rounded-lg">
                       <img
-                        src="/Assest/contact-pic.png"
+                        src={ContactPic}
                         alt="Staff Icon"
                         className="w-10 h-10 rounded-full mr-4"
                       />
