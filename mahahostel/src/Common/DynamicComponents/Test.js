@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Button from "./Button";
-import BuildingImg from "./Assests/hostel-building.png";
-
 const Add = () => {
   const navigate = useNavigate();
   const [gender, setGender] = useState("");
@@ -12,20 +10,15 @@ const Add = () => {
   return (
     <div
       className=" min-h-screen flex flex-col bg-white rounded-lg mt-1"
-      style={{ fontFamily: "Montserrat" }}
+
     >
       <div className="flex-grow p-4">
         <Header title="Add Tenant" />
 
         <div className="ml-6">
-          <div className="bg-gray-200 p-3 rounded-md flex justify-between items-center mt-4">
-            <h3 className="text-gray-700 text-sm md:text-base">
-              Maha Hostel 01
-            </h3>
-            <img src={BuildingImg} alt="Hostel Icon" className="w-10 h-10" />
-          </div>
+         
 
-          <p className="text-xs text-blue-500 mt-3">STEP 1 OF 3</p>
+          <p className="text-xs text-blue-500 mt-3">STEP 1 OF 5</p>
           <h3 className="text-lg font-semibold mt-2">Personal details</h3>
 
           <input
@@ -82,15 +75,17 @@ const Add = () => {
             ))}
           </div>
         </div>
-        
       </div>
+
       <div className="p-4 ml-6">
-      <Button button="/*Add from contacts" />
-<Button button="Continue"
-  defaultColor="#69205D"
-  route="/addtenant"
-  size="md"/>
-  </div>
+        <Button button="/*Add from contacts" />
+        <Button
+          button="Continue"
+          defaultColor="#69205D"
+          route="/propertylist" // Updated route here
+          size="md"
+        />
+      </div>
     </div>
   );
 };
