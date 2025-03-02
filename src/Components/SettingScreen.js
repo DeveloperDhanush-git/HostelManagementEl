@@ -59,7 +59,7 @@ const SettingScreen = () => {
         ].map((item, index) => (
           <div key={index} className="bg-gray-100 p-4 rounded-lg flex justify-between items-center mt-2">
             <div className="flex items-center gap-9"> {/* Adjusted gap between image and text */}
-              <img src={item.image} alt={item.text} className="w-5 h-5" />
+              <img src={item.image} alt={item.text} className="w-6 h-6" />
               <p className="text-gray-800">{item.text}</p>
             </div>
             <MdKeyboardArrowRight className="text-gray-500 text-lg" /> {/* Corrected Icon Usage */}
