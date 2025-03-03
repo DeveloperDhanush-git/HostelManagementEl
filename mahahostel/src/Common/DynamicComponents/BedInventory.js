@@ -172,7 +172,7 @@ const PropertyDashboard = () => {
 <div className="py-4 space-y-4">
       {selectedFloor.rooms.map((roomId) => (
         <div key={roomId} className="flex items-center space-x-6">
-          <button className="bg-[#69205D] text-white px-10 py-3 rounded-lg font-bold text-center">
+          <button className="bg-[#69205D] text-white px-10 py-3 w-32 rounded-lg font-bold text-center" >
             {roomId}
           </button>
           <div className="grid grid-cols-4 gap-4">
@@ -199,7 +199,7 @@ const PropertyDashboard = () => {
         className="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex justify-center items-center 
 transition-opacity duration-300 p-4"
 
-          onClick={() => setIsBedDetailsOpen(false)}
+          onClick={closePopup}
         >
           <motion.div
             initial={{ y: 300, opacity: 0 }}
