@@ -6,6 +6,9 @@ import RectangleMeter from "./Components/Meter";
 const Inventory = () => {
   const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    navigate("/bedInventory"); 
+  }
   return (
     <div 
       className="min-h-screen flex flex-col bg-white rounded-lg mt-1" 
@@ -22,6 +25,8 @@ const Inventory = () => {
         occupied="10"
         vacant="5"
         meterImage={meterImage}
+        navigate={navigate} 
+        onNavigate={handleNavigate} 
       />
     </div>
     </div>
