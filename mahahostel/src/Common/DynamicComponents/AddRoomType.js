@@ -65,7 +65,7 @@ const AddRoomType = () => {
                     }`}
                   >
                     {formData.features.includes(feature.label) && (
-                      <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                      <div className="w-2.5 h-2.5 bg-[#69205D] rounded-full"></div>
                     )}
                   </div>
                 </div>
