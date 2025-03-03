@@ -8,6 +8,7 @@ import AddCity from "./pages/AddCity";
 import AddProperties from "./pages/AddProperties";
 const App = () => {
   return (
+    <div style={{ fontFamily: "Montserrat" }}>
     <Router>
       <Routes>
         <Route path="/" element={<FirstPage />} />
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/addproperty" element={<AddProperties />} />
       </Routes>
     </Router>
+    </div>
   );
 };
 
