@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowLeft, FaBed, FaPencilAlt, FaSlidersH, FaBell, FaSearch, FaPlus, FaCog } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 const iconsMap = {
@@ -10,7 +11,8 @@ const iconsMap = {
   bell: FaBell,
   search: FaSearch,
   plus: FaPlus,
-  cog: FaCog
+  cog: FaCog,
+  settings: IoSettingsOutline
 };
 
 const Header = ({ title, icons }) => {

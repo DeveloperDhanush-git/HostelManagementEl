@@ -52,9 +52,9 @@ const TenantPage = () => {
                             <button
                                 key={tab}
                                 onClick={() => setSelectedTab(tab)}
-                                className={`px-6 py-2 rounded-lg transition-all duration-300 ${selectedTab === tab
+                                className={`cursor-pointer px-6 py-2 rounded-lg transition-all duration-300 ${selectedTab === tab
                                     ? "bg-[#69205D] text-white font-semibold"
-                                    : "bg-gray-300 text-gray-700 hover:bg-white hover:text-[#69205D]"
+                                    : "bg-gray-300 text-gray-700 hover:text-[#69205D]"
                                     }`}
                             >
                                 {tab.toUpperCase()}
@@ -65,9 +65,9 @@ const TenantPage = () => {
                     {/* Movein, Moveout, App */}
                     {selectedTab === "active" && (
                         <div className="bg-[#69205D] rounded-lg p-4 flex justify-between gap-4 mt-4">
-                            <button className="bg-gray-200 text-green-600 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold" onClick={() => setSelectedAction("movein")}>↩ Move-Ins</button>
-                            <button className="bg-gray-200 text-red-600 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold" onClick={() => setSelectedAction("moveout")}>↗ Move-Outs</button>
-                            <button className="bg-gray-200 text-green-700 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold" onClick={() => setSelectedAction("app")}>✅ App</button>
+                            <button className="bg-gray-200 text-green-600 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold cursor-pointer" onClick={() => setSelectedAction("movein")}>↩ Move-Ins</button>
+                            <button className="bg-gray-200 text-red-600 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold cursor-pointer" onClick={() => setSelectedAction("moveout")}>↗ Move-Outs</button>
+                            <button className="bg-gray-200 text-green-700 px-4 py-2 rounded-lg flex items-center gap-2 font-semibold cursor-pointer" onClick={() => setSelectedAction("app")}>✅ App</button>
                         </div>
                     )}
 
@@ -110,8 +110,8 @@ const TenantPage = () => {
                             <div className="mt-3 mb-2 text-center">
                                 <p className="text-sm text-gray-500 mb-1">Move-in completed</p>
                                 <div className="flex justify-center gap-2">
-                                    <button className={`px-4 py-2 rounded-lg font-medium ${moveInCompleted === "Yes" ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`} onClick={() => setMoveInCompleted("Yes")}>Yes</button>
-                                    <button className={`px-4 py-2 rounded-lg font-medium ${moveInCompleted === "No" ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`} onClick={() => setMoveInCompleted("No")}>No</button>
+                                    <button className={`cursor-pointer px-4 py-2 rounded-lg font-medium ${moveInCompleted === "Yes" ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`} onClick={() => setMoveInCompleted("Yes")}>Yes</button>
+                                    <button className={`cursor-pointer px-4 py-2 rounded-lg font-medium ${moveInCompleted === "No" ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`} onClick={() => setMoveInCompleted("No")}>No</button>
                                 </div>
                             </div>
                         )}
@@ -121,7 +121,7 @@ const TenantPage = () => {
                         {selectedAction !== "app" && (
                             <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                                 {durations.map(duration => (
-                                    <button key={duration} onClick={() => setSelectedDuration(duration)} className={`px-3 py-2 rounded-lg font-medium ${selectedDuration === duration ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`}>{duration}</button>
+                                    <button key={duration} onClick={() => setSelectedDuration(duration)} className={`cursor-pointer px-3 py-2 rounded-lg font-medium ${selectedDuration === duration ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-700"}`}>{duration}</button>
                                 ))}
                             </div>
                         )}
@@ -130,7 +130,7 @@ const TenantPage = () => {
                         {selectedAction === "app" && (
                             <div className="flex flex-col items-center gap-3">
                                 <div className="bg-gray-100 p-4 rounded-lg w-120 flex flex-col gap-2">
-                                    <label className="flex justify-between items-center">
+                                    <label className="flex justify-between items-center cursor-pointer">
                                         <span className="text-gray-800">Downloaded</span>
                                         <input
                                             type="radio"
@@ -140,7 +140,7 @@ const TenantPage = () => {
                                             onChange={() => setAppDownloaded("Downloaded")}
                                             className="form-radio text-[#69205D] accent-[#69205D]" />
                                     </label>
-                                    <label className="flex justify-between items-center">
+                                    <label className="flex justify-between items-center cursor-pointer">
                                         <span className="text-gray-800">Not Downloaded</span>
                                         <input
                                             type="radio"
@@ -165,8 +165,8 @@ const TenantPage = () => {
                                         setAppDownloaded(null);
                                     }
                                 }}
-                                className="border border-[#69205D] text-[#69205D] px-4 py-2 rounded-lg font-medium">Clear filter</button>
-                            <button onClick={() => setSelectedAction(null)} className="bg-[#69205D] text-white px-4 py-2 rounded-lg font-medium">Confirm</button>
+                                className="border border-[#69205D] text-[#69205D] px-4 py-2 rounded-lg font-medium cursor-pointer">Clear filter</button>
+                            <button onClick={() => setSelectedAction(null)} className="bg-[#69205D] text-white px-4 py-2 rounded-lg font-medium cursor-pointer">Confirm</button>
                         </div>
                     </div>
                 </div>
