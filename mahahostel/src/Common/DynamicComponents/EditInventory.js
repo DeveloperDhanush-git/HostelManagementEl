@@ -81,7 +81,7 @@ export default function EditInventory() {
             </div>
             <input
               type="checkbox"
-              className="w-5 h-5 border-gray-400 rounded cursor-pointer"
+              className="w-5 h-5 border-gray-400 rounded cursor-pointer accent-[#69205D]"
               checked={selectedUnits[unit.id] || false}
               onChange={() => toggleUnitSelection(unit.id)}
             />
