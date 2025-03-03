@@ -7,11 +7,12 @@ import Complaint from "./Components/Complaint";
 import Collection from "./Components/Collection";
 import Reconciliation from "./Components/Reconciliation";
 import Movein from "./Components/Movein";
-import Moveout from "./Components/Moveout"; // ✅ Ensure this component exists
+import Moveout from "./Components/Moveout"; 
 import TenantDetail from "./Components/TenantDetail";
 import Expenses from "./Components/Expenses";
-import MoveoutTenant from "./Components/MoveoutTenant"; // ✅ Ensure this component exists
-// import EKYC from "./Components/EKYC"; // ✅ If this page exists, import it properly
+import MoveoutTenant from "./Components/MoveoutTenant";
+// import EKYC from "./Components/EKYC"; 
+import MoveInChecklist from "./Components/MoveInChecklist";
 
 function App() {
   return (
@@ -33,9 +34,10 @@ function App() {
         <Route path="/report/expenses" element={<Expenses />} />
 
         {/* Tenant Settings Routes */}
-        <Route path="/move-out" element={<MoveoutTenant />} /> {/* ✅ Fix applied */}
+        <Route path="/move-out" element={<MoveoutTenant />} /> {/* ✅ Fixed */}
         {/* <Route path="/e-kyc-agreement" element={<EKYC />} /> */}
-      </Routes> {/* ✅ Properly closed Routes here */}
+        <Route path="/track-move-ins" element={<MoveInChecklist />} /> {/* ✅ Fixed */}
+      </Routes> 
     </BrowserRouter>
   );
 }
