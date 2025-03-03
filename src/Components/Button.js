@@ -22,7 +22,7 @@ const Button = ({
   const isComment = button.includes("/*");
   const handleClick = (e) => {
     if (onClick) {
-      onClick(e); // Trigger form submission if provided
+      onClick(e); 
     } else if (route) {
       setColor("#69205D");
       navigate(route);
@@ -38,7 +38,7 @@ const Button = ({
       style={!isComment ? { backgroundColor: color } : {}}
       onClick={handleClick}
     >
-      {button.replace("/*", "").trim()} {/* Remove comment indicator */}
+      {button.replace("/*", "").trim()} 
     </button>
   );
 };
