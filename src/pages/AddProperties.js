@@ -50,7 +50,7 @@ const AddProperties = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen p-6">
+    <div className="flex flex-col min-h-screen p-6 max-w-2xl mx-auto"> {/* Centered and width limited */}
       <div className="flex-grow p-4">
         {/* Logo */}
         <div className="flex flex-col items-center justify-center">
@@ -58,10 +58,10 @@ const AddProperties = () => {
         </div>
 
         {/* Steps Heading */}
-        <p className="text-m font-semibold mt-3 ml-10">Follow these steps</p>
+        <p className="text-m font-semibold mt-3 ml-4">Follow these steps</p>
 
         {/* Progress Steps */}
-        <div className="mt-6 space-y-6 ml-10 mr-10">
+        <div className="mt-6 space-y-6 ml-4 mr-4">
           {steps.map((step, index) => (
             <div key={step.id} className={`flex items-start space-x-4 ${index + 1 < currentStep ? "opacity-50 text-gray-500" : ""}`}>
               {/* Step Number */}
@@ -72,8 +72,9 @@ const AddProperties = () => {
               {/* Step Indicator & Line */}
               <div className="flex flex-col items-center">
                 <div
-                  className={`w-5 h-5 flex items-center justify-center border-2 rounded-full ${index + 1 <= currentStep ? "border-purple-500 text-purple-500" : "border-gray-400 text-gray-400"
-                    }`}
+                  className={`w-5 h-5 flex items-center justify-center border-2 rounded-full ${
+                    index + 1 <= currentStep ? "border-purple-500 text-purple-500" : "border-gray-400 text-gray-400"
+                  }`}
                 >
                   {index + 1 < currentStep && <div className="w-2 h-2 bg-purple-500 rounded-full"></div>}
                 </div>
@@ -117,15 +118,13 @@ const AddProperties = () => {
         </div>
       </div>
 
-        <button
-          onClick={() => (isLastStep ? navigate("/") : handleNextStep())}
-          disabled={!isStepComplete()} // Disable until all required fields are filled
-          className={`mt-6 w-full p-3 rounded-md ${isStepComplete() ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-500"}`}
-        >
-          {isLastStep ? "Finish" : "Continue"}
-        </button>
-     
-
+      <button
+        onClick={() => (isLastStep ? navigate("/") : handleNextStep())}
+        disabled={!isStepComplete()} // Disable until all required fields are filled
+        className={`mt-6 w-full p-3 rounded-md text-lg py-4 px-6 ${isStepComplete() ? "bg-[#69205D] text-white" : "bg-gray-300 text-gray-500"}`}
+      >
+        {isLastStep ? "Finish" : "Continue"}
+      </button>
     </div>
   );
 };

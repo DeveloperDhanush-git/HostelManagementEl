@@ -9,13 +9,16 @@ const Verifyno = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="flex-grow p-4">
+    <div className="flex flex-col items-center justify-between min-h-screen max-w-2xl mx-auto text-center p-6">
+      {/* Content Section */}
+      <div className="flex-grow p-4 flex flex-col items-center justify-center">
+        {/* Illustration */}
         <div className="flex items-center justify-center">
           <img src={illustration} alt="OTP Illustration" className="w-60 h-60 mb-6 mt-5" />
         </div>
+
         {/* Centered Content */}
-        <div className="flex flex-col items-center text-center mt-10">
+        <div className="flex flex-col items-center mt-10">
           {/* Title & Subtitle */}
           <p className="text-[28px] font-semibold tracking-[2px]">Enter verification code</p>
           <p className="text-sm tracking-[1px] text-gray-500">
@@ -42,14 +45,15 @@ const Verifyno = () => {
         </div>
 
         {/* Terms & Privacy */}
-        <p className="text-xs text-gray-500 mt-4 text-center">
+        <p className="text-xs text-gray-500 mt-4">
           By continuing, I agree to the{" "}
           <span className="text-blue-500 underline">terms and conditions</span> and{" "}
           <span className="text-blue-500 underline">privacy policy</span>.
         </p>
       </div>
-      {/* Button */}
-      <div className="w-full p-6">
+
+      {/* Button at the Bottom */}
+      <div className="w-full p-2">
         <Button button="Continue" defaultColor="#69205D" route="/hostel-form" />
       </div>
     </div>

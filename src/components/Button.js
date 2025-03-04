@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Button = ({
   button,
   route,
-  size = "md",
+  size = "lg", // Set default to 'lg' for consistency
   width = "full",
   defaultColor = "#D8E0E6",
 }) => {
@@ -12,9 +12,9 @@ const Button = ({
   const [color, setColor] = useState(defaultColor);
 
   const sizeClasses = {
-    sm: "py-1 px-3 text-xs",
-    md: "py-2 px-4 text-sm",
-    lg: "py-3 px-5 text-base",
+    sm: "py-2 px-4 text-sm",
+    md: "py-3 px-5 text-base",
+    lg: "py-4 px-6 text-lg", // Ensure consistency
   };
 
   const widthClasses = {
@@ -33,7 +33,7 @@ const Button = ({
 
   return (
     <button
-      className={`mt-3 rounded-md cursor-pointer justify-center text-xl ${sizeClasses[size]} ${widthClasses[width]} ${
+      className={`mt-4 rounded-lg cursor-pointer justify-center text-xl ${sizeClasses[size]} ${widthClasses[width]} ${
         isComment
           ? "border border-[#69205D] text-[#69205D] bg-transparent"
           : "text-white"

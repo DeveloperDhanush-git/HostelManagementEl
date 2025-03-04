@@ -8,7 +8,7 @@ import AddCity from "./pages/AddCity";
 import AddProperties from "./pages/AddProperties";
 const App = () => {
   return (
-    <div style={{ fontFamily: "Montserrat" }}>
+    <div style={{ fontFamily: "Montserrat" }} className="">
     <Router>
       <Routes>
         <Route path="/" element={<FirstPage />} />

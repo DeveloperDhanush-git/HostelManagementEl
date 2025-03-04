@@ -10,8 +10,8 @@ const HostelForm = () => {
   const [selectedCities, setSelectedCities] = useState(location.state?.cities || []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="flex-grow p-6">
+    <div className="flex flex-col min-h-screen max-w-2xl mx-auto p-6">
+      <div className="flex-grow w-full max-w-2xl">
         {/* Title & Subtitle */}
         <div className="flex flex-col text-left">
           <h2 className="text-[28px] font-semibold tracking-[2px] text-[#69205D]">
@@ -75,8 +75,8 @@ const HostelForm = () => {
         </div>
       </div>
 
-      {/* Continue Button */}
-      <div className="p-6 w-full">
+      {/* Continue Button at the Bottom */}
+      <div className="w-full">
         <Button button="Continue" defaultColor="#69205D" route="/addproperty" />
       </div>
     </div>
