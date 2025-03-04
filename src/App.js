@@ -1,24 +1,18 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import HostelDetails from './Components/HostelDetails/HostelDetails';
-import EditPropertyDetails from './Components/EditPropertyDetails';
-import PropertyCard from './Components/PropertyCard/PropertyCard';
-import { SelectedRoomProvider } from './Components/SelectedRoomContext';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ComplaintPage from "./Components/MyComplaints";
+import ElectricalComplaintPage from "./pages/ElectricalComplaintPage";
+
 
 function App() {
-  return (
-    <SelectedRoomProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HostelDetails />} />
-          <Route path="/property-card" element={<PropertyCard />} />
-          <Route path="/edit-property" element={<EditPropertyDetails />} />
-        </Routes>
-      </Router>
-    </SelectedRoomProvider>
-
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<ComplaintPage />} />
+                <Route path="/complaints/electrical" element={<ElectricalComplaintPage />} />
+                
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
