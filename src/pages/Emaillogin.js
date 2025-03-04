@@ -8,38 +8,53 @@ const EmailLogin = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="flex-grow p-4">
-        <div className="flex items-center justify-center">
-          <img src={emailIcon} alt="Email Icon" className="w-60 h-60 mb-6 mt-5" />
+    <div className="flex flex-col items-center justify-between min-h-screen max-w-2xl mx-auto text-center p-6">
+      {/* Content Section */}
+      <div className="flex-grow flex flex-col justify-center items-center p-6 w-full">
+        
+        {/* Email Icon */}
+        <img src={emailIcon} alt="Email Icon" className="w-55 h-55 mb-6" />
+
+        <div>
+        <div className="w-full flex justify-start ml-5 mb-6">
+          <div className="relative w-18 h-18">
+            {/* Outer Border (Black Outline with Purple Fill) */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#69205D] rounded-lg border-2 border-black"></div>
+
+            {/* Inner Border (White Background with Blue Outline) */}
+            <div className="absolute top-2 left-2 w-full h-full bg-white rounded-lg border-2 border-[#05009F]"></div>
+
+            {/* Logo Image - Placed Above Borders */}
+            <img src={logo} alt="Sri Maha Hostel Logo" className="absolute top-0 left-2 w-full h-full rounded-lg z-10" />
+          </div>
         </div>
 
-        {/* Centered Content */}
-        <div className="flex flex-col items-center text-center">
-          <img src={logo} alt="Sri Maha Hostel Logo" className="w-20 h-20 mt-4" />
-          <p className="text-[28px] font-semibold tracking-[2px]">Enter Your Email ID</p>
-          <p className="text-sm tracking-[1px] text-gray-600">We'll send you an email verification code</p>
+        <p className="text-2xl font-semibold tracking-wider">Enter Your Email ID</p>
+        <p className="text-sm text-gray-600 mt-2">
+          We'll send you an email verification code
+        </p>
 
-          {/* Email Input Field */}
-          <div className="flex mt-4 border border-gray-300 bg-gray-200 rounded-md w-80">
-            <div className="flex-1 px-4 py-2">
+        {/* Centered Email Input Field with Adjusted Width */}
+        <div className="flex flex-col items-center w-full">
+          <div className="flex mt-4 border border-gray-300 bg-gray-200 rounded-md w-85">
+            <div className="flex-1 px-5 py-2">
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full bg-transparent outline-none text-gray-600"
+                className="w-full bg-transparent outline-none text-gray-600 tracking-widest"
               />
             </div>
           </div>
-
-          {/* Login via Mobile Number Link */}
-          <p
-            className="text-[#69205D] mt-4 cursor-pointer"
-            onClick={() => navigate("/login")}
-          >
-            Login via Mobile Number
-          </p>
         </div>
 
+        {/* Login via Mobile Number Link */}
+        <p
+          className="text-[#69205D] mt-4 cursor-pointer"
+          onClick={() => navigate("/login")}
+        >
+          Login via Mobile Number
+        </p>
+        </div>
         {/* Terms & Privacy */}
         <p className="text-xs text-gray-500 text-center mt-4">
           By continuing, I agree to the{" "}
@@ -49,7 +64,7 @@ const EmailLogin = () => {
       </div>
 
       {/* Continue Button */}
-      <div className="w-full p-6">
+      <div className="w-full p-2">
         <Button button="Continue" defaultColor="#69205D" route="/verifyno" />
       </div>
     </div>
