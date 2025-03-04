@@ -54,7 +54,7 @@ const Verifyno = () => {
 
       {/* Button at the Bottom */}
       <div className="w-full p-2">
-        <Button button="Continue" defaultColor="#69205D" route="/hostel-form" />
+        <Button button="Continue" defaultColor="#69205D" route="/mainpage" />
       </div>
     </div>
   );
