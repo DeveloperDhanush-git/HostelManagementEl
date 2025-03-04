@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ComplaintPage from "./Components/MyComplaints";
-import ElectricalComplaintPage from "./pages/ElectricalComplaintPage";
+import ComplaintCategoryPage from "./Components/ComplaintCategoryPage";
+import ComplaintDetailsPage from "./Components/ComplaintDetailsPage"
 
-
-function App() {
+const AppRoutes = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<ComplaintPage />} />
-                <Route path="/complaints/electrical" element={<ElectricalComplaintPage />} />
-                
+                <Route path="/complaints/:category" element={<ComplaintCategoryPage />} />
+                <Route path="/complaints/:category/:subcategory" element={<ComplaintDetailsPage />} />
             </Routes>
         </Router>
     );
-}
+};
 
-export default App;
+export default AppRoutes;
