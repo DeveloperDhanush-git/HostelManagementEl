@@ -5,6 +5,8 @@ import Services from "../components/Services"; // Import the Services Component
 import Amenities from "../components/Amenities";
 import Testimonials from "../components/Testimonial";
 import WhyMahaHostel from "../components/WhyMahaHostel";
+import BookingSection from "../components/BookingSection";
+import Footer from "../components/Footer"
 const MainPage = () => {
   return (
     <div>
@@ -25,11 +27,8 @@ const MainPage = () => {
       </section>
       <Testimonials/>
       <WhyMahaHostel/>
-
-      {/* Booking Section */}
-      <section id="booking" className="h-screen bg-gray-300 flex items-center justify-center">
-        <h2 className="text-4xl font-bold">Book Your Stay</h2>
-      </section>
+      <BookingSection/>
+      <Footer/>
     </div>
   );
 };
