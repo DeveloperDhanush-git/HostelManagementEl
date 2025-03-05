@@ -8,8 +8,8 @@ const MoveTenant = () => {
     const { selectedProperty, rentCycle, totalDue } = location.state || {};
 
     return (
-        <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
-            <div className="flex-grow p-4">
+        <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+            <div className="flex-grow">
                 <Header title="Move Tenant" />
 
                 <div className="ml-7 mr-4">
@@ -36,7 +36,7 @@ const MoveTenant = () => {
                     </div>
 
                     {/* Move-in Dues */}
-                    <div className="w-full bg-gray-100 p-4 rounded-lg mt-4">
+                    <div className="w-full bg-gray-100 p-4 rounded-lg mt-7">
                         <div className="flex justify-between items-center">
                             <span className="text-lg font-semibold">Move-in Dues</span>
                             <span className="text-blue-500 cursor-pointer">+ Add due</span>
@@ -58,7 +58,7 @@ const MoveTenant = () => {
             </div>
 
             {/* Move Tenant Button */}
-            <div className="ml-7 mr-2 p-4">
+            <div className="ml-4 p-4">
                 <button className="w-full p-3 bg-[#69205D] text-white font-semibold rounded-lg">
                     Move Tenant
                 </button>

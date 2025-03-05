@@ -39,7 +39,7 @@ export default function ShiftPage() {
 
     return (
         <div
-            className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl p-4 transition-all duration-300"
+            className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300"
             style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
 
 

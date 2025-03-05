@@ -66,7 +66,7 @@ const SelectUnit = () => {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl transition-all duration-300" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+        <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
             <div className={isModalOpen ? "opacity-50 flex-grow" : "opacity-100 flex-grow"}>
                 <Header title="Select unit" icons={["bed", "sliders"]} />
 

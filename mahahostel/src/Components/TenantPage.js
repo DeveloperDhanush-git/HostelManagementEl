@@ -37,7 +37,7 @@ const TenantPage = () => {
     }, [selectedAction]);
 
     return (
-        <div className="relative container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl transition-all duration-300"
+        <div className="relative container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300"
             style={{ fontFamily: "Montserrat" }}>
 
             <div className={selectedAction ? "opacity-50 transition-all duration-300" : "opacity-100"}>

@@ -17,7 +17,7 @@ const TenantDetails = () => {
 
     return (
         <div
-            className="relative container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl transition-all duration-300"
+            className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300"
             style={{ fontFamily: "Montserrat" }}>
 
             {/* Content with Background Dim on Modal Open */}
