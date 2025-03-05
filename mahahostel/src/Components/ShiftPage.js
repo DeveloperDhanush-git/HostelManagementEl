@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowLeft, FaSearch, FaTimes, FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 const properties = [
     { id: 1, name: "Property 1", location: "Prozone Mall, Coimbatore, Tamilnadu" },
@@ -39,76 +40,73 @@ export default function ShiftPage() {
     return (
         <div
             className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl p-4 transition-all duration-300"
-            style={{ fontFamily: "Montserrat", minHeight: "100vh" }}
-        >
+            style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+
+
             {/* Content with Background Dim on Modal Open */}
             <div className={isPopupOpen ? "opacity-50 flex-grow" : "opacity-100 flex-grow"}>
-                {/* Header */}
-                <div className="flex items-center space-x-3 mt-3">
-                    <FaArrowLeft
-                        className="text-xl cursor-pointer text-black hover:text-gray-700 transition duration-200"
-                        onClick={() => navigate(-1)}
-                    />
-                    <h2 className="text-xl font-bold text-black">Change Property</h2>
-                </div>
 
-                {/* Step Info */}
-                <p className="text-[#69205D] font-bold mt-5">Step 1 of 3</p>
-                <p className="text-black font-bold">Select property & unit</p>
+                <Header title="Change Property" />
 
-                {/* Search Box */}
-                <div className="bg-gray-100 p-4 rounded-lg mt-4 flex items-center space-x-2">
-                    <FaSearch className="text-black text-lg" />
-                    <input
-                        type="text"
-                        placeholder="Search property"
-                        className="w-full bg-transparent outline-none placeholder-gray-500"
-                    />
-                </div>
+                <div className="ml-7 mr-5">
+                    {/* Step Info */}
+                    <p className="text-[#69205D] font-bold mt-5">Step 1 of 3</p>
+                    <p className="text-black font-bold">Select property & unit</p>
 
-                {/* Property List */}
-                <div className="mt-4 mb-8 space-y-3 flex-grow">
-                    {properties.map((property) => (
-                        <div
-                            key={property.id}
-                            className={`relative p-4 rounded-lg flex justify-between items-center cursor-pointer shadow-md transition duration-200 border ${selectedProperty === property.id ? "bg-white shadow-lg border-[#69205D]" : "border-gray-300 bg-white"
-                                }`}
-                            onClick={() => setSelectedProperty(property.id)}
-                        >
-                            {/* Left-side Curved Border */}
-                            {selectedProperty === property.id && <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#69205D] rounded-l-full"></div>}
+                    {/* Search Box */}
+                    <div className="bg-gray-100 p-4 rounded-lg mt-4 flex items-center space-x-2">
+                        <FaSearch className="text-black text-lg" />
+                        <input
+                            type="text"
+                            placeholder="Search property"
+                            className="w-full bg-transparent outline-none placeholder-gray-500"
+                        />
+                    </div>
 
-                            <div className="ml-4">
-                                {/* "Current" Badge */}
-                                {selectedProperty === property.id && (
-                                    <span className="bg-[#69205D] text-white text-xs px-2 py-1 rounded-lg mb-1 inline-block">Current</span>
-                                )}
-                                {/* Property Name - Always Bold */}
-                                <p className="font-bold text-gray-900">{property.name}</p>
-                                <p className="text-gray-500 text-sm">{property.location}</p>
-                            </div>
-
-                            {/* Radio Button */}
+                    {/* Property List */}
+                    <div className="mt-4 mb-8 space-y-3 flex-grow">
+                        {properties.map((property) => (
                             <div
-                                className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedProperty === property.id ? "border-[#69205D]" : "border-gray-400"
+                                key={property.id}
+                                className={`relative p-4 rounded-lg flex justify-between items-center cursor-pointer shadow-md transition duration-200 border ${selectedProperty === property.id ? "bg-white shadow-lg border-[#69205D]" : "border-gray-300 bg-white"
                                     }`}
+                                onClick={() => setSelectedProperty(property.id)}
                             >
-                                {selectedProperty === property.id && <div className="w-3.5 h-3.5 bg-[#69205D] rounded-full"></div>}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+                                {/* Left-side Curved Border */}
+                                {selectedProperty === property.id && <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#69205D] rounded-l-full"></div>}
 
-            {/* Fixed Continue Button */}
-            <div className="w-full mt-auto mb-5">
-                <button
-                    className={`w-full p-4 text-white rounded-lg font-bold ${selectedProperty ? "bg-[#69205D]" : "bg-gray-400"}`}
-                    disabled={!selectedProperty}
-                    onClick={() => setIsPopupOpen(true)} // Open Popup
-                >
-                    Continue
-                </button>
+                                <div className="ml-4">
+                                    {/* "Current" Badge */}
+                                    {selectedProperty === property.id && (
+                                        <span className="bg-[#69205D] text-white text-xs px-2 py-1 rounded-lg mb-1 inline-block">Current</span>
+                                    )}
+                                    {/* Property Name - Always Bold */}
+                                    <p className="font-bold text-gray-900">{property.name}</p>
+                                    <p className="text-gray-500 text-sm">{property.location}</p>
+                                </div>
+
+                                {/* Radio Button */}
+                                <div
+                                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedProperty === property.id ? "border-[#69205D]" : "border-gray-400"
+                                        }`}
+                                >
+                                    {selectedProperty === property.id && <div className="w-3.5 h-3.5 bg-[#69205D] rounded-full"></div>}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Fixed Continue Button */}
+                <div className="mt-auto mb-5 ml-7 mr-4">
+                    <button
+                        className={`w-full p-4 text-white rounded-lg font-bold ${selectedProperty ? "bg-[#69205D]" : "bg-gray-400"}`}
+                        disabled={!selectedProperty}
+                        onClick={() => setIsPopupOpen(true)} // Open Popup
+                    >
+                        Continue
+                    </button>
+                </div>
             </div>
 
             {/* Popup Modal */}
