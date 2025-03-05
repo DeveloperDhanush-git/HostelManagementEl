@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Header from "./Header";
 import { LuCreditCard } from "react-icons/lu";
 import { MdEdit } from "react-icons/md";
@@ -59,9 +59,9 @@ const MoveTenant = () => {
 
             {/* Move Tenant Button */}
             <div className="ml-4 p-4">
-                <button className="w-full p-3 bg-[#69205D] text-white font-semibold rounded-lg">
+                <Link to="/"><button className="w-full p-3 bg-[#69205D] text-white font-semibold rounded-lg">
                     Move Tenant
-                </button>
+                </button></Link>
             </div>
         </div>
     );
