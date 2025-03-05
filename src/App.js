@@ -11,8 +11,22 @@ import Moveout from "./Components/Moveout";
 import TenantDetail from "./Components/TenantDetail";
 import Expenses from "./Components/Expenses";
 import MoveoutTenant from "./Components/MoveoutTenant";
-// import EKYC from "./Components/EKYC"; 
+import EKYC from "./Components/EKYC"; 
 import MoveInChecklist from "./Components/MoveInChecklist";
+import GuardianParent from "./Components/GuardianParent";
+import EditParentDetails from "./Components/EditParentDetails";
+import RentReminders from "./Components/RentReminders";
+import RentRecipts from "./Components/RentRecipts";
+import OnlinepPayment from "./Components/OnlinePayment";
+import PaymentVerification from "./Components/PaymentVerification";
+import Attendance from "./Components/Attendance";
+import Property1 from "./Components/Property1";
+import Property2 from "./Components/Property2";
+import Property3 from "./Components/Property3";
+import Property4 from "./Components/Property4";
+import Property5 from "./Components/Property5";
+import Property6 from "./Components/Property6";
+
 
 function App() {
   return (
@@ -34,9 +48,23 @@ function App() {
         <Route path="/report/expenses" element={<Expenses />} />
 
         {/* Tenant Settings Routes */}
-        <Route path="/move-out" element={<MoveoutTenant />} /> {/* ✅ Fixed */}
-        {/* <Route path="/e-kyc-agreement" element={<EKYC />} /> */}
-        <Route path="/track-move-ins" element={<MoveInChecklist />} /> {/* ✅ Fixed */}
+        <Route path="/move-out" element={<MoveoutTenant />} /> 
+        <Route path="/e-kyc-agreement" element={<EKYC />} />
+        <Route path="/track-move-ins" element={<MoveInChecklist />} /> 
+        <Route path="/guardian" element={<GuardianParent />} /> 
+        <Route path="/guardian/edit-parent-details" element={<EditParentDetails />} /> 
+        <Route path="/guardian/rent-reminder" element={<RentReminders />} /> 
+        <Route path="/rent-reminder" element={<RentReminders />} /> 
+        <Route path="/rent-receipts" element={<RentRecipts />} /> 
+        <Route path="/online-payment" element={<OnlinepPayment />} /> 
+        <Route path="/payment-verification" element={< PaymentVerification />} /> 
+        <Route path="/attendance-outpass" element={<Attendance />} /> 
+        <Route path="/property1" element={<Property1/>} /> 
+        <Route path="/property2" element={<Property2/>} /> 
+        <Route path="/property3" element={<Property3/>} /> 
+        <Route path="/property4" element={<Property4/>} /> 
+        <Route path="/property5" element={<Property5/>} /> 
+        <Route path="/property6" element={<Property6/>} /> 
       </Routes> 
     </BrowserRouter>
   );

@@ -45,8 +45,8 @@ const InventoryReport = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white min-h-screen max-w-4xl flex flex-col p-4 font-Montserrat">
-      <Header title="Inventory Record" />
+    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+      <Header title="Inventory Report" />
       <div className="flex-grow">
 <div>
       {/* Select Duration */}

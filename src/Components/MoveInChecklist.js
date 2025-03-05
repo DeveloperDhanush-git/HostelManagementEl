@@ -17,12 +17,12 @@ const MoveInChecklist = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white min-h-screen max-w-4xl flex flex-col p-4 font-sans">
+    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       {/* Header Component */}
       <Header title="Move-in Checklist" />
       
       {/* Property Details */}
-      <div className="ml-9 mt-4">
+      <div className="ml-10 mt-4">
         <h3 className="text-xl font-semibold text-[#69205D]">Maha Hostel</h3>
         <p className="text-gray-600 mt-1">
           No. 03, ABC Road
@@ -58,11 +58,11 @@ const MoveInChecklist = () => {
             title: "Upload house rules",
             desc: "Share the property guidelines that your tenants are required to follow.",
           },
-        ].map((item, index) => (
+         ].map((item, index) => (
           <div
             key={item.key}
-            className={`flex justify-between items-center p-4 ${
-              index !== 0 ? "border-t border-gray-300" : ""
+            className={`flex justify-between items-center p-4 ml-1 ${
+              index !== 0 ? "border-t border-gray-300 ml-1" : ""
             }`}
           >
             <div>
