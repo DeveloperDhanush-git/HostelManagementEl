@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import FilterComponent from "./Components/FilterComponent";
+import CourseList from "./Components/CourseList";
+import { courses } from "./Data/CourseData"; // Ensure this file exists
+import { applyFilters } from "./utils/filterCourses"; // Ensure this file exists
 
-function App() {
+export default function App() {
+  const [filteredCourses, setFilteredCourses] = useState(courses || []); // Ensure it's always an array
+
+  const handleFilterChange = (filters) => {
+    setFilteredCourses(applyFilters(filters, courses || [])); // Ensure courses is defined
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="max-full mx-auto p-6 flex item-left ">
+      {/* Left side - Filters */}
+      <div className="w-1/4 flex item-start ">
+        <FilterComponent onFilterChange={handleFilterChange} />
+      </div>
+
+      {/* Right side - Courses */}
+      <div className="w-3/4 pl-6">
+        <CourseList courses={filteredCourses} />
+      </div>
     </div>
   );
 }
 
-export default App;
