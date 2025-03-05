@@ -1,0 +1,10 @@
+export const applyFilters = (filters, courses) => {
+    return courses.filter((course) => {
+      return (
+        (filters.rating ? course.rating === filters.rating : true) &&
+        (filters.language.length > 0 ? filters.language.includes(course.language) : true) &&
+        (filters.category.length > 0 ? filters.category.includes(course.category) : true)
+      );
+    });
+  };
+  
