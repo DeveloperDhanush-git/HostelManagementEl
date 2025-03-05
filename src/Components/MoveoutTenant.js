@@ -26,7 +26,7 @@ const MoveoutTenant = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+<div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       {/* Header Component */}
       <Header title="Move-out Notice" />
 

@@ -16,7 +16,7 @@ const PaymentVerification = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+    <div className="container bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       <Header title="Payment Verification" />
       <p className="text-gray-500 text-sm mt-2 ml-8">
         By turning it off, tenants will not receive rent reminders.

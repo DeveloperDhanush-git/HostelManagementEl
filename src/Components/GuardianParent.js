@@ -4,7 +4,7 @@ import Header from "./Header";
 
 export default function GuardianParent() {
   return (
-    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col max-w-4xl" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+<div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       <Header title="Guardian/Parent" />
       <p className="mt-3 ml-9 text-gray-600 text-sm">
         Manage the guardian/parent settings for all your tenants

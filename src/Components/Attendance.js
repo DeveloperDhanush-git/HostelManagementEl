@@ -14,7 +14,7 @@ const properties = [
 
 const Attendance = () => {
   return (
-    <div className="container mx-auto bg-white min-h-screen max-w-4xl flex flex-col p-4 font-Montserrat">
+    <div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       <Header title="Outpass & attendance" />
       
       <p className="text-sm text-gray-500 mb-4 bg-gray-100 ml-8 p-2 rounded-md">6 Properties</p>
