@@ -23,12 +23,10 @@ const SelectUnit = () => {
     const [selectedVacancy, setSelectedVacancy] = useState("Vacant");
 
     useEffect(() => {
-        const propertyFromState = location.state?.selectedProperty;
+        const propertyFromState = location.state?.selectedPropertyName;
         const propertyFromStorage = localStorage.getItem("selectedProperty");
-        const storedDate = location.state?.selectedDate;
 
         setSelectedProperty(propertyFromState || propertyFromStorage || "Property 2");
-        setSelectedDate(storedDate ? new Date(storedDate) : new Date());
     }, [location.state]);
 
     useEffect(() => {
@@ -68,7 +66,17 @@ const SelectUnit = () => {
     return (
         <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
             <div className={isModalOpen ? "opacity-50 flex-grow" : "opacity-100 flex-grow"}>
-                <Header title="Select unit" icons={["bed", "sliders"]} />
+                <Header
+                    title={
+                        <span className="">
+                            <span className="font-semibold">Select Unit</span> &nbsp;
+                            <span className="text-sm">{selectedProperty}</span>
+                        </span>
+                    }
+                    icons={["bed", "sliders"]}
+                />
+
+
 
                 <div className="ml-7 mr-5">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-4">

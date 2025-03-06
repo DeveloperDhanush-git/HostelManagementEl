@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 
 const properties = [
-    { id: 1, name: "Property 1", location: "Prozone Mall, Coimbatore, Tamilnadu" },
-    { id: 2, name: "Property 2", location: "Gandhipuram, Coimbatore, Tamilnadu" },
-    { id: 3, name: "Property 3", location: "Ukkadam, Coimbatore, Tamilnadu" },
-    { id: 4, name: "Property 4", location: "Kuniyamuthur, Coimbatore, Tamilnadu" },
-    { id: 5, name: "Property 5", location: "Saravanampatti, Coimbatore, Tamilnadu" },
-    { id: 6, name: "Property 6", location: "Ganapathy, Coimbatore, Tamil Nadu" },
+    { id: 1, name: "Sam Hostel", location: "Prozone Mall, Coimbatore, Tamilnadu" },
+    { id: 2, name: "Maha Hostel", location: "Gandhipuram, Coimbatore, Tamilnadu" },
+    { id: 3, name: "Raj Hostel", location: "Ukkadam, Coimbatore, Tamilnadu" },
+    { id: 4, name: "Paradise Hostel", location: "Kuniyamuthur, Coimbatore, Tamilnadu" },
+    { id: 5, name: "Golden Hostel", location: "Saravanampatti, Coimbatore, Tamilnadu" },
+    { id: 7, name: "Silver Hostel", location: "Ganapathy, Coimbatore, Tamil Nadu" },
 ];
 
 export default function ShiftPage() {
@@ -144,17 +144,20 @@ export default function ShiftPage() {
                             <button
                                 className="bg-[#69205D] text-white px-4 py-2 rounded-lg w-full mt-3"
                                 onClick={() => {
-                                    localStorage.setItem("selectedProperty", selectedProperty); // Store property in localStorage
+                                    const selectedPropertyName = properties.find(p => p.id === selectedProperty)?.name; // Get property name
+                                    localStorage.setItem("selectedProperty", selectedPropertyName); // Store property in localStorage
                                     navigate("/select-unit", {
                                         state: {
                                             selectedProperty,
+                                            selectedPropertyName, // Send name to next page
                                             selectedDate,
-                                        }
+                                        },
                                     });
                                 }}
                             >
                                 Continue
                             </button>
+
                         </div>
                     </div>
                 </div>
