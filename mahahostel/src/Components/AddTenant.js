@@ -58,7 +58,7 @@ const AddTenant = () => {
                     <div className="w-full px-4 mt-4">
                         <div className="bg-gray-200 p-4 rounded-lg flex items-center justify-between">
                             <div>
-                                <div className="text-lg font-semibold">Property {selectedProperty}</div>
+                                <div className="text-lg font-semibold">{selectedProperty}</div>
                             </div>
                             <img src={buildingIcon} alt="Hostel" className="w-12 h-12" />
                         </div>
