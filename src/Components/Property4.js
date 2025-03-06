@@ -12,7 +12,7 @@ const Property4 = () => {
     <div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       {/* Page Content */}
       <div className="flex-grow">
-        <Header title="Property 4" />
+        <Header title="ABC Hostel" />
 
         {/* Toggle Switch */}
         <div className="flex justify-between ml-5 items-center mt-4 p-4">

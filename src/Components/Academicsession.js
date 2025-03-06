@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Header from "./Header";
 import { Search } from "@mui/icons-material";
@@ -16,7 +15,7 @@ const properties = [
   { id: "3", name: "House 3", location: "Ganapathy, Coimbatore" },
 ];
 
-const MoveInChecklist = () => {
+const MoveoutTenant = () => {
   const [search, setSearch] = useState("");
   const [switchState, setSwitchState] = useState(
     properties.reduce((acc, prop) => ({ ...acc, [prop.id]: true }), {})
@@ -29,7 +28,7 @@ const MoveInChecklist = () => {
   return (
 <div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       {/* Header Component */}
-      <Header title="Move-in Notice" />
+      <Header title="Academic Session" />
 
       {/* Search Input */}
       <div className="px-4 my-2 ml-5 mb-4 ">
@@ -82,4 +81,4 @@ const MoveInChecklist = () => {
   );
 };
 
-export default MoveInChecklist;
+export default MoveoutTenant;

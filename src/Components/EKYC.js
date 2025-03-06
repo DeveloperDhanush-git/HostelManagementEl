@@ -6,16 +6,20 @@ import Buildingg from "../Asset/buildingg.png";
 import Header from "./Header";
 
 // Property Card Component
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, index }) => {
   return (
     <div className="w-full bg-white rounded-lg shadow-md border-2 border-[#69205D] p-4 cursor-pointer">
-      <Link to={`/property/${property.id}`} className="block">
+      <Link to={`/agreement${index + 1}`} className="block">
         <div className="flex flex-col md:flex-row items-center gap-5">
           <div className="flex flex-col items-center w-full md:w-1/3">
             <p className="mb-3 font-bold text-md text-black text-center">
               {property.name}
             </p>
-            <img src={property.image} alt={property.name} className="w-20 h-20 object-cover" />
+            <img
+              src={property.image}
+              alt={property.name}
+              className="w-20 h-20 object-cover"
+            />
           </div>
           <div className="mt-4 p-2 bg-[#F7F7F7] rounded-md text-sm text-gray-600 w-full md:w-2/3">
             <p className="whitespace-pre-line break-words leading-5">
@@ -25,7 +29,7 @@ const PropertyCard = ({ property }) => {
         </div>
       </Link>
 
-      {/* Centered Property ID & Right-aligned WhatsApp button */}
+      {/* Centered ID Number & Right-aligned WhatsApp button */}
       <div className="border-t-2 border-[#69205D] mt-3 pt-2 flex items-center justify-between">
         <FiMoreHorizontal size={20} className="text-gray-500" />
         <p className="text-[#69205D] font-semibold text-lg text-center flex-1">
@@ -43,13 +47,26 @@ const PropertyCard = ({ property }) => {
 // Main Component (EKYC)
 const EKYC = () => {
   const [properties] = useState([
-    { id: "CRIB005679", name: "Maha Hostel", address: "No. 03, ABC Road, ABC Colony, ABC City, ABC State, 6xxxx6", image: Buildingg },
-    { id: "CRIB008123", name: "Chennai Hostel", address: "No. 05, XYZ Road, XYZ Colony, XYZ City, XYZ State, 7xxxx7", image: Buildingg },
+    {
+      id: "CRIB005679",
+      name: "Maha Hostel",
+      address: "No. 03, ABC Road, ABC Colony, ABC City, ABC State, 6xxxx6",
+      image: Buildingg,
+    },
+    {
+      id: "CRIB009876",
+      name: "Chennai Hostel",
+      address: "No. 05, XYZ Road, XYZ Colony, XYZ City, XYZ State, 7xxxx7",
+      image: Buildingg,
+    },
   ]);
 
   return (
-    <div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
-      <Header title="e-KYC & agreement" />
+    <div
+      className="container bg-white min-h-screen rounded-lg flex flex-col"
+      style={{ fontFamily: "Montserrat", minHeight: "100vh" }}
+    >
+      <Header title="e-KYC & Agreement" />
 
       {/* Property Count */}
       <div className="mt-2 ml-7">
@@ -59,9 +76,9 @@ const EKYC = () => {
       </div>
 
       {/* Property Cards */}
-      <div className="flex flex-col gap-4 mt-4 ml-7 ">
-        {properties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
+      <div className="flex flex-col gap-4 mt-4 ml-7">
+        {properties.map((property, index) => (
+          <PropertyCard key={property.id} property={property} index={index} />
         ))}
       </div>
     </div>

@@ -1,26 +1,15 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import Buildingg from "../Asset/buildingg.png";
 import Header from "./Header";
 
-const PropertyCard = ({ property, index }) => {
-  // Assign custom property links based on the index
-  const propertyLinks = [
-    "property1", // Maha Hostel
-    "property2", // Chennai Hostel
-    "property3", // Sri Hostel
-    "property4", // ABC Hostel
-    "property5", // ZZZ Hostel
-    "property6", // Rithi Hostel
-  ];
-
-  const propertyLink = propertyLinks[index] || property.id; // Default to ID if index is out of range
-
+// Property Card Component
+const PropertyCard = ({ property }) => {
   return (
     <div className="w-full bg-white rounded-lg shadow-md border-2 border-[#69205D] p-4 cursor-pointer">
-      <Link to={`/property/${propertyLink}`} className="block">
+      <Link to={`/property/${property.id}`} className="block">
         <div className="flex flex-col md:flex-row items-center gap-5">
           <div className="flex flex-col items-center w-full md:w-1/3">
             <p className="mb-3 font-bold text-md text-black text-center">
@@ -36,15 +25,20 @@ const PropertyCard = ({ property, index }) => {
         </div>
       </Link>
 
-      <div className="border-t-2 border-[#69205D] mt-3 pt-2 flex items-center justify-between">
+      {/* Centered Property ID & Right-aligned WhatsApp button */}
+      <div className="border-t-2 border-[#69205D] mt-3 pt-2 flex items-right justify-between">
         <FiMoreHorizontal size={20} className="text-gray-500" />
-        <p className="text-[#69205D] font-semibold text-lg">{property.id}</p>
+        <p className="text-[#69205D] font-semibold text-lg text-right flex-1">
+          {property.id}
+        </p>
+       
       </div>
     </div>
   );
 };
 
-const Attendance = () => {
+// Main Component (EKYC)
+const SalesSettings = () => {
   const [properties] = useState([
     { id: "CRIB005679", name: "Maha Hostel", address: "No. 03, ABC Road, ABC Colony, ABC City, ABC State, 6xxxx6", image: Buildingg },
     { id: "CRIB008123", name: "Chennai Hostel", address: "No. 05, XYZ Road, XYZ Colony, XYZ City, XYZ State, 7xxxx7", image: Buildingg },
@@ -55,8 +49,8 @@ const Attendance = () => {
   ]);
 
   return (
-    <div className="container bg-white min-h-screen rounded-lg flex flex-col" style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
-      <Header title="Attendance and Outpass" />
+    <div className="container  bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+      <Header title="Sales Settings" />
 
       {/* Property Count */}
       <div className="mt-2 ml-7">
@@ -66,13 +60,13 @@ const Attendance = () => {
       </div>
 
       {/* Property Cards */}
-      <div className="flex flex-col gap-4 mt-4 ml-7">
-        {properties.map((property, index) => (
-          <PropertyCard key={property.id} property={property} index={index} />
+      <div className="flex flex-col gap-4 mt-4 ml-7 ">
+        {properties.map((property) => (
+          <PropertyCard key={property.id} property={property} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Attendance;
+export default SalesSettings;

@@ -20,7 +20,7 @@ import Customersupport from "../Asset/customerservice.png";
 
 const SettingScreen = () => {
   return (
-    <div className="container bg-white min-h-screen rounded-lg flex flex-col " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300 " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       
       {/* Header */}
       <div className="bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
