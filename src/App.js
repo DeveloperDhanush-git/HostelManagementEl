@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SettingScreen from "./Components/SettingScreen";
 import Report from "./Components/Report";
@@ -40,6 +41,10 @@ import BankDetails from "./Components/BankDetails";
 import Success from "./Components/Success";
 import Agreement1 from "./Components/Agreement1";
 import Agreement2 from "./Components/Agreement2";
+import RentQR from "./Components/RentQR";
+import RentQRForm from "./Components/RentQRForm";
+import QRPage from "./Components/QRPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -62,11 +67,10 @@ function App() {
         {/* Tenant Settings Routes */}
         <Route path="/move-out" element={<MoveoutTenant />} />
         <Route path="/e-kyc-agreement" element={<EKYC />} />
-        <Route path="agreement1" element={< Agreement1/>} />
-        <Route path="agreement2" element={< Agreement2/>} />
+        <Route path="/agreement1" element={<Agreement1 />} />
+        <Route path="/agreement2" element={<Agreement2 />} />
         <Route path="/track-move-ins" element={<MoveInChecklist />} />
         <Route path="/guardian" element={<GuardianParent />} />
-       
         <Route path="/guardian/edit-parent-details" element={<EditParentDetails />} />
         <Route path="/guardian/rent-reminder" element={<RentReminders />} />
         <Route path="/rent-reminder" element={<RentReminders />} />
@@ -74,25 +78,33 @@ function App() {
         <Route path="/online-payment" element={<OnlinePayment />} />
         <Route path="/payment-verification" element={<PaymentVerification />} />
         <Route path="/attendance-outpass" element={<Attendance />} />
-        <Route path="property/property1" element={<Property1 />} />
-        <Route path="property/property2" element={<Property2 />} />
-        <Route path="property/property3" element={<Property3 />} />
-        <Route path="property/property4" element={<Property4 />} />
-        <Route path="property/property5" element={<Property5 />} />
-        <Route path="property/property6" element={<Property6 />} />
+
+        {/* Property Routes */}
+        <Route path="/property/property1" element={<Property1 />} />
+        <Route path="/property/property2" element={<Property2 />} />
+        <Route path="/property/property3" element={<Property3 />} />
+        <Route path="/property/property4" element={<Property4 />} />
+        <Route path="/property/property5" element={<Property5 />} />
+        <Route path="/property/property6" element={<Property6 />} />
+        <Route path="/property/CRIB005679" element={<Salesproperty1 />} />
+        <Route path="/property/CRIB008123" element={<Salesproperty2 />} />
+        <Route path="/property/CRIB005678" element={<Salesproperty3 />} />
+        <Route path="/property/CRIB008122" element={<Salesproperty4 />} />
+        <Route path="/property/CRIB005677" element={<Salesproperty5 />} />
+        <Route path="/property/CRIB008121" element={<Salesproperty6 />} />
+
+        {/* Other Routes */}
         <Route path="/academic-session" element={<Academicsession />} />
         <Route path="/market-place-listing" element={<SalesSettings />} />
         <Route path="/customer-support" element={<CustomerSupport />} />
-        <Route path="property/CRIB005679" element={<Salesproperty1 />} />
-        <Route path="property/CRIB008123" element={<Salesproperty2 />} />
-        <Route path="property/CRIB005678" element={<Salesproperty3 />} />
-        <Route path="property/CRIB008122" element={<Salesproperty4 />} />
-        <Route path="property/CRIB005677" element={<Salesproperty5 />} />
-        <Route path="property/CRIB008121" element={<Salesproperty6 />} />
-        <Route path="bank-account" element={<BankAccount />} />
-        <Route path="add-bank-account" element={<BankDetails />} />
-        <Route path="success" element={<Success />} />
+        <Route path="/bank-account" element={<BankAccount />} />
+        <Route path="/add-bank-account" element={<BankDetails />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/rent-qr" element={<RentQR />} />
+        <Route path="/next-page" element={<RentQRForm />} />
+        <Route path="/qr-code" element={<QRPage />} />
 
+        
       </Routes>
     </BrowserRouter>
   );

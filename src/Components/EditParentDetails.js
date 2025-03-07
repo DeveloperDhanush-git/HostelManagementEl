@@ -15,7 +15,7 @@ const properties = [
   { id: "3", name: "House 3", location: "Ganapathy, Coimbatore" },
 ];
 
-const MoveoutTenant = () => {
+const EditParentDetails = () => {
   const [search, setSearch] = useState("");
   const [switchState, setSwitchState] = useState(
     properties.reduce((acc, prop) => ({ ...acc, [prop.id]: true }), {})
@@ -81,4 +81,4 @@ const MoveoutTenant = () => {
   );
 };
 
-export default MoveoutTenant;
+export default EditParentDetails;
