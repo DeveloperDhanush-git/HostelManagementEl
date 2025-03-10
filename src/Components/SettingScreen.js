@@ -17,18 +17,18 @@ import Attendance from "../Asset/attendance.png";
 import Market from "../Asset/market.png";
 import Privacypolicy from "../Asset/policy.png";
 import Customersupport from "../Asset/customerservice.png";
-
+import Header from "./Header";
+import Button from "./Button";
 const SettingScreen = () => {
   return (
     <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300 " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       
-      {/* Header */}
-      <div className="bg-[#69205D] text-white p-4 flex justify-between items-center rounded-lg h-16">
-        <span className="text-2xl font-semibold">Settings</span>
-      </div>
+     
+        <Header title=" Settings" /> 
+     
 
       {/* Help Section */}
-      <div className="bg-gray-100 p-4 rounded-lg mt-4">
+      <div className="bg-gray-100  ml-7 p-4 rounded-lg mt-4">
         <div className="flex items-center gap-2">
           <img src={Image} alt="Help" className="w-10 h-10" />
           <div>
@@ -47,7 +47,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Analytics Section */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Analytics</h4>
         <Link to="/report">
           <div className="bg-gray-100 p-4 rounded-lg flex justify-between items-center mt-2 cursor-pointer">
@@ -61,7 +61,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Tenant Settings */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Tenant settings</h4>
         {[
           { image: MoveOutImage, text: "Move-out notice", link: "/move-out" },
@@ -83,7 +83,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Finance Settings */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Finance settings</h4>
         {[
           { image: BankReceipt, text: "Rent Reminder", link: "/rent-reminder" },
@@ -106,7 +106,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Operations */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Operations</h4>
         <Link to="/attendance-outpass">
           <div className="bg-gray-100 p-4 rounded-lg flex justify-between items-center mt-2">
@@ -120,7 +120,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Sales Settings */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Sales settings</h4>
         <Link to="/market-place-listing">
           <div className="bg-gray-100 p-4 rounded-lg flex justify-between items-center mt-2">
@@ -134,7 +134,7 @@ const SettingScreen = () => {
       </div>
 
       {/* Legal */}
-      <div className="mt-6">
+      <div className="mt-6 ml-7">
         <h4 className="text-[#69205D] font-medium">Legal</h4>
         {[
           { image: Privacypolicy, text: "Privacy policy", link: "/privacy-policy" },
@@ -152,11 +152,10 @@ const SettingScreen = () => {
         ))}
       </div>
 
-      {/* Logout Button */}
-      <button className="border border-[#69205D] text-[#69205D] mt-9 py-2 mb-6 rounded-md w-full text-2xl font-semibold">
-        Logout
-      </button>
-    </div>
+      <div className="mt-6 flex justify-center">
+              <Button button="Logout" />
+            </div>
+            </div>
   );
 };
 
