@@ -6,7 +6,7 @@ const Success = () => {
   const navigate = useNavigate(); 
 
   const handleDoneClick = () => {
-    // navigate("/bank-account"); // Navigate back to Bank Details page
+    navigate("/bank-account"); 
   };
 
   return (

@@ -43,6 +43,9 @@ import Agreement1 from "./Components/Agreement1";
 import Agreement2 from "./Components/Agreement2";
 import RentQR from "./Components/RentQR";
 import RentQRForm from "./Components/RentQRForm";
+import Step2 from "./Components/Step2";
+import Step3 from "./Components/Step3";
+import Step4 from "./Components/Step4";
 import QRPage from "./Components/QRPage";
 
 function App() {
@@ -102,8 +105,11 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/rent-qr" element={<RentQR />} />
         <Route path="/next-page" element={<RentQRForm />} />
+        <Route path="/step2" element={<Step2 />} />
+        <Route path="/step3" element={<Step3 />} />
+        <Route path="/step4" element={<Step4 />} />
         <Route path="/qr-code" element={<QRPage />} />
-
+       
         
       </Routes>
     </BrowserRouter>

@@ -21,7 +21,7 @@ import Header from "./Header";
 import Button from "./Button";
 const SettingScreen = () => {
   return (
-    <div className="container mx-auto bg-white min-h-screen rounded-lg flex flex-col transition-all duration-300 " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
+    <div className=" bg-white min-h-screen rounded-lg flex flex-col  " style={{ fontFamily: "Montserrat", minHeight: "100vh" }}>
       
      
         <Header title=" Settings" /> 
