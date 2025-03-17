@@ -24,15 +24,15 @@ const Attendance = () => {
     <div>
       <Header 
         title={
-          <div className="flex flex-col mt-4 ml-2">
-            <span className="text-[16px] sm:text-[18px] font-semibold mb-2">Attendance</span>
+          <div className="flex flex-col">
+            <span className="pt-4">Attendance</span>
             <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
           </div>
         }
       />
 
-      <div className="px-4 sm:px-12 mt-4">
-        <button className="bg-[#69205D] text-white px-6 py2 rounded-lg text-[14px] sm:text-[18px] ml-4 shadow-md cursor-pointer">
+      <div className="px-4 sm:px-18 mt-4">
+        <button className="bg-[#69205D] text-white px-6 py-3 rounded-lg text-[14px] sm:text-[18px] ml-4 shadow-md cursor-pointer">
           {propertyData.length} {propertyData.length === 1 ? "Property" : "Properties"}
         </button>
       </div>

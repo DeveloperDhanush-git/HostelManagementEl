@@ -2,7 +2,7 @@ import React from "react";
 
 const Tabs = ({ tabs, selectedTab, setSelectedTab }) => {
   return (
-    <div className="flex overflow-x-auto space-x-2 px-2 sm:justify-around scrollbar-hide">
+    <div className="flex overflow-x-auto space-x-2 px-2 sm:justify-between scrollbar-hide sm:w-full w-71 ml-7 pr-5">
       {tabs.map((tab) => (
         <button
           key={tab}

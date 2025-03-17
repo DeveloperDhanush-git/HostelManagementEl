@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import Header from "../components/Header";
 import TabComponent from "../components/Tab"; 
 import Calendar from "../components/Calender";
-
+import Button from "../components/Button"
 const floors = ["GROUND", "FIRST", "SECOND", "THIRD", "FOURTH"];
 
 const initialAttendanceData = {
@@ -33,102 +33,91 @@ const initialAttendanceData = {
 const SaveAttendance = () => {
   const [selectedFloor, setSelectedFloor] = useState("GROUND");
   const [attendance, setAttendance] = useState(initialAttendanceData);
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Added state for calendar
-  const [searchQuery, setSearchQuery] = useState(""); // Search state
-  const [showSearch, setShowSearch] = useState(false); // Search toggle
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
-  // Function to toggle student attendance status
   function toggleStatus(floor, id) {
-    setAttendance((prevData) => {
-      return {
-        ...prevData,
-        [floor]: prevData[floor].map((student) =>
-          student.id === id
-            ? { ...student, status: student.status === "present" ? "absent" : "present" }
-            : student
-        ),
-      };
-    });
+    setAttendance((prevData) => ({
+      ...prevData,
+      [floor]: prevData[floor].map((student) =>
+        student.id === id
+          ? { ...student, status: student.status === "present" ? "absent" : "present" }
+          : student
+      ),
+    }));
   }
 
-  // Filter attendance based on search query
   const filteredAttendance = attendance[selectedFloor].filter(
     (student) =>
-      student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.room.includes(searchQuery)
+      student.name.toLowerCase().includes(searchQuery.toLowerCase()) || student.room.includes(searchQuery)
   );
 
   return (
-    <div className="w-full">
-      {/* Header with Search Bar Inside */}
-      <Header
-        title={
-          <div className="flex flex-col mt-4">
-            <span className="text-[16px] sm:text-[18px] font-semibold mb-2">Attendance</span>
-            <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-          </div>
-        }
-        icons={["search", "sliders"]}
-        onSearchClick={() => setShowSearch(!showSearch)}
-        showSearch={showSearch}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+    <div className="flex flex-col min-h-screen">
+      {/* Content Section */}
+      <div className="flex-grow">
+        <Header
+          title={
+            <div className="flex flex-col mt-4">
+              <span className="text-[16px] sm:text-[18px] font-semibold mb-2">Attendance</span>
+              <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+            </div>
+          }
+          icons={["search", "sliders"]}
+          onSearchClick={() => setShowSearch(!showSearch)}
+          showSearch={showSearch}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
 
-      {/* Floor Tabs with Horizontal Scroll */}
-      <div className="w-full overflow-x-auto scrollbar-hide">
-        <TabComponent tabs={floors} selectedTab={selectedFloor} setSelectedTab={setSelectedFloor} />
-      </div>
+        <div>
+          <TabComponent tabs={floors} selectedTab={selectedFloor} setSelectedTab={setSelectedFloor} />
+        </div>
 
-      {/* Attendance List */}
-      <div className="mt-4 space-y-4 pb-20 px-2 sm:px-4 ml-4">
-        {filteredAttendance.map((student) => (
-          <div
-            key={student.id}
-            className="flex flex-col sm:flex-row justify-between items-center border border-[#69205D] border-2 rounded-lg p-4 shadow-md"
-          >
-            {/* Left Side - User Info */}
-            <div className="flex items-center space-x-4">
-              <FaUserCircle className="text-2xl text-gray-500" />
-              <div>
-                <p className="font-medium text-[18px] sm:text-[16px]">{student.name}</p>
-                <p className="text-gray-600 text-[15px] sm:text-[14px]">
-                  Room No: <span className="font-semibold">{student.room}</span> | Bed No:{" "}
-                  <span className="font-semibold">{student.bed}</span>
-                </p>
+        <div className="mt-4 space-y-4 pb-20 px-2 sm:px-4 ml-4">
+          {filteredAttendance.map((student) => (
+            <div
+              key={student.id}
+              className="flex flex-col sm:flex-row justify-between items-center border border-[#69205D] border-2 rounded-lg p-4 shadow-md"
+            >
+              <div className="flex items-center space-x-4">
+                <FaUserCircle className="text-2xl text-gray-500" />
+                <div>
+                  <p className="font-medium text-[18px] sm:text-[16px]">{student.name}</p>
+                  <p className="text-gray-600 text-[15px] sm:text-[14px]">
+                    Room No: <span className="font-semibold">{student.room}</span> | Bed No: {" "}
+                    <span className="font-semibold">{student.bed}</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex bg-gray-200 rounded-lg overflow-hidden mt-2 sm:mt-0">
+                <button
+                  className={`px-4 py-1 text-[14px] sm:text-[15px] cursor-pointer ${
+                    student.status === "present" ? "bg-[#224605] text-white" : "text-gray-600"
+                  }`}
+                  onClick={() => toggleStatus(selectedFloor, student.id)}
+                >
+                  Present
+                </button>
+                <button
+                  className={`px-4 py-1 text-[14px] sm:text-[15px] cursor-pointer ${
+                    student.status === "absent" ? "bg-[#FF0000] text-white" : "text-gray-600"
+                  }`}
+                  onClick={() => toggleStatus(selectedFloor, student.id)}
+                >
+                  Absent
+                </button>
               </div>
             </div>
-
-            {/* Toggle Button */}
-            <div className="flex bg-gray-200 rounded-lg overflow-hidden mt-2 sm:mt-0">
-              <button
-                className={`px-4 py-1 text-[14px] sm:text-[15px] cursor-pointer ${
-                  student.status === "present" ? "bg-[#224605] text-white" : "text-gray-600"
-                }`}
-                onClick={() => toggleStatus(selectedFloor, student.id)}
-              >
-                Present
-              </button>
-              <button
-                className={`px-4 py-1 text-[14px] sm:text-[15px] cursor-pointer ${
-                  student.status === "absent" ? "bg-[#FF0000] text-white" : "text-gray-600"
-                }`}
-                onClick={() => toggleStatus(selectedFloor, student.id)}
-              >
-                Absent
-              </button>
-            </div>
-          </div>
-        ))}
-
-        {/* Save Button */}
-        <div className="mt-6 w-full px-2 sm:px-0">
-          <button
-            className="p-4 bg-[#69205D] text-white rounded-lg text-[15px] sm:text-lg font-semibold w-full shadow-md cursor-pointer"
-          >
-            Save Attendance
-          </button>
+          ))}
         </div>
+      </div>
+
+      {/* Fixed Button Section */}
+      <div className="ml-4">
+        <Button button="Save Attendance" route="/save" size="lg" width="full" color="#09205D"/>
       </div>
     </div>
   );

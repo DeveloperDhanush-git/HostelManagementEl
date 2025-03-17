@@ -8,7 +8,7 @@ const Home = () => {
     <div className="">
       <Header title="Outpass & Attendance" icons={["cog"]} />
 
-      <div className="max-w-4xl mx-auto space-y-4 p-2 sm:p-4">
+      <div className="">
         <div className="grid grid-cols-1 gap-4">
           <Card 
             title="Attendance" 

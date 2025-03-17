@@ -6,7 +6,7 @@ const Card = ({ title, image, link }) => {
     <Link
       to={link}
       aria-label={`Navigate to ${title}`}
-      className="block w-full ml-3"
+      className="w-full pl-5 "
     >
       <div className="flex items-center justify-between p-4 
           rounded-lg" style={{ backgroundColor: 'rgba(124, 157, 179, 0.3)' }}

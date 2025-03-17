@@ -22,7 +22,7 @@ const Header = ({ title, icons = [], onIconClick, searchQuery, setSearchQuery })
   return (
     <>
       {/* Main Header */}
-      <div className="flex items-center space-x-2 py-4">
+      <div className="flex items-center py-4">
         {/* Back Button */}
         <button onClick={() => navigate(-1)} className="bg-transparent text-black rounded-lg cursor-pointer">
           <FaArrowLeft className="text-xl" />
