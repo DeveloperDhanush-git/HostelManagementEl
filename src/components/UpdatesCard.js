@@ -8,7 +8,7 @@ const UpdateCard = ({ image, title, count }) => {
     >
       <div className="flex items-center gap-3">
         <img src={image} alt={title} className="w-8 h-8 object-contain" />
-        <p className="text-black-800 font-medium text-[16px]">{title}</p>
+        <p className="text-black-800 font-medium text-[13px] sm:text-[16px] text-left ml-1">{title}</p>
       </div>
 
       <div className="flex items-center gap-2 p-2 rounded-lg">

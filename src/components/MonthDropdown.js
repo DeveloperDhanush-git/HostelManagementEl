@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa"; // For dropdown icon
 
 const MonthDropdown = ({ selectedMonth, setSelectedMonth }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  
+  // Function to handle clicks outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
   return (
-    <div className="relative w-30 sm:w-48">
-
+    <div className="relative w-30 sm:w-48" ref={dropdownRef}>
       <div
         className="p-2 rounded-[12px] text-[12px] sm:text-[16px] bg-white w-full 
         cursor-pointer outline-none focus:ring-2 focus:ring-gray-300 flex justify-between items-center"

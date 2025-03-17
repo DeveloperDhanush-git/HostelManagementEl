@@ -18,7 +18,7 @@ const ProfileComponent = ({ name, hostelName, profileImage }) => {
         <img
           src={profileImage}
           alt="Profile"
-          className="w-15 h-15 rounded-full object-cover mr-5"
+          className="w-15 h-15 rounded-full object-cover mr-1"
         />
       </button>
     </div>

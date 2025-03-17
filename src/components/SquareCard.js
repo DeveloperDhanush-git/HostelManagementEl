@@ -31,7 +31,7 @@ const SquareCard = ({
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <img src={collectionIcon} alt="Collection" className="w-4 h-4 sm:w-8 h-8" />
-          <p className="text-[12px] sm:text-[16px] text-black-500 font-semibold">{title}</p>
+          <p className="text-[18px] sm:text-[16px] text-black-500 font-semibold">{title}</p>
         </div>
         <MonthDropdown selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />
       </div>
