@@ -61,11 +61,11 @@ const BedInventory_2 = () => {
 
       {/* Center the Property Selection Section */}
       <div className="w-full flex justify-center mt-6">
-  <div className="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+  <div className="w-full max-w-md  p-4 ">
     
     
     {/* Property Card */}
-    <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 shadow-md bg-white">
+    <div className="border-2 border-[#69205D] rounded-lg p-5 flex items-center gap-8 ">
       {/* Left Section - Name & Icon */}
       <div className="flex flex-col items-center w-20">
         <h2 className="font-bold text-md text-center whitespace-nowrap">
